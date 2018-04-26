@@ -23,42 +23,32 @@
 <body>
 <div id="app">
     <main class="py-4">
-        <div class="container">
-            <div class="">
-                <form method="POST" action="{{ route('update',['id'=>$article->id]) }}">
-                    @csrf
-
-                    <div class="form-group">
-                        <label for="title" class="form-label text-md-right">标题</label>
-                        <input type="hidden" name="type" value="1">
-
-                        <input id="title" type="text"
-                               class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}"
-                               name="title" value="{{ $article->title }}" required autofocus>
-                        @if ($errors->has('title'))
-                            <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('title') }}</strong>
-                        @endif
-                    </div>
-                    <div class="form-group">
-                        <label for="content" class="form-label text-md-right">内容</label>
-                        <div id="content">
-                            <textarea name="content" style="display:none;">{{ $article->content }}</textarea>
-                        </div>
-                        @include('markdown::encode',['editors'=>['content']])
-                    </div>
-                    @if ($errors->has('content'))
-                        <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('content') }}</strong>
-                            @endif
-                            <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">
-                                        保存
-                                    </button>
-                                </div>
-                </form>
+        <form method="POST" action="{{ route('update',['id'=>$article->id]) }}">
+            @csrf
+            <div class="form-group" style="width:95%;margin:0 auto;">
+                <input id="title" type="text" class="form-control" name="title" value="{{ $article->title }}" placeholder="标题" required
+                       autofocus>
             </div>
-        </div>
+            <div class="form-group" style="width:95%;margin:10px auto;">
+                <input id="type" type="radio" name="type" value="1"
+                       @if($article->type==1) checked @endif > 发布
+                &emsp;
+                <input id="type" type="radio" name="type" value="2"
+                       @if($article->type==2) checked @endif > 不发布
+            </div>
+            <div class="form-group">
+                <div id="content">
+                    <textarea name="content" style="display:none;">{{ $article->content }}</textarea>
+                </div>
+                @include('markdown::encode',['editors'=>['content']])
+            </div>
+
+            <div class="form-group" style="width:95%;margin:0 auto;">
+                <button type="submit" class="btn btn-primary">
+                    保存
+                </button>
+            </div>
+        </form>
     </main>
 </div>
 </body>
