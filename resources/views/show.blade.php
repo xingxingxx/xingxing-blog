@@ -10,10 +10,10 @@
                         <p class="text-center">发布时间：{{ $article->created_at }}</p>
                         <p>{!! MarkdownEditor::parse($article->content) !!}</p>
                         @if($article->pre)
-                            <p>上一篇：<a style="color:#8888bb;" href="{{ route('show',['id'=>$article->pre->id]) }}">{{ $article->pre->title }}</a></p>
+                            <p>上一篇：<a style="color:#336699;" href="{{ route('show',['id'=>$article->pre->id]) }}">{{ $article->pre->title }}</a></p>
                         @endif
                         @if($article->next)
-                            <p>下一篇：<a style="color:#8888bb;" href="{{ route('show',['id'=>$article->next->id]) }}">{{ $article->next->title }}</a></p>
+                            <p>下一篇：<a style="color:#336699;" href="{{ route('show',['id'=>$article->next->id]) }}">{{ $article->next->title }}</a></p>
                         @endif
                     </div>
                 </div>
