@@ -22,6 +22,7 @@
                                         {!! MarkdownEditor::parse(str_limit($article->content,200))!!}
                                     </a>
                                 </p>
+                                <p>{{ $article->created_at }}</p>
                             </div>
                         </div>
                     @else
@@ -40,6 +41,7 @@
                                             {!! MarkdownEditor::parse(str_limit($article->content,200))!!}
                                         </a>
                                     </p>
+                                    <p>{{ $article->created_at }}</p>
                                 </div>
                             </div>
                         @endguest
