@@ -53,12 +53,11 @@
                     <div class="card-header">关于我</div>
 
                     <div class="card-body">
+                        个人简介：php工程师，热爱编程<br>
+                        目前工作城市：深圳<br>
                         邮箱：<a href="Mailto:xx9815@qq.com">xx915@qq.com</a><br>
                         github：<a target="_blank" href="https://github.com/xingxingxx">https://github.com/xingxingxx</a><br>
                         微博：<a target="_blank" href="http://weibo.com/u/3026783454">http://weibo.com/u/3026783454</a><br>
-                        自己写的玩的一个个人博客，基于laravel框架,前端在bootstrap的基础上做的定制<br>
-                        很多地方还没有完成，后台系统，基本上现在只是做了下文章的增删改，所以后期还会进一步完善。<br>
-                        我已经将博客的源码放到github上<a target="_blank" href="https://github.com/xingxingxx/myblog-laravel">https://github.com/xingxingxx/myblog-laravel</a>，随时可以获取。
                     </div>
                 </div>
             </div>
