@@ -71,6 +71,7 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <footer style="text-align: center">粤ICP备17155556号-2</footer>
     </div>
 </body>
 </html>
