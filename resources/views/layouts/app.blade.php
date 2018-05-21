@@ -71,7 +71,7 @@
         <main class="py-4">
             @yield('content')
         </main>
-        <footer style="text-align: center">粤ICP备17155556号-2</footer>
+        <footer style="text-align: center"><a target="_blank" href="http://www.miitbeian.gov.cn" style="color:#336699;">粤ICP备17155556号-2</a></footer>
     </div>
 </body>
 </html>
