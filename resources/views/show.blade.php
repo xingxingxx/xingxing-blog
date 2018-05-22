@@ -6,7 +6,13 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="text-center">{{ $article->title }}</h5>
+                        <h5 class="text-center">
+                            {{ $article->title }}
+                            @if(\Auth::check())
+                                <a style="float:left;" class="btn btn-md btn-default"
+                                   href="{{ route('edit',['id'=>$article->id]) }}">更新文章</a>
+                            @endif
+                        </h5>
                         <p class="text-center">发布时间：{{ $article->created_at }}</p>
                         <p id="doc-content">
                             <textarea style="display:none;"> {!! $article->content !!} </textarea>

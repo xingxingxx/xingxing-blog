@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * App\Article
@@ -23,6 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Article extends Model
 {
+    use SoftDeletes;
     protected $fillable = [
         'title', 'type', 'content',
     ];
@@ -33,7 +35,7 @@ class Article extends Model
      */
     public function getNextAttribute()
     {
-        return $this->where('type',1)->where('id', '>', $this->id)->orderBy('id', 'asc')->first(['id', 'title']);
+        return $this->where('type', 1)->where('id', '>', $this->id)->orderBy('id', 'asc')->first(['id', 'title']);
     }
 
     /**
@@ -42,7 +44,7 @@ class Article extends Model
      */
     public function getPreAttribute()
     {
-        return $this->where('type',1)->where('id', '<', $this->id)->orderBy('id', 'desc')->first(['id', 'title']);
+        return $this->where('type', 1)->where('id', '<', $this->id)->orderBy('id', 'desc')->first(['id', 'title']);
     }
 
 }

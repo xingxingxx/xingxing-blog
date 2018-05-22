@@ -25,8 +25,10 @@
     <main class="py-4">
         <form method="POST" action="{{ route('update',['id'=>$article->id]) }}">
             @csrf
+            @method('PUT')
             <div class="form-group" style="width:95%;margin:0 auto;">
-                <input id="title" type="text" class="form-control" name="title" value="{{ $article->title }}" placeholder="标题" required
+                <input id="title" type="text" class="form-control" name="title" value="{{ $article->title }}"
+                       placeholder="标题" required
                        autofocus>
             </div>
             <div class="form-group" style="width:95%;margin:10px auto;">

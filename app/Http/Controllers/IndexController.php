@@ -52,4 +52,10 @@ class IndexController extends Controller
         $article->save();
         return redirect(route('show', ['id' => $id]));
     }
+
+    public function delete($id)
+    {
+        Article::destroy($id);
+        return redirect('/');
+    }
 }

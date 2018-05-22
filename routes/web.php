@@ -20,5 +20,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/create', 'IndexController@create')->name('create');
     Route::post('/store', 'IndexController@store')->name('store');
     Route::get('/edit/{id}', 'IndexController@edit')->name('edit');
-    Route::post('/update/{id}', 'IndexController@update')->name('update');
+    Route::delete('/delete/{id}', 'IndexController@delete')->name('delete');
+    Route::put('/update/{id}', 'IndexController@update')->name('update');
 });
