@@ -9,7 +9,14 @@ class IndexController extends Controller
 {
     public function index()
     {
-        $articles = Article::select('*')->orderBy('created_at', 'desc')->paginate(10);
+        if (\Auth::guest()) {
+            $articles = Article::select(\DB::raw('id,title,created_at,type,left(content COLLATE utf8mb4_general_ci, 200) as abstract'))
+                ->where('type', 1)
+                ->orderBy('created_at', 'desc')->paginate(10);
+        } else {
+            $articles = Article::select(\DB::raw('id,title,created_at,type,left(content COLLATE utf8mb4_general_ci, 200) as abstract'))
+                ->orderBy('created_at', 'desc')->paginate(10);
+        }
         return view('index', compact('articles'));
     }
 

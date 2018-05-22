@@ -5,47 +5,25 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 @foreach($articles as $key=>$article)
-                    @if($article->type==1)
-                        <div class="card" @if($key>0)style="margin-top:15px;"@endif>
-                            <div class="card-body">
-                                <h5>
-                                    <a style="color:#336699;"
-                                       href="{{ route('show',['id'=>$article->id]) }}">{{ $article->title }}</a>
-                                    @guest
-                                    @else
-                                        <a style="float:right;" class="btn btn-md btn-default"
-                                           href="{{ route('edit',['id'=>$article->id]) }}">更新文章</a>
-                                    @endguest
-                                </h5>
-                                <p>
-                                    <a style="color:#505050;" href="{{ route('show',['id'=>$article->id]) }}">
-                                        {!! MarkdownEditor::parse(str_limit($article->content,200))!!}
-                                    </a>
-                                </p>
-                                <p>{{ $article->created_at }}</p>
-                            </div>
+                    <div class="card" @if($key>0)style="margin-top:15px;"@endif>
+                        <div class="card-body">
+                            <h5>
+                                <a style="color:@if($article->type==1)#336699 @else #ddd @endif;"
+                                   href="{{ route('show',['id'=>$article->id]) }}">{{ $article->title }}</a>
+                                @if(\Auth::check())
+                                    <a style="float:right;" class="btn btn-md btn-default"
+                                       href="{{ route('edit',['id'=>$article->id]) }}">更新文章</a>
+                                @endif
+                            </h5>
+                            <p>
+                                <a style="color:@if($article->type==1)#505050 @else #ddd @endif;"
+                                   href="{{ route('show',['id'=>$article->id]) }}">
+                                    {!! MarkdownEditor::parse($article->abstract) !!}
+                                </a>
+                            </p>
+                            <p>{{ $article->created_at }}</p>
                         </div>
-                    @else
-                        @guest
-                        @else
-                            <div class="card" @if($key>0)style="margin-top:15px;"@endif>
-                                <div class="card-body">
-                                    <h5>
-                                        <a style="color:#ddd;"
-                                           href="{{ route('show',['id'=>$article->id]) }}">{{ $article->title }}</a>
-                                        <a style="float:right;" class="btn btn-md btn-default"
-                                           href="{{ route('edit',['id'=>$article->id]) }}">更新文章</a>
-                                    </h5>
-                                    <p>
-                                        <a style="color:#ddd;" href="{{ route('show',['id'=>$article->id]) }}">
-                                            {!! MarkdownEditor::parse(str_limit($article->content,200))!!}
-                                        </a>
-                                    </p>
-                                    <p>{{ $article->created_at }}</p>
-                                </div>
-                            </div>
-                        @endguest
-                    @endif
+                    </div>
                 @endforeach
                 <p style="margin-top:15px;"> {!! $articles->links() !!}</p>
             </div>
