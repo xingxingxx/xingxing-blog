@@ -9,30 +9,17 @@
                         <div class="card-body">
                             <h5>
                                 <a style="color:@if($article->type==1)#336699 @else #ddd @endif;"
-                                   href="{{ route('show',['id'=>$article->id]) }}">{{ $article->title }}</a>
+                                   href="{{ $article->info_url }}">{{ $article->title }}</a>
 
                             </h5>
                             <p>
                                 <a style="color:@if($article->type==1)#505050 @else #ddd @endif;"
-                                   href="{{ route('show',['id'=>$article->id]) }}">
+                                   href="{{ $article->info_url }}">
                                     {!! MarkdownEditor::parse($article->abstract) !!}
                                 </a>
                             </p>
                             <p>{{ $article->created_at }}</p>
-                            @if(\Auth::check())
-                                <p>
-                                <form action="{{ route('delete',['id'=>$article->id]) }}" method="POST"
-                                      style="display: inline-block;">
-                                    @method('DELETE')
-                                    @csrf
-                                    <input type="submit"
-                                           style="border:none;background-color: transparent;color:#0056b3;"
-                                           value="删除文章"
-                                           onclick="return confirm('确定要删除吗？');">
-                                </form>
-                                <a style="display: inline-block;" href="{{ route('edit',['id'=>$article->id]) }}">更新文章</a>
-                                </p>
-                            @endif
+                            <p>{!! $article->opera_button !!}</p>
                         </div>
                     </div>
                 @endforeach

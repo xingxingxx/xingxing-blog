@@ -31,13 +31,7 @@
                        placeholder="标题" required
                        autofocus>
             </div>
-            <div class="form-group" style="width:95%;margin:10px auto;">
-                <input id="type" type="radio" name="type" value="1"
-                       @if($article->type==1) checked @endif > 发布
-                &emsp;
-                <input id="type" type="radio" name="type" value="2"
-                       @if($article->type==2) checked @endif > 不发布
-            </div>
+            <br>
             <div class="form-group">
                 <div id="content">
                     <textarea name="content" style="display:none;">{{ $article->content }}</textarea>

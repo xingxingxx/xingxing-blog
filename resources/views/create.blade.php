@@ -30,11 +30,9 @@
                        autofocus>
             </div>
             <div class="form-group" style="width:95%;margin:10px auto;">
-                <input id="type" type="radio" name="type" value="1"
-                       @if(old('type')==1) checked @endif> 发布
+                <input id="type" type="radio" name="type" value="1"> 发布
                 &emsp;
-                <input id="type" type="radio" name="type" value="2"
-                       @if(old('type')==2) checked @endif> 不发布
+                <input id="type" type="radio" name="type" value="2" checked> 不发布
             </div>
             <div class="form-group">
                 <div id="content">

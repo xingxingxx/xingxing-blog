@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'IndexController@index');
-Route::get('/show/{id}', 'IndexController@show')->name('show');
+Route::get('/info/{id}', 'IndexController@show')->name('show');
 
 Auth::routes();
 
@@ -22,4 +22,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/edit/{id}', 'IndexController@edit')->name('edit');
     Route::delete('/delete/{id}', 'IndexController@delete')->name('delete');
     Route::put('/update/{id}', 'IndexController@update')->name('update');
+    Route::put('setting-type/{id}','IndexController@settingType')->name('settingType');
 });

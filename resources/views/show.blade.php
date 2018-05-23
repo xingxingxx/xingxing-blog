@@ -6,12 +6,9 @@
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-body">
+                        {!! $article->update_button !!}
                         <h5 class="text-center">
                             {{ $article->title }}
-                            @if(\Auth::check())
-                                <a style="float:left;" class="btn btn-md btn-default"
-                                   href="{{ route('edit',['id'=>$article->id]) }}">更新文章</a>
-                            @endif
                         </h5>
                         <p class="text-center">发布时间：{{ $article->created_at }}</p>
                         <p id="doc-content">
@@ -19,12 +16,12 @@
                         </p>
                         @if($article->pre)
                             <p>上一篇：<a style="color:#336699;"
-                                      href="{{ route('show',['id'=>$article->pre->id]) }}">{{ $article->pre->title }}</a>
+                                      href="{{ $article->pre->info_url }}">{{ $article->pre->title }}</a>
                             </p>
                         @endif
                         @if($article->next)
                             <p>下一篇：<a style="color:#336699;"
-                                      href="{{ route('show',['id'=>$article->next->id]) }}">{{ $article->next->title }}</a>
+                                      href="{{ $article->next->info_url }}">{{ $article->next->title }}</a>
                             </p>
                         @endif
                     </div>
