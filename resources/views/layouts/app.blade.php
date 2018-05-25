@@ -75,7 +75,6 @@
     <footer style="text-align: center"><a target="_blank" href="http://www.miitbeian.gov.cn" style="color:#336699;">粤ICP备17155556号-2</a>
     </footer>
 </div>
-
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}" defer></script>
 @yield('script')
