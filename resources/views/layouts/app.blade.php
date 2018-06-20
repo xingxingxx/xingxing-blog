@@ -20,7 +20,7 @@
 </head>
 <body>
 <div id="app">
-    <nav class="navbar navbar-expand-md navbar-light navbar-laravel" style="border-bottom: 4px solid #336699;">
+    <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name') }}
@@ -33,9 +33,16 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
+                    <li><a class="nav-link" href="/">首页</a></li>
+                    <li><a class="nav-link" href="/">教程</a></li>
 
                 </ul>
 
+                <form action="/" class="form-inline navbar-form pull-right" method="get" style="margin:0;padding:0;">
+                    <input class="form-control" type="text" name="q" placeholder="Search" value="{{ $q ?? '' }}">
+                    &nbsp;
+                    <button class="btn btn-success-outline" type="submit">搜索</button>
+                </form>
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
@@ -65,6 +72,7 @@
                         </li>
                     @endguest
                 </ul>
+
             </div>
         </div>
     </nav>

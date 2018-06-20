@@ -30,6 +30,16 @@ class Article extends Model
     ];
 
     /**
+     * 获取封面图片
+     * @return string
+     */
+    public function getCoverAttribute()
+    {
+        preg_match_all("/(http:\/\/)[^>]*?.(png|jpg)/i", $this->content, $thumbUrl);
+        return $thumbUrl[0][0] ?? '';
+    }
+
+    /**
      * 获取下一篇文章
      * @return object
      */
@@ -130,4 +140,6 @@ class Article extends Model
             ($this->type == 1) ? '不发布' : '发布'
         );
     }
+
+
 }
