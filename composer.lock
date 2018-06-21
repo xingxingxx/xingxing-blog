@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b5d14f2c9c85ee97e4d0d9b931b5c6cb",
+    "content-hash": "5c53adb473910d1c2e49e3df3aac4313",
     "packages": [
         {
             "name": "aliyuncs/oss-sdk-php",
@@ -1923,6 +1923,43 @@
                 "uuid"
             ],
             "time": "2018-01-20T00:28:24+00:00"
+        },
+        {
+            "name": "sunnyshift/laravel-uploader",
+            "version": "0.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wh469012917/laravel-uploader.git",
+                "reference": "0b09b18603e1e0aa5601a0cf9a83edc23a158a57"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/wh469012917/laravel-uploader/0b09b18603e1e0aa5601a0cf9a83edc23a158a57.zip",
+                "reference": "0b09b18603e1e0aa5601a0cf9a83edc23a158a57",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9",
+                "qiniu/php-sdk": "^7.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SunnyShift\\Uploader\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "sunnyshift",
+                    "email": "wenghang1228@gmail.com"
+                }
+            ],
+            "description": "A upload component for laravel",
+            "time": "2017-11-27T07:32:08+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

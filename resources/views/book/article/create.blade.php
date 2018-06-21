@@ -2,21 +2,24 @@
 
 @section('content')
     <div style="padding:20px;">
-        <form method="POST" action="{{ route('blog.update',['id'=>$article->id]) }}">
+
+        <form method="POST" action="{{ route('book.article.store') }}">
             @csrf
-            @method('PUT')
             <div class="form-group">
-                <input id="title" type="text" class="form-control" name="title" value="{{ $article->title }}"
-                       placeholder="标题" required
-                       autofocus>
+                <input type="hidden" id="book_id" type="text" class="form-control" name="book_id"
+                       value="{{ $book_id }}" >
+            </div>
+            <div class="form-group">
+                <input id="title" type="text" class="form-control" name="title"
+                       value="{{ old('title') }}"
+                       required autofocus>
             </div>
             <div class="form-group">
                 <div id="content">
-                    <textarea name="content" style="display:none;">{{ $article->content }}</textarea>
+                    <textarea name="content">{{ old('content') }}</textarea>
                 </div>
                 @include('markdown::encode',['editors'=>['content']])
             </div>
-
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">
                     保存

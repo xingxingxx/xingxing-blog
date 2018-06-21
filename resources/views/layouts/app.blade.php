@@ -33,8 +33,8 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-                    <li><a class="nav-link" href="{{ route('index') }}">首页</a></li>
-                    <li><a class="nav-link" href="{{ route('index') }}">教程</a></li>
+                    <li><a class="nav-link @if(url()->full()==route('index'))active @endif" href="{{ route('index') }}">首页</a></li>
+                    <li><a class="nav-link @if(url()->full()==route('book.index'))active @endif" href="{{ route('book.index') }}">教程</a></li>
 
                 </ul>
 
@@ -51,6 +51,11 @@
                         {{--<li><a class="nav-link" href="{{ route('register') }}">注册</a></li>--}}
                     @else
                         <li><a class="nav-link" href="{{ route('blog.create') }}">添加文章</a></li>
+                        @if(empty($book))
+                            <li><a class="nav-link" href="{{ route('book.create') }}">新增教程</a></li>
+                        @else
+                            <li><a class="nav-link" href="{{ route('book.article.create',['book_id'=>$book->id]) }}">添加教程文章</a></li>
+                        @endif
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -80,11 +85,12 @@
     <main class="py-4">
         @yield('content')
     </main>
-    <footer style="text-align: center"><a target="_blank" href="http://www.miitbeian.gov.cn" style="color:#336699;">粤ICP备17155556号-2</a>
+    <footer style="text-align: center">
+        <a target="_blank" href="http://www.miitbeian.gov.cn" style="color:#336699;">粤ICP备17155556号-2</a>
     </footer>
 </div>
 <!-- Scripts -->
-<script src="{{ asset('js/app.js') }}" defer></script>
+<script src="{{ asset('js/jquery.min.js') }}"></script>
 @yield('script')
 </body>
 </html>

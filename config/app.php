@@ -161,6 +161,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\PinYinServiceProvider::class,
         Chenhua\MarkdownEditor\MarkdownEditorServiceProvider::class,
+        SunnyShift\Uploader\UploaderServiceProvider::class,
     ],
 
     /*
