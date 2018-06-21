@@ -5,46 +5,22 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 @forelse($articles as $key=>$article)
-                    <div class="card" @if($key>0)style="margin-top:20px;"@endif>
+                    <div class="card" style="@if($key>0) margin-top:20px; @endif">
                         <div class="card-body">
-                            <h5><p><a style="color:@if($article->type==1)#505050 @else #ddd @endif;"
-                                      href="{{ $article->info_url }}"><strong>{{ $article->title }}</strong></a></p>
-                            </h5>
+                            <h5 style="padding-bottom:10px;color:#333;"><strong>
+                                    <a href="{{ $article->info_url }}" style="color:#333333;">{{ $article->title }}</a>
+                                </strong></h5>
                             <div class="row">
                                 @if($article->cover)
                                     <div class="col-md-4">
-                                        <a href="{{ $article->info_url }}">
-                                            <img style="width:100%;" src="{{ $article->cover }}">
-                                        </a>
-                                    </div>
-
-                                    <div class="col-md-8">
-
-                                        {{--<a style="color:@if($article->type==1)#505050 @else #ddd @endif;"--}}
-                                        {{--href="{{ $article->info_url }}">--}}
-                                        {{--{!! MarkdownEditor::parse($article->abstract) !!}--}}
-                                        {{--</a>--}}
-                                        <p id="doc-content-{{$article->id}}" style="padding:0;">
-                                            <textarea style="display:none;"> {!! $article->abstract !!} </textarea>
-                                        </p>
-                                        <div>{!! $article->opera_button !!}{{ $article->created_at }}</div>
-
-                                    </div>
-                                @else
-                                    <div class="col-md-12">
-                                        {{--<a style="color:@if($article->type==1)#505050 @else #ddd @endif;"--}}
-                                        {{--href="{{ $article->info_url }}">--}}
-                                        {{--{!! MarkdownEditor::parse($article->abstract) !!}--}}
-                                        {{--</a>--}}
-                                        <p id="doc-content-{{$article->id}}" style="padding:0;">
-                                            <textarea style="display:none;"> {!! $article->abstract !!} </textarea>
-                                        </p>
-                                        <div>{!! $article->opera_button !!}{{ $article->created_at }}</div>
-
+                                        <a href="{{ $article->info_url }}"><img style="width:100%;" src="{{ $article->cover }}"></a>
                                     </div>
                                 @endif
+                                <div class="@if($article->cover) col-md-8 @else col-md-12 @endif">
+                                    <p><a href="{{ $article->info_url }}"  style="color:#505050;">{{ $article->abstract }}</a></p>
+                                    <div>{!! $article->opera_button !!}{{ $article->created_at }}</div>
+                                </div>
                             </div>
-
                         </div>
                     </div>
                 @empty
@@ -97,26 +73,4 @@
             </div>
         </div>
     </div>
-@endsection
-
-@section('script')
-    <script src="{{asset('vendor/markdown/js/jquery.min.js')}}"></script>
-    <script src="{{asset('vendor/markdown/js/editormd.min.js')}}"></script>
-    <script src="{{asset('vendor/markdown/lib/marked.min.js')}}"></script>
-    <script src="{{asset('vendor/markdown/lib/prettify.min.js')}}"></script>
-    <script type="text/javascript">
-      $(function () {
-          @foreach($articles as $article)
-          editormd.markdownToHTML("doc-content-{{ $article->id }}", {
-            htmlDecode: "style,script,iframe",
-            emoji: false,
-            taskList: true,
-            tex: false,
-            flowChart: false,
-            sequenceDiagram: false,
-            codeFold: true,
-          });
-          @endforeach
-      });
-    </script>
 @endsection

@@ -24,11 +24,12 @@ if (!function_exists('get_cover')) {
 
 if (!function_exists('get_abstract')) {
     /**
-     * 获取文章摘要
+     * * 获取文章摘要
      * @param $content
-     * @return null|string|string[]
+     * @param int $limit
+     * @return string
      */
-    function get_abstract($content)
+    function get_abstract($content, $limit = 220)
     {
         $patterns = [];
         $replacements = [];
@@ -37,7 +38,7 @@ if (!function_exists('get_abstract')) {
          * 替换大标题成小标题
          */
         $patterns[] = '/#+/';
-        $replacements[] = '#####';
+        $replacements[] = '';
 
         /**
          * 替换图片地址
@@ -72,6 +73,6 @@ if (!function_exists('get_abstract')) {
 
         $content = preg_replace($patterns, $replacements, $content);
 
-        return str_limit($content, 160);
+        return str_limit($content, $limit);
     }
 }

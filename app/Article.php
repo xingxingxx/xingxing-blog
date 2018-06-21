@@ -40,7 +40,11 @@ class Article extends Model
 
         static::saving(function ($model) {
             $model->cover = get_cover($model->content);
-            $model->abstract = get_abstract($model->content);
+            if ($model->cover) {
+                $model->abstract = get_abstract($model->content);
+            } else {
+                $model->abstract = get_abstract($model->content, 360);
+            }
         });
     }
 

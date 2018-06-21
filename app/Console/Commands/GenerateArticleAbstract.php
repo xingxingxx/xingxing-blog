@@ -43,7 +43,11 @@ class GenerateArticleAbstract extends Command
             ->get();
         foreach ($articles as $article) {
             $article->cover = get_cover($article->content);
-            $article->abstract = get_abstract($article->content);
+            if($article->cover){
+                $article->abstract = get_abstract($article->content);
+            }else{
+                $article->abstract = get_abstract($article->content,360);
+            }
             $article->save();
             $this->info('id:' . $article->id . PHP_EOL
                 . 'title:' . $article->title . PHP_EOL
