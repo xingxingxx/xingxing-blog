@@ -8,7 +8,7 @@
                     <div class="card" style="@if($key>0) margin-top:20px; @endif">
                         <div class="card-body">
                             <h5 style="padding-bottom:10px;color:#333;"><strong>
-                                    <a href="{{ $article->info_url }}" style="color:#333333;">{{ $article->title }}</a>
+                                    <a href="{{ $article->info_url }}" style="@if($article->type==1)color:#333333; @else color:#dddddd; @endif">{{ $article->title }}</a>
                                 </strong></h5>
                             <div class="row">
                                 @if($article->cover)
@@ -17,7 +17,7 @@
                                     </div>
                                 @endif
                                 <div class="@if($article->cover) col-md-8 @else col-md-12 @endif">
-                                    <p><a href="{{ $article->info_url }}"  style="color:#505050;">{{ $article->abstract }}</a></p>
+                                    <p><a href="{{ $article->info_url }}"  style="@if($article->type==1)color:#333333; @else color:#dddddd; @endif">{{ $article->abstract }}</a></p>
                                     <div>{!! $article->opera_button !!}{{ $article->created_at }}</div>
                                 </div>
                             </div>

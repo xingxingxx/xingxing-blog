@@ -13,37 +13,25 @@ class IndexController extends Controller
      */
     public function index(Request $request)
     {
-        if (\Auth::guest()) {
-            $articles = Article::select(\DB::raw('id,title,created_at,type,cover,abstract'))
-                ->where('type', 1)
-                ->when($request->q, function ($query) use ($request) {
-                    $query->where('title', 'like', '%' . $request->q . '%');
-                })
-                ->orderBy('created_at', 'desc')
-                ->paginate(10);
-
-            $hots = Article::select(\DB::raw('id,title,created_at,type'))
-                ->where('type', 1)
-                ->orderBy('view_count', 'desc')
-                ->orderBy('created_at', 'desc')
-                ->limit(5)
-                ->get();
-
-        } else {
-            $articles = Article::select(\DB::raw('id,title,created_at,type,cover,abstract'))
-                ->when($request->q, function ($query) use ($request) {
-                    $query->where('title', 'like', '%' . $request->q . '%');
-                })
-                ->orderBy('created_at', 'desc')
-                ->paginate(10);
-
-            $hots = Article::select(\DB::raw('id,title,created_at,type'))
-                ->orderBy('view_count', 'desc')
-                ->orderBy('created_at', 'desc')
-                ->limit(5)
-                ->get();
-        }
         $q = $request->q;
+        $articles = Article::select(\DB::raw('id,title,created_at,type,cover,abstract'))
+            ->when(\Auth::guest(), function ($query) {
+                $query->where('type', 1);
+            })
+            ->when($q, function ($query) use ($q) {
+                $query->where('title', 'like', '%' . $q . '%');
+            })
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
+
+        $hots = Article::select(\DB::raw('id,title,created_at,type'))
+            ->when(\Auth::guest(), function ($query) {
+                $query->where('type', 1);
+            })
+            ->orderBy('view_count', 'desc')
+            ->orderBy('created_at', 'desc')
+            ->limit(5)
+            ->get();
         return view('index', compact('articles', 'hots', 'q'));
     }
 
