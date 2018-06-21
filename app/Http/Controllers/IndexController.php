@@ -14,7 +14,7 @@ class IndexController extends Controller
     public function index(Request $request)
     {
         if (\Auth::guest()) {
-            $articles = Article::select(\DB::raw('id,title,created_at,type,content'))
+            $articles = Article::select(\DB::raw('id,title,created_at,type,cover,abstract'))
                 ->where('type', 1)
                 ->when($request->q, function ($query) use ($request) {
                     $query->where('title', 'like', '%' . $request->q . '%');
@@ -22,7 +22,7 @@ class IndexController extends Controller
                 ->orderBy('created_at', 'desc')
                 ->paginate(10);
 
-            $hots = Article::select(\DB::raw('id,title,created_at,type,content'))
+            $hots = Article::select(\DB::raw('id,title,created_at,type'))
                 ->where('type', 1)
                 ->orderBy('view_count', 'desc')
                 ->orderBy('created_at', 'desc')
@@ -30,14 +30,14 @@ class IndexController extends Controller
                 ->get();
 
         } else {
-            $articles = Article::select(\DB::raw('id,title,created_at,type,content'))
+            $articles = Article::select(\DB::raw('id,title,created_at,type,cover,abstract'))
                 ->when($request->q, function ($query) use ($request) {
                     $query->where('title', 'like', '%' . $request->q . '%');
                 })
                 ->orderBy('created_at', 'desc')
                 ->paginate(10);
 
-            $hots = Article::select(\DB::raw('id,title,created_at,type,content'))
+            $hots = Article::select(\DB::raw('id,title,created_at,type'))
                 ->orderBy('view_count', 'desc')
                 ->orderBy('created_at', 'desc')
                 ->limit(5)
@@ -58,11 +58,12 @@ class IndexController extends Controller
 
     /**
      * 保存新增
+     * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store()
+    public function store(Request $request)
     {
-        $article = Article::create(request()->all());
+        $article = Article::create($request->all());
         return redirect($article->info_url);
     }
 
@@ -71,7 +72,7 @@ class IndexController extends Controller
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show($id,Request $request)
+    public function show($id, Request $request)
     {
         if (\Auth::guest()) {
             $article = Article::where('type', 1)->where('id', $id)->firstOrFail();
@@ -80,8 +81,8 @@ class IndexController extends Controller
         }
         $article->view_count += 1;
         $article->save();
-        $q=$request->q;
-        return view('show', compact('article','q'));
+        $q = $request->q;
+        return view('show', compact('article', 'q'));
     }
 
     /**

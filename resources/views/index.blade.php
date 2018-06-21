@@ -20,19 +20,25 @@
 
                                     <div class="col-md-8">
 
-                                        <a style="color:@if($article->type==1)#505050 @else #ddd @endif;"
-                                           href="{{ $article->info_url }}">
-                                            {!! MarkdownEditor::parse(str_limit($article->content,200)) !!}
-                                        </a>
+                                        {{--<a style="color:@if($article->type==1)#505050 @else #ddd @endif;"--}}
+                                        {{--href="{{ $article->info_url }}">--}}
+                                        {{--{!! MarkdownEditor::parse($article->abstract) !!}--}}
+                                        {{--</a>--}}
+                                        <p id="doc-content-{{$article->id}}" style="padding:0;">
+                                            <textarea style="display:none;"> {!! $article->abstract !!} </textarea>
+                                        </p>
                                         <div>{!! $article->opera_button !!}{{ $article->created_at }}</div>
 
                                     </div>
                                 @else
                                     <div class="col-md-12">
-                                        <a style="color:@if($article->type==1)#505050 @else #ddd @endif;"
-                                           href="{{ $article->info_url }}">
-                                            {!! MarkdownEditor::parse(str_limit($article->content,200)) !!}
-                                        </a>
+                                        {{--<a style="color:@if($article->type==1)#505050 @else #ddd @endif;"--}}
+                                        {{--href="{{ $article->info_url }}">--}}
+                                        {{--{!! MarkdownEditor::parse($article->abstract) !!}--}}
+                                        {{--</a>--}}
+                                        <p id="doc-content-{{$article->id}}" style="padding:0;">
+                                            <textarea style="display:none;"> {!! $article->abstract !!} </textarea>
+                                        </p>
                                         <div>{!! $article->opera_button !!}{{ $article->created_at }}</div>
 
                                     </div>
@@ -41,7 +47,7 @@
 
                         </div>
                     </div>
-                    @empty
+                @empty
                     <div class="card">
                         <div class="card-body">
                             <p><h4 class="text-center">抱歉！没有找到您需要的文章</h4></p>
@@ -68,11 +74,14 @@
                     <div class="card-header">标签云</div>
 
                     <div class="card-body">
-                        <a href="/?q=php" style="color:#333;" class="btn btn-sm btn-default"><span class="label label-default">PHP</span></a>
+                        <a href="/?q=php" style="color:#333;" class="btn btn-sm btn-default"><span
+                                    class="label label-default">PHP</span></a>
                         &nbsp;&nbsp;
-                        <a href="/?q=laravel" style="color:#333;" class="btn btn-sm btn-default"><span class="label label-default">Laravel</span></a>
+                        <a href="/?q=laravel" style="color:#333;" class="btn btn-sm btn-default"><span
+                                    class="label label-default">Laravel</span></a>
                         &nbsp;&nbsp;
-                        <a href="?q=设计模式" style="color:#333;" class="btn btn-sm btn-default"><span class="label label-default">设计模式</span></a>
+                        <a href="?q=设计模式" style="color:#333;" class="btn btn-sm btn-default"><span
+                                    class="label label-default">设计模式</span></a>
                     </div>
                 </div>
 
@@ -88,4 +97,26 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script src="{{asset('vendor/markdown/js/jquery.min.js')}}"></script>
+    <script src="{{asset('vendor/markdown/js/editormd.min.js')}}"></script>
+    <script src="{{asset('vendor/markdown/lib/marked.min.js')}}"></script>
+    <script src="{{asset('vendor/markdown/lib/prettify.min.js')}}"></script>
+    <script type="text/javascript">
+      $(function () {
+          @foreach($articles as $article)
+          editormd.markdownToHTML("doc-content-{{ $article->id }}", {
+            htmlDecode: "style,script,iframe",
+            emoji: false,
+            taskList: true,
+            tex: false,
+            flowChart: false,
+            sequenceDiagram: false,
+            codeFold: true,
+          });
+          @endforeach
+      });
+    </script>
 @endsection

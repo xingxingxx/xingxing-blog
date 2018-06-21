@@ -30,13 +30,18 @@ class Article extends Model
     ];
 
     /**
-     * 获取封面图片
-     * @return string
+     * 数据模型的启动方法
+     *
+     * @return void
      */
-    public function getCoverAttribute()
+    protected static function boot()
     {
-        preg_match_all("/(http:\/\/)[^>]*?.(png|jpg)/i", $this->content, $thumbUrl);
-        return $thumbUrl[0][0] ?? '';
+        parent::boot();
+
+        static::saving(function ($model) {
+            $model->cover = get_cover($model->content);
+            $model->abstract = get_abstract($model->content);
+        });
     }
 
     /**

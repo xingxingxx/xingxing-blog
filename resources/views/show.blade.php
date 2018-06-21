@@ -30,11 +30,11 @@
         </div>
     </div>
 @endsection
-<script src="{{asset('vendor/markdown/js/jquery.min.js')}}"></script>
-<script src="{{asset('vendor/markdown/js/editormd.min.js')}}"></script>
-<script src="{{asset('vendor/markdown/lib/marked.min.js')}}"></script>
-<script src="{{asset('vendor/markdown/lib/prettify.min.js')}}"></script>
 @section('script')
+    <script src="{{asset('vendor/markdown/js/jquery.min.js')}}"></script>
+    <script src="{{asset('vendor/markdown/js/editormd.min.js')}}"></script>
+    <script src="{{asset('vendor/markdown/lib/marked.min.js')}}"></script>
+    <script src="{{asset('vendor/markdown/lib/prettify.min.js')}}"></script>
     <script type="text/javascript">
       $(function () {
         editormd.markdownToHTML("doc-content", {
