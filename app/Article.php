@@ -71,7 +71,9 @@ class Article extends Model
      */
     public function getInfoUrlAttribute()
     {
-        return route('show', ['id' => $this->id]);
+        $title = app('pinyinService')->convert($this->title);
+        $title = implode('-', $title);
+        return route('blog.show', ['id' => $this->id, 'title' => $title]);
     }
 
     /**
@@ -106,7 +108,7 @@ class Article extends Model
      */
     private function updateButton()
     {
-        $url = route('edit', ['id' => $this->id]);
+        $url = route('blog.edit', ['id' => $this->id]);
         return '<div style="display:inline-block;"><a class="btn btn-sm btn-primary" href="' . $url . '">更新文章</a></div>&emsp;';
     }
 
@@ -116,7 +118,7 @@ class Article extends Model
      */
     private function deleteButton()
     {
-        $url = route('delete', ['id' => $this->id]);
+        $url = route('blog.delete', ['id' => $this->id]);
         return sprintf('<form action="%s" method="POST" 
                     style="display: inline-block;">
                       %s %s
@@ -133,7 +135,7 @@ class Article extends Model
      */
     private function publishButton()
     {
-        $url = route('settingType', ['id' => $this->id]);
+        $url = route('blog.settingType', ['id' => $this->id]);
         return sprintf('<form action="%s" method="POST" 
                     style="display: inline-block;">
                       %s %s

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', '博客首页')
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -50,13 +50,13 @@
                     <div class="card-header">标签云</div>
 
                     <div class="card-body">
-                        <a href="/?q=php" style="color:#333;" class="btn btn-sm btn-default"><span
+                        <a href="{{ route('index',['q'=>'php']) }}" style="color:#333;" class="btn btn-sm btn-default"><span
                                     class="label label-default">PHP</span></a>
                         &nbsp;&nbsp;
-                        <a href="/?q=laravel" style="color:#333;" class="btn btn-sm btn-default"><span
+                        <a href="{{ route('index',['q'=>'laravel']) }}" style="color:#333;" class="btn btn-sm btn-default"><span
                                     class="label label-default">Laravel</span></a>
                         &nbsp;&nbsp;
-                        <a href="?q=设计模式" style="color:#333;" class="btn btn-sm btn-default"><span
+                        <a href="{{ route('index',['q'=>'设计模式']) }}" style="color:#333;" class="btn btn-sm btn-default"><span
                                     class="label label-default">设计模式</span></a>
                     </div>
                 </div>

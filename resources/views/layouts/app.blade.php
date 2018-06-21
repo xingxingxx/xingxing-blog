@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name') }} - @yield('title')</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -22,7 +22,7 @@
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
+            <a class="navbar-brand" href="{{ route('index') }}">
                 {{ config('app.name') }}
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -33,8 +33,8 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-                    <li><a class="nav-link" href="/">首页</a></li>
-                    <li><a class="nav-link" href="/">教程</a></li>
+                    <li><a class="nav-link" href="{{ route('index') }}">首页</a></li>
+                    <li><a class="nav-link" href="{{ route('index') }}">教程</a></li>
 
                 </ul>
 
@@ -50,7 +50,7 @@
                         <li><a class="nav-link" href="{{ route('login') }}">登录</a></li>
                         {{--<li><a class="nav-link" href="{{ route('register') }}">注册</a></li>--}}
                     @else
-                        <li><a class="nav-link" href="{{ route('create') }}">添加文章</a></li>
+                        <li><a class="nav-link" href="{{ route('blog.create') }}">添加文章</a></li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

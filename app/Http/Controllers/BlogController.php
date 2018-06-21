@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Article;
 use Illuminate\Http\Request;
 
-class IndexController extends Controller
+class BlogController extends Controller
 {
     /**
      * 首页
+     * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(Request $request)
@@ -32,7 +33,7 @@ class IndexController extends Controller
             ->orderBy('created_at', 'desc')
             ->limit(5)
             ->get();
-        return view('index', compact('articles', 'hots', 'q'));
+        return view('blog.index', compact('articles', 'hots', 'q'));
     }
 
     /**
@@ -41,7 +42,7 @@ class IndexController extends Controller
      */
     public function create()
     {
-        return view('create');
+        return view('blog.create');
     }
 
     /**
@@ -70,7 +71,7 @@ class IndexController extends Controller
         $article->view_count += 1;
         $article->save();
         $q = $request->q;
-        return view('show', compact('article', 'q'));
+        return view('blog.show', compact('article', 'q'));
     }
 
     /**
@@ -81,7 +82,7 @@ class IndexController extends Controller
     public function edit($id)
     {
         $article = Article::findOrFail($id);
-        return view('edit', compact('article'));
+        return view('blog.edit', compact('article'));
     }
 
     /**

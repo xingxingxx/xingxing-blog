@@ -11,16 +11,19 @@
 |
 */
 
-Route::get('/', 'IndexController@index');
-Route::get('/info/{id}', 'IndexController@show')->name('show');
+Route::get('/', 'BlogController@index')->name('index');
 
 Auth::routes();
 
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('/create', 'IndexController@create')->name('create');
-    Route::post('/store', 'IndexController@store')->name('store');
-    Route::get('/edit/{id}', 'IndexController@edit')->name('edit');
-    Route::delete('/delete/{id}', 'IndexController@delete')->name('delete');
-    Route::put('/update/{id}', 'IndexController@update')->name('update');
-    Route::put('setting-type/{id}','IndexController@settingType')->name('settingType');
+Route::group(['prefix' => 'blog'], function () {
+    Route::group(['middleware' => 'auth'], function () {
+        Route::get('/create', 'BlogController@create')->name('blog.create');
+        Route::post('/store', 'BlogController@store')->name('blog.store');
+        Route::get('/edit/{id}', 'BlogController@edit')->name('blog.edit');
+        Route::delete('/delete/{id}', 'BlogController@delete')->name('blog.delete');
+        Route::put('/update/{id}', 'BlogController@update')->name('blog.update');
+        Route::put('setting-type/{id}', 'BlogController@settingType')->name('blog.settingType');
+    });
+
+    Route::get('/{id}/{title}', 'BlogController@show')->name('blog.show');
 });

@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -23,7 +23,7 @@
 <body>
 <div id="app">
     <main class="py-4">
-        <form method="POST" action="{{ route('store') }}">
+        <form method="POST" action="{{ route('blog.store') }}">
             @csrf
             <div class="form-group" style="width:95%;margin:0 auto;">
                 <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}" placeholder="标题" required
