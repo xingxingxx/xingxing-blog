@@ -27,13 +27,11 @@
                             <textarea style="display:none;"> {!! $article->content !!} </textarea>
                         </p>
                         @if($article->pre)
-                            <p>上一篇：<a style="color:#336699;"
-                                      href="{{ route('book.show',['book_id'=>$article->pre->book_id,'id'=>$article->pre->id]) }}">{{ $article->pre->title }}</a>
+                            <p>上一篇：<a style="color:#336699;" href="{{ route('book.show',['book_id'=>$article->pre->book_id,'id'=>$article->pre->id]) }}">{{ $article->pre->title }}</a>
                             </p>
                         @endif
                         @if($article->next)
-                            <p>下一篇：<a style="color:#336699;"
-                                      href="{{ route('book.show',['book_id'=>$article->next->book_id,'id'=>$article->next->id]) }}">{{ $article->next->title }}</a>
+                            <p>下一篇：<a style="color:#336699;" href="{{ route('book.show',['book_id'=>$article->next->book_id,'id'=>$article->next->id]) }}">{{ $article->next->title }}</a>
                             </p>
                         @endif
                     </div>

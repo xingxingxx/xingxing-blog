@@ -162,6 +162,7 @@ return [
         App\Providers\PinYinServiceProvider::class,
         Chenhua\MarkdownEditor\MarkdownEditorServiceProvider::class,
         SunnyShift\Uploader\UploaderServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
     ],
 
     /*
@@ -211,6 +212,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'MarkdownEditor' => Chenhua\MarkdownEditor\Facades\MarkdownEditor::class,
+        'Image' => Intervention\Image\Facades\Image::class,
     ],
 
 ];

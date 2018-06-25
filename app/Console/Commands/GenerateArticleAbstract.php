@@ -38,7 +38,7 @@ class GenerateArticleAbstract extends Command
      */
     public function handle()
     {
-        $articles = Article::where('abstract', '')
+        $articles = Article::whereAbstract('')
             ->orderBy('created_at', 'desc')
             ->get();
         foreach ($articles as $article) {

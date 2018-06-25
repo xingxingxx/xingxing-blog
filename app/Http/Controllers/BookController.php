@@ -25,12 +25,12 @@ class BookController extends Controller
     public function show($book_id, Request $request)
     {
         $book = Book::findOrFail($book_id);
-        $menus = BookArticle::where('book_id', $book_id)->get(['id', 'title', 'book_id']);
+        $menus = BookArticle::whereBookId($book_id)->get(['id', 'title', 'book_id']);
         $id = $request->id;
         if ($id) {
             $article = BookArticle::findOrFail($id);
         } else {
-            $article = BookArticle::where('book_id', $book_id)->first();
+            $article = BookArticle::whereBookId($book_id)->first();
         }
         return view('book.show', compact('book', 'menus', 'article'));
     }

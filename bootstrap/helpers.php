@@ -13,10 +13,22 @@ if (!function_exists('get_cover')) {
      */
     function get_cover($content)
     {
+        $firstPic = '';
         if (preg_match('/!\[[^\]]*]\((http):\/\/[^\)]*\.(png|jpg)(.*)\)/i', $content, $img_match)) {
             if (preg_match('/(http:\/\/)[^>]*?\.(png|jpg)/i', $img_match[0], $img_match_result)) {
-                return $img_match_result[0];
+                $firstPic = $img_match_result[0];
             }
+        }
+        if ($firstPic) {
+            $firstPicPath = public_path((parse_url($firstPic))['path']);
+            $coverPath = preg_replace('/(\.png|\.jpg)/', '_200x200$1', $firstPicPath);
+            if (!file_exists($coverPath)) {
+                $img = \Image::make($firstPicPath)->widen(200, function ($constraint) {
+                    $constraint->upsize();
+                });
+                $img->save($coverPath);
+            }
+            return preg_replace('/(\.png|\.jpg)/', '_200x200$1', $firstPic);
         }
         return '';
     }

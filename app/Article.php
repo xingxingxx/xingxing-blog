@@ -21,6 +21,26 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string|null $deleted_at
+ * @property int $view_count
+ * @property int $like_count
+ * @property string $cover
+ * @property string $abstract
+ * @property-read mixed $info_url
+ * @property-read object $next
+ * @property-read string $opera_button
+ * @property-read object $pre
+ * @property-read string $update_button
+ * @method static bool|null forceDelete()
+ * @method static \Illuminate\Database\Query\Builder|\App\Article onlyTrashed()
+ * @method static bool|null restore()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereAbstract($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereCover($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereLikeCount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereViewCount($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Article withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|\App\Article withoutTrashed()
  */
 class Article extends Model
 {

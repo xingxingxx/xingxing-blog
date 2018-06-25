@@ -15,7 +15,7 @@ class BlogController extends Controller
     public function index(Request $request)
     {
         $q = $request->q;
-        $articles = Article::select(\DB::raw('id,title,created_at,type,cover,abstract'))
+        $articles = Article::select(['id','title','created_at','type','cover','abstract'])
             ->when(\Auth::guest(), function ($query) {
                 $query->where('type', 1);
             })
@@ -25,14 +25,13 @@ class BlogController extends Controller
             ->orderBy('created_at', 'desc')
             ->paginate(10);
 
-        $hots = Article::select(\DB::raw('id,title,created_at,type'))
-            ->when(\Auth::guest(), function ($query) {
+        $hots = Article::when(\Auth::guest(), function ($query) {
                 $query->where('type', 1);
             })
             ->orderBy('view_count', 'desc')
             ->orderBy('created_at', 'desc')
             ->limit(5)
-            ->get();
+            ->get(['id','title','created_at','type']);
         return view('blog.index', compact('articles', 'hots', 'q'));
     }
 
@@ -64,7 +63,7 @@ class BlogController extends Controller
     public function show($id, Request $request)
     {
         if (\Auth::guest()) {
-            $article = Article::where('type', 1)->where('id', $id)->firstOrFail();
+            $article = Article::whereType(1)->where('id', $id)->firstOrFail();
         } else {
             $article = Article::findOrFail($id);
         }
