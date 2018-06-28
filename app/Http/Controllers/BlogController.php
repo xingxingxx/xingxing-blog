@@ -15,7 +15,7 @@ class BlogController extends Controller
     public function index(Request $request)
     {
         $q = $request->q;
-        $articles = Article::select(['id', 'title', 'title_trans', 'created_at', 'type', 'cover', 'abstract'])
+        $articles = Article::select(['id', 'title', 'title_trans', 'created_at', 'type', 'cover', 'abstract','view_count','like_count'])
             ->when(\Auth::guest(), function ($query) {
                 $query->where('type', 1);
             })

@@ -8,17 +8,33 @@
                     <div class="card" style="@if($key>0) margin-top:20px; @endif">
                         <div class="card-body">
                             <h5 style="padding-bottom:10px;color:#333;"><strong>
-                                    <a href="{{ $article->info_url }}" style="@if($article->type==1)color:#333333; @else color:#dddddd; @endif">{{ $article->title }}</a>
-                                </strong></h5>
+                                    <a href="{{ $article->info_url }}"
+                                       style="@if($article->type==1)color:#333333; @else color:#dddddd; @endif">{{ $article->title }}</a>
+                                </strong>
+                            </h5>
                             <div class="row">
                                 @if($article->cover)
                                     <div class="col-md-4">
-                                        <a href="{{ $article->info_url }}"><img style="width:100%;" src="{{ $article->cover }}"></a>
+                                        <a href="{{ $article->info_url }}"><img style="width:100%;"
+                                                                                src="{{ $article->cover }}"></a>
                                     </div>
                                 @endif
                                 <div class="@if($article->cover) col-md-8 @else col-md-12 @endif">
-                                    <p><a href="{{ $article->info_url }}"  style="@if($article->type==1)color:#333333; @else color:#dddddd; @endif">{{ $article->abstract }}</a></p>
-                                    <div>{!! $article->opera_button !!}{{ $article->created_at }}</div>
+                                    <p><a href="{{ $article->info_url }}"
+                                          style="@if($article->type==1)color:#333333; @else color:#dddddd; @endif">{{ $article->abstract }}</a>
+                                    </p>
+                                    <div>
+
+                                        发布时间：&nbsp;{{ $article->created_at }}
+                                        &emsp;
+                                        点击&nbsp;({{ $article->view_count }})
+                                        &emsp;
+                                        喜欢&nbsp;({{ $article->like_count }})
+                                    </div>
+                                    <div>
+                                        {!! $article->opera_button !!}
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -50,10 +66,12 @@
                     <div class="card-header">标签云</div>
 
                     <div class="card-body">
-                        <a href="{{ route('index',['q'=>'php']) }}" style="color:#333;" class="btn btn-sm btn-default"><span
+                        <a href="{{ route('index',['q'=>'php']) }}" style="color:#333;"
+                           class="btn btn-sm btn-default"><span
                                     class="label label-default">PHP</span></a>
                         &nbsp;&nbsp;
-                        <a href="{{ route('index',['q'=>'laravel']) }}" style="color:#333;" class="btn btn-sm btn-default"><span
+                        <a href="{{ route('index',['q'=>'laravel']) }}" style="color:#333;"
+                           class="btn btn-sm btn-default"><span
                                     class="label label-default">Laravel</span></a>
                         &nbsp;&nbsp;
                         <a href="{{ route('index',['q'=>'设计模式']) }}" style="color:#333;" class="btn btn-sm btn-default"><span
