@@ -4,22 +4,23 @@ namespace App\Console\Commands;
 
 use App\Article;
 use Illuminate\Console\Command;
+use Overtrue\Pinyin\Pinyin;
 
-class GenerateArticleAbstract extends Command
+class GenerateArticleTitleTrans extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'article:generateAbstract';
+    protected $signature = 'article:generateTitleTrans';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Generate Articles abstract and cover';
+    protected $description = 'Generate Articles title trans';
 
     /**
      * Create a new command instance.
@@ -38,18 +39,17 @@ class GenerateArticleAbstract extends Command
      */
     public function handle()
     {
-        $articles = Article::whereAbstract('')
+        $articles = Article::whereTitleTrans('')
             ->orderBy('created_at', 'desc')
             ->get();
         foreach ($articles as $article) {
-            $article->cover = get_cover($article->content);
-            $article->cover = get_cover($article->content);
-            $article->abstract = get_abstract($article->content, $article->cover ? 220 : 360);
+            $pinyin = (new Pinyin())->convert($article->title);
+            $pinyin = implode('-', $pinyin);
+            $article->title_trans = $pinyin;
             $article->save();
             $this->info('id:' . $article->id . PHP_EOL
                 . 'title:' . $article->title . PHP_EOL
-                . 'cover:' . $article->cover . PHP_EOL
-                . 'abstract:' . $article->abstract);
+                . 'cover:' . $article->title_trans);
 
         }
         $this->info('handle complete!');

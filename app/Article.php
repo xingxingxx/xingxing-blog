@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Overtrue\Pinyin\Pinyin;
 
 /**
  * App\Article
@@ -41,6 +42,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereViewCount($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Article withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\App\Article withoutTrashed()
+ * @property string $title_trans
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereTitleTrans($value)
  */
 class Article extends Model
 {
@@ -60,11 +63,10 @@ class Article extends Model
 
         static::saving(function ($model) {
             $model->cover = get_cover($model->content);
-            if ($model->cover) {
-                $model->abstract = get_abstract($model->content);
-            } else {
-                $model->abstract = get_abstract($model->content, 360);
-            }
+            $model->abstract = get_abstract($model->content, $model->cover ? 220 : 360);
+            $pinyin = (new Pinyin())->convert($model->title);
+            $pinyin = implode('-', $pinyin);
+            $model->title_trans = $pinyin;
         });
     }
 
@@ -91,9 +93,7 @@ class Article extends Model
      */
     public function getInfoUrlAttribute()
     {
-        $title = app('pinyinService')->convert($this->title);
-        $title = implode('-', $title);
-        return route('blog.show', ['id' => $this->id, 'title' => $title]);
+        return route('blog.show', ['id' => $this->id, 'title' => $this->title_trans]);
     }
 
     /**

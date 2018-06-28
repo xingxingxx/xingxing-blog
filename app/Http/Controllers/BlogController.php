@@ -15,7 +15,7 @@ class BlogController extends Controller
     public function index(Request $request)
     {
         $q = $request->q;
-        $articles = Article::select(['id','title','created_at','type','cover','abstract'])
+        $articles = Article::select(['id', 'title', 'title_trans', 'created_at', 'type', 'cover', 'abstract'])
             ->when(\Auth::guest(), function ($query) {
                 $query->where('type', 1);
             })
@@ -26,12 +26,12 @@ class BlogController extends Controller
             ->paginate(10);
 
         $hots = Article::when(\Auth::guest(), function ($query) {
-                $query->where('type', 1);
-            })
+            $query->where('type', 1);
+        })
             ->orderBy('view_count', 'desc')
             ->orderBy('created_at', 'desc')
             ->limit(5)
-            ->get(['id','title','created_at','type']);
+            ->get(['id', 'title', 'title_trans', 'created_at', 'type']);
         return view('blog.index', compact('articles', 'hots', 'q'));
     }
 
