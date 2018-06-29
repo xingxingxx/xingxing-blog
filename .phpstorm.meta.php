@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2018-06-22 08:59:47.
+    * Generated on 2018-06-29 03:04:08.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -39,7 +39,9 @@ namespace PHPSTORM_META {
         'view' => \Illuminate\View\Factory::class,
         'view.finder' => \Illuminate\View\FileViewFinder::class,
         'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
-        'markdown-editor' => \Chenhua\MarkdownEditor\MarkdownEditor::class,
+        'image' => \Intervention\Image\ImageManager::class,
+        'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
+        'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'SunnyShift\Uploader\Services\FileUpload' => \SunnyShift\Uploader\Services\FileUpload::class,
         'SunnyShift\Uploader\UploaderManager' => \SunnyShift\Uploader\UploaderManager::class,
@@ -145,7 +147,6 @@ namespace PHPSTORM_META {
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
         'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
-        'pinyinService' => \Overtrue\Pinyin\Pinyin::class,
     ]));
     override(\Illuminate\Contracts\Container\Container::make(0), map([
         '' => '@',
@@ -178,7 +179,9 @@ namespace PHPSTORM_META {
         'view' => \Illuminate\View\Factory::class,
         'view.finder' => \Illuminate\View\FileViewFinder::class,
         'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
-        'markdown-editor' => \Chenhua\MarkdownEditor\MarkdownEditor::class,
+        'image' => \Intervention\Image\ImageManager::class,
+        'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
+        'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'SunnyShift\Uploader\Services\FileUpload' => \SunnyShift\Uploader\Services\FileUpload::class,
         'SunnyShift\Uploader\UploaderManager' => \SunnyShift\Uploader\UploaderManager::class,
@@ -284,7 +287,6 @@ namespace PHPSTORM_META {
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
         'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
-        'pinyinService' => \Overtrue\Pinyin\Pinyin::class,
     ]));
     override(\Illuminate\Contracts\Container\Container::makeWith(0), map([
         '' => '@',
@@ -317,7 +319,9 @@ namespace PHPSTORM_META {
         'view' => \Illuminate\View\Factory::class,
         'view.finder' => \Illuminate\View\FileViewFinder::class,
         'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
-        'markdown-editor' => \Chenhua\MarkdownEditor\MarkdownEditor::class,
+        'image' => \Intervention\Image\ImageManager::class,
+        'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
+        'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'SunnyShift\Uploader\Services\FileUpload' => \SunnyShift\Uploader\Services\FileUpload::class,
         'SunnyShift\Uploader\UploaderManager' => \SunnyShift\Uploader\UploaderManager::class,
@@ -423,7 +427,6 @@ namespace PHPSTORM_META {
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
         'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
-        'pinyinService' => \Overtrue\Pinyin\Pinyin::class,
     ]));
     override(\App::make(0), map([
         '' => '@',
@@ -456,7 +459,9 @@ namespace PHPSTORM_META {
         'view' => \Illuminate\View\Factory::class,
         'view.finder' => \Illuminate\View\FileViewFinder::class,
         'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
-        'markdown-editor' => \Chenhua\MarkdownEditor\MarkdownEditor::class,
+        'image' => \Intervention\Image\ImageManager::class,
+        'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
+        'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'SunnyShift\Uploader\Services\FileUpload' => \SunnyShift\Uploader\Services\FileUpload::class,
         'SunnyShift\Uploader\UploaderManager' => \SunnyShift\Uploader\UploaderManager::class,
@@ -562,7 +567,6 @@ namespace PHPSTORM_META {
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
         'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
-        'pinyinService' => \Overtrue\Pinyin\Pinyin::class,
     ]));
     override(\App::makeWith(0), map([
         '' => '@',
@@ -595,7 +599,9 @@ namespace PHPSTORM_META {
         'view' => \Illuminate\View\Factory::class,
         'view.finder' => \Illuminate\View\FileViewFinder::class,
         'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
-        'markdown-editor' => \Chenhua\MarkdownEditor\MarkdownEditor::class,
+        'image' => \Intervention\Image\ImageManager::class,
+        'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
+        'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'SunnyShift\Uploader\Services\FileUpload' => \SunnyShift\Uploader\Services\FileUpload::class,
         'SunnyShift\Uploader\UploaderManager' => \SunnyShift\Uploader\UploaderManager::class,
@@ -701,7 +707,6 @@ namespace PHPSTORM_META {
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
         'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
-        'pinyinService' => \Overtrue\Pinyin\Pinyin::class,
     ]));
     override(\app(0), map([
         '' => '@',
@@ -734,7 +739,9 @@ namespace PHPSTORM_META {
         'view' => \Illuminate\View\Factory::class,
         'view.finder' => \Illuminate\View\FileViewFinder::class,
         'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
-        'markdown-editor' => \Chenhua\MarkdownEditor\MarkdownEditor::class,
+        'image' => \Intervention\Image\ImageManager::class,
+        'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
+        'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'SunnyShift\Uploader\Services\FileUpload' => \SunnyShift\Uploader\Services\FileUpload::class,
         'SunnyShift\Uploader\UploaderManager' => \SunnyShift\Uploader\UploaderManager::class,
@@ -840,7 +847,6 @@ namespace PHPSTORM_META {
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
         'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
-        'pinyinService' => \Overtrue\Pinyin\Pinyin::class,
     ]));
     override(\resolve(0), map([
         '' => '@',
@@ -873,7 +879,9 @@ namespace PHPSTORM_META {
         'view' => \Illuminate\View\Factory::class,
         'view.finder' => \Illuminate\View\FileViewFinder::class,
         'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
-        'markdown-editor' => \Chenhua\MarkdownEditor\MarkdownEditor::class,
+        'image' => \Intervention\Image\ImageManager::class,
+        'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
+        'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'blade.compiler' => \Illuminate\View\Compilers\BladeCompiler::class,
         'SunnyShift\Uploader\Services\FileUpload' => \SunnyShift\Uploader\Services\FileUpload::class,
         'SunnyShift\Uploader\UploaderManager' => \SunnyShift\Uploader\UploaderManager::class,
@@ -979,7 +987,6 @@ namespace PHPSTORM_META {
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
         'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
-        'pinyinService' => \Overtrue\Pinyin\Pinyin::class,
     ]));
 
     override(\Illuminate\Support\Arr::add(0), type(0));

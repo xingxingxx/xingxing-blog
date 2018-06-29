@@ -17,6 +17,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('vendor/markdown/css/editormd.min.css')}}"/>
+
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 </head>
 <body>
 <div id="app">
@@ -90,9 +93,6 @@
     </footer>
 </div>
 <!-- Scripts -->
-<script src="{{ asset('js/jquery.min.js') }}"></script>
-<script src="{{ asset('js/app.js') }}"></script>
-
 @yield('script')
 </body>
 </html>

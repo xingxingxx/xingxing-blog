@@ -54,3 +54,10 @@ Route::group(['prefix' => 'book'], function () {
         });
     });
 });
+
+/**
+ * markdown文件上传
+ */
+Route::post('markdown/upload', 'MarkdownController@upload')
+    ->middleware('auth')
+    ->name('markdown.upload');

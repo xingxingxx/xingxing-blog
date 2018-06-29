@@ -12,10 +12,9 @@
                        required autofocus>
             </div>
             <div class="form-group">
-                <div id="content">
+                <div id="markdown-content">
                     <textarea name="content">{{ $article->content }}</textarea>
                 </div>
-                @include('markdown::encode',['editors'=>['content']])
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">

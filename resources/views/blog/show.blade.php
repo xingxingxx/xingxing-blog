@@ -33,7 +33,6 @@
     </div>
 @endsection
 @section('script')
-    <script src="{{asset('vendor/markdown/js/jquery.min.js')}}"></script>
     <script src="{{asset('vendor/markdown/js/editormd.min.js')}}"></script>
     <script src="{{asset('vendor/markdown/lib/marked.min.js')}}"></script>
     <script src="{{asset('vendor/markdown/lib/prettify.min.js')}}"></script>
@@ -43,9 +42,9 @@
           htmlDecode: "style,script,iframe",
           emoji: true,
           taskList: true,
-          tex: true, // 默认不解析
-          flowChart: true, // 默认不解析
-          sequenceDiagram: true, // 默认不解析
+          tex: true,
+          flowChart: true,
+          sequenceDiagram: true,
           codeFold: true,
         });
       });

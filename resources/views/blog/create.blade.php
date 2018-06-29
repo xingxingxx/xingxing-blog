@@ -16,10 +16,9 @@
                 <input id="type" type="radio" name="type" value="2" checked> 不发布
             </div>
             <div class="form-group">
-                <div id="content">
+                <div id="markdown-content">
                     <textarea name="content" style="display:none;">{{ old('content') }}</textarea>
                 </div>
-                @include('markdown::encode',['editors'=>['content']])
             </div>
 
             <div class="form-group">
