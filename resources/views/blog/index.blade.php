@@ -55,7 +55,7 @@
                     <div class="card-body">
                         @foreach($hots as $hot)
                             <div class="row">
-                                <div class="col-sm-12" style="margin-bottom: 10px;">
+                                <div class="col-sm-12" style="margin-bottom: 10px;">px
                                     <a style="color:#505050;" href="{{ $hot->info_url }}">{{ $hot->title }}</a>
                                 </div>
                             </div>
