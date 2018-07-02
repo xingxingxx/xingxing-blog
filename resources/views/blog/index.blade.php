@@ -53,11 +53,9 @@
                     <div class="card-header">点击排行</div>
 
                     <div class="card-body">
-                        @foreach($hots as $hot)
-                            <div class="row">
-                                <div class="col-sm-12" style="margin-bottom: 10px;">px
-                                    <a style="color:#505050;" href="{{ $hot->info_url }}">{{ $hot->title }}</a>
-                                </div>
+                        @foreach($hots as $key=>$hot)
+                            <div style="margin-bottom:5px;">
+                                <a style="color:#505050;" href="{{ $hot->info_url }}">{{ $key+1 }}、&nbsp;{{ $hot->title }}</a>
                             </div>
                         @endforeach
                     </div>

@@ -9,7 +9,7 @@
                     @if($article)
                         <div class="card-body">
                             <h3 class="text-center">{{ $article->title }}</h3>
-                            @if(Auth::check())
+                            @auth
                                 <div class="text-center">
                                     <a href="{{ route('book.article.edit',['id'=>$article->id]) }}"
                                        class="btn btn-sm btn-primary">编辑</a>
@@ -23,7 +23,7 @@
                                                onclick="return confirm('确定要删除吗？');">
                                     </form>
                                 </div>
-                            @endif
+                            @endauth
                             <p class="text-center">发布时间：{{ $article->created_at }}</p>
                             <p id="doc-content">
                                 <textarea style="display:none;"> {!! $article->content !!} </textarea>

@@ -18,7 +18,7 @@
                                 <p>{{ $vo->created_at }}</p>
                                 <div>
                                     <a href="{{ route('book.show',['id'=>$vo->id]) }}" class="btn btn-sm btn-primary">阅读本书</a>
-                                    @if(Auth::check())
+                                    @auth
                                         <a href="{{ route('book.edit',['id'=>$vo->id]) }}"
                                            class="btn btn-sm btn-primary">编辑</a>
 
@@ -31,7 +31,7 @@
                                                    value="删除"
                                                    onclick="return confirm('确定要删除吗？');">
                                         </form>
-                                    @endif
+                                    @endauth
                                 </div>
                             </div>
                         </div>
