@@ -17,7 +17,9 @@
                                 <p>{{ $vo->description }}</p>
                                 <p>{{ $vo->created_at }}</p>
                                 <div>
-                                    <a href="{{ route('book.show',['id'=>$vo->id]) }}" class="btn btn-sm btn-primary">阅读本书</a>
+                                    <a href="{{ route('book.show',['id'=>$vo->id]) }}" class="btn btn-sm btn-primary">免费阅读</a>
+                                    &nbsp;
+                                    <a href="#" class="btn btn-sm btn-warning">订阅</a>
                                     @auth
                                         <a href="{{ route('book.edit',['id'=>$vo->id]) }}"
                                            class="btn btn-sm btn-primary">编辑</a>
