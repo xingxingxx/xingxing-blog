@@ -30,7 +30,7 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
                     <li><a class="nav-link @if(url()->full()==route('index'))active @endif" href="{{ route('index') }}">首页</a></li>
-                    <li><a class="nav-link @if(url()->full()==route('book.index'))active @endif" href="{{ route('book.index') }}">教程</a></li>
+                    <li><a class="nav-link @if(url()->full()==route('book.index'))active @endif" href="{{ route('book.index') }}">专栏</a></li>
 
                 </ul>
 
@@ -48,9 +48,9 @@
                     @else
                         <li><a class="nav-link" href="{{ route('blog.create') }}">添加文章</a></li>
                         @if(empty($book))
-                            <li><a class="nav-link" href="{{ route('book.create') }}">新增教程</a></li>
+                            <li><a class="nav-link" href="{{ route('book.create') }}">新增专栏</a></li>
                         @else
-                            <li><a class="nav-link" href="{{ route('book.article.create',['book_id'=>$book->id]) }}">添加教程文章</a></li>
+                            <li><a class="nav-link" href="{{ route('book.article.create',['book_id'=>$book->id]) }}">添加专栏文章</a></li>
                         @endif
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
