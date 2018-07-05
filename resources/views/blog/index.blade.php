@@ -24,7 +24,7 @@
                                           style="@if($article->type==1)color:#333333; @else color:#dddddd; @endif">{{ $article->abstract }}</a>
                                     </p>
                                     <div>
-                                        发布于&nbsp;{{ $article->created_at }}
+                                        发布于&nbsp;{{ $article->created_at->format('Y-m-d') }}
                                         &nbsp;&nbsp;
                                         阅读&nbsp;({{ $article->view_count }})
                                         &nbsp;&nbsp;

@@ -12,7 +12,13 @@
                         <h5 class="text-center">
                             {{ $article->title }}
                         </h5>
-                        <p class="text-center">发布时间：{{ $article->created_at }}</p>
+                        <p class="text-center">
+                            发布于&nbsp;{{ $article->created_at->format('Y-m-d') }}
+                            &nbsp;&nbsp;
+                            阅读&nbsp;({{ $article->view_count }})
+                            &nbsp;&nbsp;
+                            评论&nbsp;({{ $article->comment_count }})
+                        </p>
                         <p id="doc-content">
                             <textarea style="display:none;"> {!! $article->content !!} </textarea>
                         </p>
