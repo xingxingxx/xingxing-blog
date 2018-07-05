@@ -71,7 +71,8 @@ class BlogController extends Controller
         $article->view_count += 1;
         $article->save();
         $q = $request->q;
-        return view('blog.show', compact('article', 'q'));
+        $comment = $request->cookie('comment');
+        return view('blog.show', compact('article', 'q', 'comment'));
     }
 
     /**
@@ -145,6 +146,9 @@ class BlogController extends Controller
         $comment = new ArticleComment($request->all());
         $comment->website = (string)$request->get('website', '');
         $comment->save();
+
+        $comment->content = '';
+        \Cookie::queue('comment', $comment,time()+324234234);
         return back();
     }
 }

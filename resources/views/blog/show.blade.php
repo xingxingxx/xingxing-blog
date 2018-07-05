@@ -63,7 +63,6 @@
                                             <textarea style="display:none;"> {!! $comment->content !!} </textarea>
                                         </p>
                                 </tr>
-
                             @endforeach
                         </table>
                         <form method="POST" action="{{ route('blog.comment.store') }}">
@@ -74,7 +73,7 @@
                                        class="form-label {{ $errors->has('username') ? ' is-invalid' : '' }}"><span
                                             class="text-danger">*</span>姓名</label>
                                 <input id="username" type="text" class="form-control" name="username"
-                                       value="{{ old('username') }}"
+                                       value="{{ old('username')?:$comment->username }}"
                                        required autofocus  placeholder="您的名称">
                                 @if ($errors->has('username'))
                                     <span class="invalid-feedback"  style="display:block;">
@@ -87,7 +86,7 @@
                                        class="form-label {{ $errors->has('email') ? ' is-invalid' : '' }}"><span
                                             class="text-danger">*</span>邮箱</label>
                                 <input id="email" type="email" class="form-control" name="email"
-                                       value="{{ old('email') }}"  placeholder="邮箱不会公开"
+                                       value="{{ old('email')?:$comment->email }}"  placeholder="邮箱不会公开"
                                        required>
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback"  style="display:block;">
@@ -99,7 +98,7 @@
                                 <label for="website"
                                        class="form-label {{ $errors->has('website') ? ' is-invalid' : '' }}">个人网站</label>
                                 <input id="website" type="text" class="form-control" name="website"
-                                       value="{{ old('website') }}" placeholder="可选，填写后点击头像可以直接进入">
+                                       value="{{ old('website')?:$comment->website }}" placeholder="可选，填写后点击头像可以直接进入">
                                 @if ($errors->has('website'))
                                     <span class="invalid-feedback"  style="display:block;">
                                         <strong>{{ $errors->first('website') }}</strong>
