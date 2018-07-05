@@ -55,6 +55,9 @@ Route::group(['prefix' => 'book'], function () {
     });
 });
 
+Route::post('blog/comment/store', 'BlogController@commentStore')->name('blog.comment.store');
+
+
 /**
  * markdown文件上传
  */

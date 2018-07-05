@@ -173,4 +173,12 @@ class Article extends Model
     }
 
 
+    /**
+     * 关联查询评论信息
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function comments(){
+        return $this->hasMany(ArticleComment::class,'aid')->orderBy('created_at','asc');
+    }
+
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\ArticleComment;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -15,7 +16,7 @@ class BlogController extends Controller
     public function index(Request $request)
     {
         $q = $request->q;
-        $articles = Article::select(['id', 'title', 'title_trans', 'created_at', 'type', 'cover', 'abstract','view_count','like_count'])
+        $articles = Article::select(['id', 'title', 'title_trans', 'created_at', 'type', 'cover', 'abstract', 'view_count', 'like_count'])
             ->when(\Auth::guest(), function ($query) {
                 $query->where('type', 1);
             })
@@ -121,6 +122,29 @@ class BlogController extends Controller
     public function delete($id)
     {
         Article::destroy($id);
+        return back();
+    }
+
+
+    /**
+     * 保存评论
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function commentStore(Request $request)
+    {
+        $this->validate($request, [
+            'aid'      => 'required|integer',
+            'username' => 'required|string|max:100',
+            'email'    => 'required|email',
+            'content'  => 'required',
+            'captcha'  => 'captcha'
+        ], [
+            'captcha.captcha' => '验证码错误，请重试！'
+        ]);
+        $comment = new ArticleComment($request->all());
+        $comment->website = (string)$request->get('website', '');
+        $comment->save();
         return back();
     }
 }

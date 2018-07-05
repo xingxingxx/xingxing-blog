@@ -5,11 +5,11 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 @forelse($articles as $key=>$article)
-                    <div class="card" style="@if($key>0) margin-top:20px; @endif">
+                    <div class="card" style="{{ $key>0?'margin-top:20px;':'' }}">
                         <div class="card-body">
                             <h5 style="padding-bottom:10px;color:#333;"><strong>
                                     <a href="{{ $article->info_url }}"
-                                       style="@if($article->type==1)color:#333333; @else color:#dddddd; @endif">{{ $article->title }}</a>
+                                       style="color:{{ ($article->type==1)?'#333333':'#dddddd' }};">{{ $article->title }}</a>
                                 </strong>
                             </h5>
                             <div class="row">
@@ -19,7 +19,7 @@
                                                                                 src="{{ $article->cover }}"></a>
                                     </div>
                                 @endif
-                                <div class="@if($article->cover) col-md-8 @else col-md-12 @endif">
+                                <div class=" {{ $article->cover?'col-md-8' :'col-md-12'}}">
                                     <p><a href="{{ $article->info_url }}"
                                           style="@if($article->type==1)color:#333333; @else color:#dddddd; @endif">{{ $article->abstract }}</a>
                                     </p>
@@ -55,7 +55,8 @@
                     <div class="card-body">
                         @foreach($hots as $key=>$hot)
                             <div style="margin-bottom:5px;">
-                                <a style="color:#505050;" href="{{ $hot->info_url }}">{{ $key+1 }}、&nbsp;{{ $hot->title }}</a>
+                                <a style="color:#505050;" href="{{ $hot->info_url }}">{{ $key+1 }}
+                                    、&nbsp;{{ $hot->title }}</a>
                             </div>
                         @endforeach
                     </div>

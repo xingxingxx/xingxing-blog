@@ -11,6 +11,7 @@
         "intervention/image": "^2.4",
         "laravel/framework": "5.6.*",
         "laravel/tinker": "^1.0",
+        "mews/captcha": "^2.2",
         "overtrue/pinyin": "~3.0",
         "sunnyshift/laravel-uploader": "^0.1.2"
     },
