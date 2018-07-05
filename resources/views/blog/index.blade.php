@@ -24,17 +24,17 @@
                                           style="@if($article->type==1)color:#333333; @else color:#dddddd; @endif">{{ $article->abstract }}</a>
                                     </p>
                                     <div>
-
-                                        发布时间：&nbsp;{{ $article->created_at }}
-                                        &emsp;
-                                        点击&nbsp;({{ $article->view_count }})
-                                        &emsp;
-                                        喜欢&nbsp;({{ $article->like_count }})
+                                        发布于&nbsp;{{ $article->created_at }}
+                                        &nbsp;&nbsp;
+                                        阅读&nbsp;({{ $article->view_count }})
+                                        &nbsp;&nbsp;
+                                        点赞&nbsp;({{ $article->like_count }})
+                                        &nbsp;&nbsp;
+                                        评论&nbsp;({{ $article->like_count }})
                                     </div>
                                     <div>
                                         {!! $article->opera_button !!}
                                     </div>
-
                                 </div>
                             </div>
                         </div>
