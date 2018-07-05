@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{asset('vendor/markdown/css/editormd.min.css')}}"/>
     <script>
       var _hmt = _hmt || [];
-      (function() {
+      (function () {
         var hm = document.createElement("script");
         hm.src = "https://hm.baidu.com/hm.js?4fc93c60dc8191750936d459d36ea7c2";
         var s = document.getElementsByTagName("script")[0];
@@ -39,9 +39,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-                    <li><a class="nav-link @if(url()->full()==route('index'))active @endif" href="{{ route('index') }}">首页</a></li>
-                    <li><a class="nav-link @if(url()->full()==route('book.index'))active @endif" href="{{ route('book.index') }}">专栏</a></li>
-
+                    <li><a class="nav-link @if(url()->full()==route('index'))active @endif" href="{{ route('index') }}">首页</a>
+                    </li>
+                    <li><a class="nav-link @if(url()->full()==route('book.index'))active @endif"
+                           href="{{ route('book.index') }}">专栏</a></li>
                 </ul>
 
                 <form action="/" class="form-inline navbar-form pull-right" method="get" style="margin:0;padding:0;">
@@ -56,11 +57,15 @@
                         <li><a class="nav-link" href="{{ route('login') }}">登录</a></li>
                         {{--<li><a class="nav-link" href="{{ route('register') }}">注册</a></li>--}}
                     @else
-                        <li><a class="nav-link" href="{{ route('blog.create') }}">添加文章</a></li>
-                        @if(empty($book))
-                            <li><a class="nav-link" href="{{ route('book.create') }}">新增专栏</a></li>
+                        @if(url()->full()==route('index'))
+                            <li><a class="nav-link" href="{{ route('blog.create') }}">写博客</a></li>
                         @else
-                            <li><a class="nav-link" href="{{ route('book.article.create',['book_id'=>$book->id]) }}">添加专栏文章</a></li>
+                            @if(empty($book))
+                                <li><a class="nav-link" href="{{ route('book.create') }}">新建专栏</a></li>
+                            @else
+                                <li><a class="nav-link"
+                                       href="{{ route('book.article.create',['book_id'=>$book->id]) }}">写专栏文章</a></li>
+                            @endif
                         @endif
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"

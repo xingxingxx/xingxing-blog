@@ -15,14 +15,14 @@
                             <div class="row">
                                 @if($article->cover)
                                     <div class="col-md-4">
-                                        <a href="{{ $article->info_url }}"><img style="width:100%;"
-                                                                                src="{{ $article->cover }}"></a>
+                                        <a href="{{ $article->info_url }}">
+                                            <img style="width:100%;" src="{{ $article->cover }}"></a>
                                     </div>
                                 @endif
                                 <div class=" {{ $article->cover?'col-md-8' :'col-md-12'}}">
-                                    <p><a href="{{ $article->info_url }}"
-                                          style="@if($article->type==1)color:#333333; @else color:#dddddd; @endif">{{ $article->abstract }}</a>
-                                    </p>
+                                    <div style="margin-bottom: 5px;">
+                                        <a href="{{ $article->info_url }}" style="color:{{ ($article->type==1)?'#333333':'#dddddd' }};">{{ $article->abstract }}</a>
+                                    </div>
                                     <div>
                                         发布于&nbsp;{{ $article->created_at->format('Y-m-d') }}
                                         &nbsp;&nbsp;
