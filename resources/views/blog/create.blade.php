@@ -2,18 +2,14 @@
 
 @section('content')
     <div style="padding:20px;">
-        <form method="POST" action="{{ route('blog.store') }}">
+        <form id="blog-form" method="POST" action="{{ route('blog.store') }}">
             @csrf
+            <input id="blog-type" type="hidden" name="type" value="2">
             <div class="form-group">
                 <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}"
                        placeholder="标题"
                        required
                        autofocus>
-            </div>
-            <div class="form-group">
-                <input id="type" type="radio" name="type" value="1"> 发布
-                &emsp;
-                <input id="type" type="radio" name="type" value="2" checked> 不发布
             </div>
             <div class="form-group">
                 <div id="markdown-content">
@@ -22,10 +18,27 @@
             </div>
 
             <div class="form-group">
-                <button type="submit" class="btn btn-primary">
-                    保存
+                <button id="save-draft" class="btn btn-warning">
+                    保存为草稿
+                </button>
+                <button id="publish" class="btn btn-primary">
+                    发布
                 </button>
             </div>
         </form>
     </div>
+@endsection
+@section('script')
+    <script type="text/javascript">
+      $(function () {
+        $('#save-draft').click(function () {
+          $('#blog-type').val(2);
+          $('#blog-form').submit();
+        });
+        $('#publish').click(function () {
+          $('#blog-type').val(1);
+          $('#blog-form').submit();
+        });
+      });
+    </script>
 @endsection
