@@ -151,6 +151,6 @@ class BlogController extends Controller
 
         $comment->content = '';
         \Cookie::queue('comment', $comment, time());
-        return back();
+        return redirect(url()->previous().'#'.$comment->username);
     }
 }

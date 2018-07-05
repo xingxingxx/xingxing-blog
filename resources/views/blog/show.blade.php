@@ -51,7 +51,7 @@
 
                                 <tr>
                                     <td style="padding: 0 10px;">
-                                        <a href="{{ $comment->website }}" target="_blank">
+                                        <a name="{{ $comment->username }}" href="{{ $comment->website }}" target="_blank">
                                             <img style="border-radius:50%;" src="{{ asset(($comment->email=='xx9815@qq.com')?'img/my_avatar.png':'img/default_avatar.png') }}">
                                         </a>
                                     </td>
