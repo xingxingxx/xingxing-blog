@@ -30,7 +30,7 @@
                                         &nbsp;&nbsp;
                                         点赞&nbsp;({{ $article->like_count }})
                                         &nbsp;&nbsp;
-                                        评论&nbsp;({{ $article->like_count }})
+                                        评论&nbsp;({{ $article->comment_count }})
                                     </div>
                                     <div>
                                         {!! $article->opera_button !!}

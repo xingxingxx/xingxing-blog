@@ -16,7 +16,7 @@ class BlogController extends Controller
     public function index(Request $request)
     {
         $q = $request->q;
-        $articles = Article::select(['id', 'title', 'title_trans', 'created_at', 'type', 'cover', 'abstract', 'view_count', 'like_count'])
+        $articles = Article::select(['id', 'title', 'title_trans', 'created_at', 'type', 'cover', 'abstract', 'view_count', 'like_count', 'comment_count'])
             ->when(\Auth::guest(), function ($query) {
                 $query->where('type', 1);
             })
@@ -71,8 +71,8 @@ class BlogController extends Controller
         $article->view_count += 1;
         $article->save();
         $q = $request->q;
-        $comment = $request->cookie('comment');
-        return view('blog.show', compact('article', 'q', 'comment'));
+        $comment_cache = json_decode($request->cookie('comment'));
+        return view('blog.show', compact('article', 'q', 'comment_cache'));
     }
 
     /**
@@ -147,8 +147,10 @@ class BlogController extends Controller
         $comment->website = (string)$request->get('website', '');
         $comment->save();
 
+        Article::where('id', $request->aid)->increment('comment_count');
+
         $comment->content = '';
-        \Cookie::queue('comment', $comment,time()+324234234);
+        \Cookie::queue('comment', $comment, time());
         return back();
     }
 }
