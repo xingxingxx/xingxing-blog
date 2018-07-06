@@ -9,7 +9,7 @@
                         <div class="card-body">
                             <h5 style="padding-bottom:10px;color:#333;"><strong>
                                     <a href="{{ $article->info_url }}"
-                                       style="color:{{ ($article->type==1)?'#333333':'#dddddd' }};">{{ $article->title }}</a>
+                                       style="color:#333;">{{ $article->title }}</a>
                                 </strong>
                             </h5>
                             <div class="row">
@@ -21,7 +21,7 @@
                                 @endif
                                 <div class=" {{ $article->cover?'col-md-8' :'col-md-12'}}">
                                     <div style="margin-bottom: 5px;">
-                                        <a href="{{ $article->info_url }}" style="color:{{ ($article->type==1)?'#333333':'#dddddd' }};">{{ $article->abstract }}</a>
+                                        <a href="{{ $article->info_url }}" style="color:#333;">{{ $article->abstract }}</a>
                                     </div>
                                     <div>
                                         发布于&nbsp;{{ $article->created_at->format('Y-m-d') }}
@@ -29,9 +29,6 @@
                                         阅读&nbsp;({{ $article->view_count }})
                                         &nbsp;&nbsp;
                                         评论&nbsp;({{ $article->comment_count }})
-                                    </div>
-                                    <div>
-                                        {!! $article->opera_button !!}
                                     </div>
                                 </div>
                             </div>

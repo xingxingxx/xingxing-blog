@@ -12,7 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('vendor/markdown/css/editormd.min.css')}}"/>
+    <link href="{{asset('vendor/markdown/css/editormd.min.css')}}" rel="stylesheet">
     <script>
       var _hmt = _hmt || [];
       (function () {
@@ -37,12 +37,12 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-                    <li><a class="nav-link @if(url()->full()==route('index'))active @endif" href="{{ route('index') }}">首页</a>
+                    <li><a class="nav-link {{ url()->full()==route('index')?'active':'' }}" href="{{ route('index') }}">首页</a>
                     </li>
-                    <li><a class="nav-link @if(url()->full()==route('book.index'))active @endif"
+                    <li><a class="nav-link {{ url()->full()==route('book.index')?'active':'' }}"
                            href="{{ route('book.index') }}">专栏</a></li>
+                    <li><a class="nav-link" href="http://phpartisan.top" target="_blank">讨论</a></li>
                 </ul>
 
                 <form action="/" class="form-inline navbar-form pull-right" method="get" style="margin:0;padding:0;">
@@ -50,45 +50,6 @@
                     &nbsp;
                     <button class="btn btn-success-outline" type="submit">搜索</button>
                 </form>
-                <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ml-auto">
-                    <!-- Authentication Links -->
-                    @guest
-                        <li><a class="nav-link" href="{{ route('login') }}">登录</a></li>
-                        {{--<li><a class="nav-link" href="{{ route('register') }}">注册</a></li>--}}
-                    @else
-                        @if(url()->full()==route('index'))
-                            <li><a class="nav-link" href="{{ route('blog.create') }}">写博客</a></li>
-                        @else
-                            @if(empty($book))
-                                <li><a class="nav-link" href="{{ route('book.create') }}">新建专栏</a></li>
-                            @else
-                                <li><a class="nav-link"
-                                       href="{{ route('book.article.create',['book_id'=>$book->id]) }}">写专栏文章</a></li>
-                            @endif
-                        @endif
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
-
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    Logout
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                      style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                    @endguest
-                </ul>
-
             </div>
         </div>
     </nav>
@@ -99,6 +60,7 @@
     <footer style="text-align: center">
         <a target="_blank" href="http://www.miitbeian.gov.cn" style="color:#336699;">粤ICP备17155556号-2</a>
     </footer>
+
 </div>
 <!-- Scripts -->
 <script src="{{ asset('js/jquery.min.js') }}"></script>

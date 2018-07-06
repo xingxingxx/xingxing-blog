@@ -8,7 +8,6 @@
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-body">
-                        {!! $article->update_button !!}
                         <h5 class="text-center">
                             {{ $article->title }}
                         </h5>
@@ -23,14 +22,14 @@
                             <textarea style="display:none;"> {!! $article->content !!} </textarea>
                         </p>
                         <p>
-                            @if($article->pre)
+                            @if($preArticle)
                                 上一篇：<a style="color:#336699;"
-                                       href="{{ $article->pre->info_url }}">{{ $article->pre->title }}</a>
+                                       href="{{ $preArticle->info_url }}">{{ $preArticle->title }}</a>
                                 <br>
                             @endif
-                            @if($article->next)
+                            @if($nextArticle)
                                 下一篇：<a style="color:#336699;"
-                                       href="{{ $article->next->info_url }}">{{ $article->next->title }}</a>
+                                       href="{{ $nextArticle->info_url }}">{{ $nextArticle->title }}</a>
                             @endif
                         </p>
                         <p class="text-center" style="margin-top:20px;">
@@ -149,6 +148,7 @@
             </div>
         </div>
     </div>
+    <a href="javascript:void(0);" id="topMao" style="display: block;position: fixed;bottom:50px;right:50px;"><img src="{{ asset('img/top.png') }}"></a>
 @endsection
 @section('script')
     <script src="{{asset('vendor/markdown/js/editormd.min.js')}}"></script>
@@ -156,6 +156,10 @@
     <script src="{{asset('vendor/markdown/lib/prettify.min.js')}}"></script>
     <script type="text/javascript">
       $(function () {
+        $('#topMao').click(function () {
+          $("html,body").animate({scrollTop: $("#app").offset().top}, 500);
+        });
+
         $('#zanshang').click(function () {
           $("#zanshangImg").toggle(500);
         });

@@ -2,7 +2,7 @@
 
 @section('content')
     <div style="padding:20px;">
-        <form id="blog-form" method="POST" action="{{ route('blog.store') }}">
+        <form id="blog-form" method="POST" action="{{ route('admin.blog.store') }}">
             @csrf
             <input id="blog-type" type="hidden" name="type" value="2">
             <div class="form-group">

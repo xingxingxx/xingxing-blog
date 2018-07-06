@@ -76,7 +76,7 @@ class Article extends Model
      */
     public function getNextAttribute()
     {
-        return $this->where('type', 1)->where('id', '>', $this->id)->orderBy('id', 'asc')->first(['id', 'title']);
+        return $this->where('type', 1)->where('id', '>', $this->id)->orderBy('id', 'asc')->first(['id', 'title', 'title_trans']);
     }
 
     /**
@@ -85,7 +85,7 @@ class Article extends Model
      */
     public function getPreAttribute()
     {
-        return $this->where('type', 1)->where('id', '<', $this->id)->orderBy('id', 'desc')->first(['id', 'title']);
+        return $this->where('type', 1)->where('id', '<', $this->id)->orderBy('id', 'desc')->first(['id', 'title', 'title_trans']);
     }
 
     /**获取详情链接
@@ -102,33 +102,16 @@ class Article extends Model
      */
     public function getOperaButtonAttribute()
     {
-        if (\Auth::check()) {
-            return $this->updateButton() . $this->publishButton() . $this->deleteButton();
-        } else {
-            return '';
-        }
-    }
-
-    /**
-     * 显示更新按钮
-     * @return string
-     */
-    public function getUpdateButtonAttribute()
-    {
-        if (\Auth::check()) {
-            return $this->updateButton();
-        } else {
-            return '';
-        }
+        return $this->getUpdateButtonAttribute() . $this->getPublishButtonAttribute() . $this->getDeleteButtonAttribute();
     }
 
     /**
      * 更新按钮
      * @return string
      */
-    private function updateButton()
+    private function getUpdateButtonAttribute()
     {
-        $url = route('blog.edit', ['id' => $this->id]);
+        $url = route('admin.blog.edit', ['id' => $this->id]);
         return '<div style="display:inline-block;"><a class="btn btn-sm btn-primary" href="' . $url . '">更新文章</a></div>&emsp;';
     }
 
@@ -136,14 +119,14 @@ class Article extends Model
      * 删除按钮
      * @return string
      */
-    private function deleteButton()
+    private function getDeleteButtonAttribute()
     {
-        $url = route('blog.delete', ['id' => $this->id]);
+        $url = route('admin.blog.delete', ['id' => $this->id]);
         return sprintf('<form action="%s" method="POST" 
                     style="display: inline-block;">
                       %s %s
                     <input type="submit"
-                           class="btn btn-sm btn-default"
+                           class="btn btn-sm btn-danger"
                            value="删除文章"
                            onclick="return confirm(%s);">
                 </form>&emsp;', $url, method_field('DELETE'), csrf_field(), "'确定要删除吗？'");
@@ -153,9 +136,9 @@ class Article extends Model
      * 发布按钮
      * @return string
      */
-    private function publishButton()
+    private function getPublishButtonAttribute()
     {
-        $url = route('blog.settingType', ['id' => $this->id]);
+        $url = route('admin.blog.settingType', ['id' => $this->id]);
         return sprintf('<form action="%s" method="POST" 
                     style="display: inline-block;">
                       %s %s
@@ -177,8 +160,9 @@ class Article extends Model
      * 关联查询评论信息
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function comments(){
-        return $this->hasMany(ArticleComment::class,'aid')->orderBy('created_at','asc');
+    public function comments()
+    {
+        return $this->hasMany(ArticleComment::class, 'aid')->orderBy('created_at', 'asc');
     }
 
 }
