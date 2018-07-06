@@ -27,26 +27,7 @@ Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
 Route::group(['prefix' => 'book','as'=>'book.'], function () {
     Route::get('/', 'BookController@index')->name('index');
     Route::get('show/{book_id}', 'BookController@show')->name('show');
-
-    Route::group(['middleware' => 'auth'], function () {
-        Route::get('create', 'BookController@create')->name('create');
-        Route::post('store', 'BookController@store')->name('store');
-        Route::get('edit/{id}', 'BookController@edit')->name('edit');
-        Route::put('update/{id}', 'BookController@update')->name('update');
-        Route::delete('/delete/{id}', 'BookController@delete')->name('delete');
-
-        Route::group(['prefix' => 'article','as'=>'article.'], function () {
-            Route::get('create', 'BookArticleController@create')->name('create');
-            Route::post('store', 'BookArticleController@store')->name('store');
-            Route::get('edit/{id}', 'BookArticleController@edit')->name('edit');
-            Route::put('update/{id}', 'BookArticleController@update')->name('update');
-            Route::delete('/delete/{id}', 'BookArticleController@delete')->name('delete');
-        });
-    });
 });
-
-
-
 
 /**
  * markdown文件上传
@@ -69,6 +50,8 @@ Route::group([
     Route::group(['middleware' => 'auth'], function () {
         //首页
         Route::get('/', 'IndexController@index')->name('index');
+
+        //博客
         Route::group(['prefix' => 'blog','as'=>'blog.'], function () {
             Route::get('/', 'BlogController@index')->name('index');
             Route::get('/create', 'BlogController@create')->name('create');
@@ -77,6 +60,26 @@ Route::group([
             Route::delete('/delete/{id}', 'BlogController@delete')->name('delete');
             Route::put('/update/{id}', 'BlogController@update')->name('update');
             Route::put('setting-type/{id}', 'BlogController@settingType')->name('settingType');
+        });
+
+        //专栏
+        Route::group(['prefix' => 'book','as'=>'book.'], function () {
+            Route::get('/', 'BookController@index')->name('index');
+            Route::get('create', 'BookController@create')->name('create');
+            Route::post('store', 'BookController@store')->name('store');
+            Route::get('edit/{id}', 'BookController@edit')->name('edit');
+            Route::put('update/{id}', 'BookController@update')->name('update');
+            Route::delete('/delete/{id}', 'BookController@delete')->name('delete');
+
+            //专栏文章
+            Route::group(['prefix' => 'article','as'=>'article.'], function () {
+                Route::get('/{book_id}', 'BookArticleController@index')->name('index');
+                Route::get('/{book_id}/create', 'BookArticleController@create')->name('create');
+                Route::post('store', 'BookArticleController@store')->name('store');
+                Route::get('edit/{id}', 'BookArticleController@edit')->name('edit');
+                Route::put('update/{id}', 'BookArticleController@update')->name('update');
+                Route::delete('/delete/{id}', 'BookArticleController@delete')->name('delete');
+            });
         });
     });
 

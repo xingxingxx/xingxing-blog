@@ -3,7 +3,7 @@
 @section('content')
     <div style="padding:20px;">
 
-        <form method="POST" action="{{ route('book.article.update',['id'=>$article->id]) }}">
+        <form method="POST" action="{{ route('admin.book.article.update',['id'=>$article->id]) }}">
             @csrf
             @method('PUT')
             <div class="form-group">

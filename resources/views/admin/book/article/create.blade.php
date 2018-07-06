@@ -3,7 +3,7 @@
 @section('content')
     <div style="padding:20px;">
 
-        <form method="POST" action="{{ route('book.article.store') }}">
+        <form method="POST" action="{{ route('admin.book.article.store') }}">
             @csrf
             <div class="form-group">
                 <input type="hidden" id="book_id" type="text" class="form-control" name="book_id"

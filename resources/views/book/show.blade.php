@@ -9,33 +9,18 @@
                     @if($article)
                         <div class="card-body">
                             <h3 class="text-center">{{ $article->title }}</h3>
-                            @auth
-                                <div class="text-center">
-                                    <a href="{{ route('book.article.edit',['id'=>$article->id]) }}"
-                                       class="btn btn-sm btn-primary">编辑</a>
-                                    <form action="{{ route('book.article.delete',['id'=>$article->id]) }}" method="POST"
-                                          style="display: inline-block;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <input type="submit"
-                                               class="btn btn-sm btn-default"
-                                               value="删除"
-                                               onclick="return confirm('确定要删除吗？');">
-                                    </form>
-                                </div>
-                            @endauth
                             <p class="text-center">发布时间：{{ $article->created_at }}</p>
                             <p id="doc-content">
                                 <textarea style="display:none;"> {!! $article->content !!} </textarea>
                             </p>
-                            @if($article->pre)
+                            @if($preArticle)
                                 <p>上一篇：<a style="color:#336699;"
-                                          href="{{ route('book.show',['book_id'=>$article->pre->book_id,'id'=>$article->pre->id]) }}">{{ $article->pre->title }}</a>
+                                          href="{{ route('book.show',['book_id'=>$preArticle->book_id,'id'=>$preArticle->id]) }}">{{ $preArticle->title }}</a>
                                 </p>
                             @endif
-                            @if($article->next)
+                            @if($nextArticle)
                                 <p>下一篇：<a style="color:#336699;"
-                                          href="{{ route('book.show',['book_id'=>$article->next->book_id,'id'=>$article->next->id]) }}">{{ $article->next->title }}</a>
+                                          href="{{ route('book.show',['book_id'=>$nextArticle->book_id,'id'=>$nextArticle->id]) }}">{{ $nextArticle->title }}</a>
                                 </p>
                             @endif
                         </div>
