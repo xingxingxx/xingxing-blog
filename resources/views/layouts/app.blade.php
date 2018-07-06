@@ -13,16 +13,18 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{asset('vendor/markdown/css/editormd.min.css')}}" rel="stylesheet">
-    <script>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?4fc93c60dc8191750936d459d36ea7c2";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
-    </script>
-
+    {{--百度统计代码--}}
+    @if(!app()->isLocal())
+        <script>
+          var _hmt = _hmt || [];
+          (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?4fc93c60dc8191750936d459d36ea7c2";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+          })();
+        </script>
+    @endif
 </head>
 <body>
 <div id="app">
