@@ -46,6 +46,22 @@
             <div class="col-md-4">
                 <div class="card" style="margin-top:20px;">
                     <div class="card-body">
+                        <h5>关注</h5>
+                        <hr>
+                        <div style="text-align: center;">
+                            <img  style="width:35%;border-radius:50%;"  src="{{ asset('img/my_avatar_big.jpg') }}">
+                            <br>
+                            <strong>Sampson</strong>
+                            <br>
+                            <br>
+                            邮箱：<a style="color:#336699;" href="Mailto:xx9815@qq.com">xx915@qq.com</a><br>
+                            github：<a style="color:#336699;" target="_blank" href="https://github.com/xingxingxx">https://github.com/xingxingxx</a><br>
+                            微博：<a style="color:#336699;" target="_blank" href="http://weibo.com/u/3026783454">http://weibo.com/u/3026783454</a><br>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" style="margin-top:20px;">
+                    <div class="card-body">
                         <h5>点击排行</h5>
                         <hr>
                         @foreach($hots as $key=>$hot)
@@ -63,23 +79,11 @@
                         <a href="{{ route('index',['q'=>'php']) }}" style="color:#333;"
                            class="btn btn-sm btn-default"><span
                                     class="label label-default">PHP</span></a>
-                        &nbsp;&nbsp;
                         <a href="{{ route('index',['q'=>'laravel']) }}" style="color:#333;"
                            class="btn btn-sm btn-default"><span
                                     class="label label-default">Laravel</span></a>
-                        &nbsp;&nbsp;
                         <a href="{{ route('index',['q'=>'设计模式']) }}" style="color:#333;" class="btn btn-sm btn-default"><span
                                     class="label label-default">设计模式</span></a>
-                    </div>
-                </div>
-
-                <div class="card" style="margin-top:20px;">
-                    <div class="card-body">
-                        <h5>关注</h5>
-                        <hr>
-                        邮箱：<a style="color:#336699;" href="Mailto:xx9815@qq.com">xx915@qq.com</a><br>
-                        github：<a style="color:#336699;" target="_blank" href="https://github.com/xingxingxx">https://github.com/xingxingxx</a><br>
-                        微博：<a style="color:#336699;" target="_blank" href="http://weibo.com/u/3026783454">http://weibo.com/u/3026783454</a><br>
                     </div>
                 </div>
             </div>
