@@ -50,8 +50,8 @@
                         <hr>
                         @foreach($hots as $key=>$hot)
                             <div style="margin-bottom:5px;">
-                                <a style="color:#505050;" href="{{ $hot->info_url }}">{{ $key+1 }}
-                                    、&nbsp;{{ $hot->title }}</a>
+                                <a style="color:#505050;" href="{{ $hot->info_url }}">{{ $key+1 }}.&nbsp;&nbsp;{{ $hot->title }}</a>
+                                    &nbsp;
                             </div>
                         @endforeach
                     </div>
