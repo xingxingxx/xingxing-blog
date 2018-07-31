@@ -50,13 +50,12 @@
                         <hr>
                         <div style="text-align: center;">
                             <img  style="width:35%;border-radius:50%;"  src="{{ asset('img/my_avatar_big.jpg') }}">
-                            <br>
-                            <strong>Sampson</strong>
-                            <br>
-                            <br>
-                            邮箱：<a style="color:#336699;" href="Mailto:xx9815@qq.com">xx915@qq.com</a><br>
-                            github：<a style="color:#336699;" target="_blank" href="https://github.com/xingxingxx">https://github.com/xingxingxx</a><br>
-                            微博：<a style="color:#336699;" target="_blank" href="http://weibo.com/u/3026783454">http://weibo.com/u/3026783454</a><br>
+                            <div style="margin-bottom:5px;"><strong>Sampson</strong></div>
+                            不溺过去，不惧未来<br>
+                            <a style="color:#505050;" target="_blank" href="https://github.com/xingxingxx">Github</a>&nbsp;|&nbsp;
+                            <a style="color:#505050;" target="_blank" href="http://weibo.com/u/3026783454">微博</a>&nbsp;|&nbsp;
+                            <a style="color:#505050;" target="_blank" href="Mailto:xx9815@qq.com">邮箱</a>
+
                         </div>
                     </div>
                 </div>
