@@ -20,13 +20,12 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
-
     /**
-     * 在登录/注册后重定向用户的位置.
+     * Where to redirect users after login.
      *
      * @var string
      */
-    protected $redirectTo = '/admin';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -36,15 +35,5 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
-    }
-
-    /**
-     * Show the application's login form.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function showLoginForm()
-    {
-        return view('admin.auth.login');
     }
 }

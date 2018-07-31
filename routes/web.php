@@ -45,9 +45,7 @@ Route::post('markdown/upload', 'MarkdownController@upload')
     ->name('markdown.upload');
 
 // 登录认证路由
-Route::get('admin/login', 'Auth\LoginController@showLoginForm')->name('admin.login');
-Route::post('admin/login', 'Auth\LoginController@login');
-Route::get('admin/logout', 'Auth\LoginController@logout')->name('admin.logout');
+Auth::routes();
 
 Route::group([
     'namespace' => 'Admin',
@@ -55,7 +53,7 @@ Route::group([
     'as'        => 'admin.',
 ], function () {
 
-    Route::group(['middleware' => 'auth'], function () {
+    Route::group(['middleware' => ['auth','is_admin']], function () {
         //首页
         Route::get('/', 'IndexController@index')->name('index');
 

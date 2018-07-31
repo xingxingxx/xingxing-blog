@@ -49,12 +49,41 @@
                            href="{{ route('book.index') }}">教程</a></li>
                 </ul>
 
-                <form action="/" class="form-inline navbar-form pull-right" method="get" style="margin:0;padding:0;">
+                <form action="/" class="form-inline navbar-form" method="get" style="margin:0;padding:0;">
                     <input class="form-control" type="text" name="q" placeholder="Search" value="{{ $q ?? '' }}">
                     &nbsp;
                     <button class="btn btn-success-outline" type="submit">搜索</button>
                 </form>
 
+                <ul class="navbar-nav ml-auto">
+                    <!-- Authentication Links -->
+                    @guest
+                        <li><a class="nav-link" href="{{ route('login') }}">登录</a></li>
+                        <li><a class="nav-link" href="{{ route('register') }}">注册</a></li>
+                    @else
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    登出
+                                </a>
+                                @if(Auth::user()->is_admin)
+                                <a class="dropdown-item" href="{{ route('admin.index') }}" target="_blank">
+                                    管理后台
+                                </a>
+                                @endif
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                    @endguest
+                </ul>
             </div>
         </div>
     </nav>

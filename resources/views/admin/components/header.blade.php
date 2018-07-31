@@ -58,7 +58,7 @@
                                 <a href="{{ route('index') }}" target="_blank" class="btn btn-default btn-flat">首页</a>
                             </div>
                             <div class="pull-right">
-                                <a href="{{ route('admin.logout') }}" class="btn btn-default btn-flat">退出</a>
+                                <a href="{{ route('logout') }}" class="btn btn-default btn-flat">退出</a>
                             </div>
                         </li>
                     </ul>
