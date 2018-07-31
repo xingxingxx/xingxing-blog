@@ -12,6 +12,14 @@
                        autofocus>
             </div>
             <div class="form-group">
+                <select class="form-control" id="special_id" name="special_id">
+                    <option value="0">请选择专栏</option>
+                    @foreach($specials as $special)
+                        <option value="{{ $special->id }}">{{ $special->title }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group">
                 <div id="markdown-content">
                     <textarea name="content" style="display:none;">{{ old('content') }}</textarea>
                 </div>
@@ -30,15 +38,15 @@
 @endsection
 @section('script')
     <script type="text/javascript">
-      $(function () {
-        $('#save-draft').click(function () {
-          $('#blog-type').val(2);
-          $('#blog-form').submit();
+        $(function () {
+            $('#save-draft').click(function () {
+                $('#blog-type').val(2);
+                $('#blog-form').submit();
+            });
+            $('#publish').click(function () {
+                $('#blog-type').val(1);
+                $('#blog-form').submit();
+            });
         });
-        $('#publish').click(function () {
-          $('#blog-type').val(1);
-          $('#blog-form').submit();
-        });
-      });
     </script>
 @endsection

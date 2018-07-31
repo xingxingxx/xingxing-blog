@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('title', '教程首页')
+@section('title', '专栏列表')
 
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10">
-                @foreach($books as $key=>$vo)
-                    <div class="card"  style="margin-top:20px;">
+                @foreach($specials as $key=>$vo)
+                    <div class="card" style="margin-top:20px;">
                         <div class="card-body row">
                             <div class="col-md-4">
                                 <img style="width:100%;" src="{{ asset('uploads/file/'.$vo->cover) }}">
@@ -17,13 +17,13 @@
                                 <p>{{ $vo->description }}</p>
                                 <p>{{ $vo->created_at }}</p>
                                 <div>
-                                    <a href="{{ route('book.show',['id'=>$vo->id]) }}" class="btn btn-sm btn-primary">进入教程</a>
+                                    <a href="{{ route('special.show',['id'=>$vo->id]) }}" class="btn btn-sm btn-primary">进入专栏</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 @endforeach
-                {!! $books->links() !!}
+                {!! $specials->links() !!}
             </div>
         </div>
     </div>

@@ -49,7 +49,7 @@ class Article extends Model
 {
     use SoftDeletes;
     protected $fillable = [
-        'title', 'type', 'content',
+        'title', 'special_id', 'type', 'content',
     ];
 
     /**

@@ -3,7 +3,7 @@
 @section('title', $article->title)
 
 @section('content')
-    <div class="container">
+    <div class="container" style="margin-top:20px;">
         <div class="row justify-content-center">
             <div class="col-md-9">
                 <div class="card">

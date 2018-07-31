@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Article;
+use App\Special;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -16,7 +17,7 @@ class BlogController extends Controller
     public function index(Request $request)
     {
         $title = $request->title;
-        $articles = Article::select(['id', 'title', 'title_trans', 'created_at', 'updated_at','type', 'cover', 'abstract', 'view_count', 'like_count', 'comment_count'])
+        $articles = Article::select(['id', 'title', 'title_trans', 'created_at', 'updated_at', 'type', 'cover', 'abstract', 'view_count', 'like_count', 'comment_count'])
             ->when($title, function ($query) use ($title) {
                 $query->where('title', 'like', '%' . $title . '%');
             })
@@ -31,7 +32,8 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('admin.blog.create');
+        $specials = Special::orderBy('created_at', 'desc')->get(['id', 'title']);
+        return view('admin.blog.create', compact('specials'));
     }
 
     /**
@@ -53,7 +55,8 @@ class BlogController extends Controller
     public function edit($id)
     {
         $article = Article::findOrFail($id);
-        return view('admin.blog.edit', compact('article'));
+        $specials = Special::orderBy('created_at', 'desc')->get(['id', 'title']);
+        return view('admin.blog.edit', compact('article', 'specials'));
     }
 
     /**
@@ -67,6 +70,7 @@ class BlogController extends Controller
         $article = Article::findOrFail($id);
         $article->title = $request->title;
         $article->content = $request->input('content');
+        $article->special_id = $request->special_id;
         $article->save();
         return redirect(route('admin.blog.index'));
     }

@@ -11,6 +11,14 @@
                        autofocus>
             </div>
             <div class="form-group">
+                <select class="form-control" id="special_id" name="special_id">
+                    <option value="0">请选择专栏</option>
+                    @foreach($specials as $special)
+                        <option value="{{ $special->id }}" @if($article->special_id==$special->id) selected @endif>{{ $special->title }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group">
                 <div id="markdown-content">
                     <textarea name="content" style="display:none;">{{ $article->content }}</textarea>
                 </div>

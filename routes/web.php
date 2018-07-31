@@ -22,9 +22,17 @@ Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
 });
 
 /**
+ * 专栏
+ */
+Route::group(['prefix' => 'special', 'as' => 'special.'], function () {
+    Route::get('/', 'SpecialController@index')->name('index');
+    Route::get('show/{special_id}', 'SpecialController@show')->name('show');
+});
+
+/**
  * 教程
  */
-Route::group(['prefix' => 'book','as'=>'book.'], function () {
+Route::group(['prefix' => 'book', 'as' => 'book.'], function () {
     Route::get('/', 'BookController@index')->name('index');
     Route::get('show/{book_id}', 'BookController@show')->name('show');
 });
@@ -52,7 +60,7 @@ Route::group([
         Route::get('/', 'IndexController@index')->name('index');
 
         //博客
-        Route::group(['prefix' => 'blog','as'=>'blog.'], function () {
+        Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
             Route::get('/', 'BlogController@index')->name('index');
             Route::get('/create', 'BlogController@create')->name('create');
             Route::post('/store', 'BlogController@store')->name('store');
@@ -63,7 +71,17 @@ Route::group([
         });
 
         //专栏
-        Route::group(['prefix' => 'book','as'=>'book.'], function () {
+        Route::group(['prefix' => 'special', 'as' => 'special.'], function () {
+            Route::get('/', 'SpecialController@index')->name('index');
+            Route::get('create', 'SpecialController@create')->name('create');
+            Route::post('store', 'SpecialController@store')->name('store');
+            Route::get('edit/{id}', 'SpecialController@edit')->name('edit');
+            Route::put('update/{id}', 'SpecialController@update')->name('update');
+            Route::delete('/delete/{id}', 'SpecialController@delete')->name('delete');
+        });
+
+        //教程
+        Route::group(['prefix' => 'book', 'as' => 'book.'], function () {
             Route::get('/', 'BookController@index')->name('index');
             Route::get('create', 'BookController@create')->name('create');
             Route::post('store', 'BookController@store')->name('store');
@@ -71,8 +89,8 @@ Route::group([
             Route::put('update/{id}', 'BookController@update')->name('update');
             Route::delete('/delete/{id}', 'BookController@delete')->name('delete');
 
-            //专栏文章
-            Route::group(['prefix' => 'article','as'=>'article.'], function () {
+            //教程文章
+            Route::group(['prefix' => 'article', 'as' => 'article.'], function () {
                 Route::get('/{book_id}', 'BookArticleController@index')->name('index');
                 Route::get('/{book_id}/create', 'BookArticleController@create')->name('create');
                 Route::post('store', 'BookArticleController@store')->name('store');

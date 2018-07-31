@@ -25,8 +25,9 @@
           })();
         </script>
     @endif
+
 </head>
-<body>
+<body style="min-height:100%;margin:0;padding:0;position:relative;">
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
         <div class="container">
@@ -42,9 +43,10 @@
                 <ul class="navbar-nav mr-auto">
                     <li><a class="nav-link {{ url()->full()==route('index')?'active':'' }}" href="{{ route('index') }}">首页</a>
                     </li>
+                    <li><a class="nav-link {{ url()->full()==route('special.index')?'active':'' }}"
+                           href="{{ route('special.index') }}">专栏</a></li>
                     <li><a class="nav-link {{ url()->full()==route('book.index')?'active':'' }}"
-                           href="{{ route('book.index') }}">专栏</a></li>
-                    <li><a class="nav-link" href="http://phpartisan.top" target="_blank">讨论</a></li>
+                           href="{{ route('book.index') }}">教程</a></li>
                 </ul>
 
                 <form action="/" class="form-inline navbar-form pull-right" method="get" style="margin:0;padding:0;">
@@ -56,13 +58,12 @@
         </div>
     </nav>
 
-    <main class="py-4">
+    <main>
         @yield('content')
     </main>
-    <footer style="text-align: center">
+    <footer id="footer" style="text-align: center;padding:20px;">
         <a target="_blank" href="http://www.miitbeian.gov.cn" style="color:#336699;">粤ICP备17155556号-2</a>
     </footer>
-
 </div>
 <!-- Scripts -->
 <script src="{{ asset('js/jquery.min.js') }}"></script>
