@@ -8,7 +8,7 @@
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="text-center">
+                        <h5 class="text-center" style="margin-top:30px;">
                             {{ $article->title }}
                         </h5>
                         <p class="text-center">
