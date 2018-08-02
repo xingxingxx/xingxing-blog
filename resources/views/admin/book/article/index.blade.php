@@ -8,7 +8,7 @@
                         <div class="row">
                             <div class="col-sm-2">
                                 <a class="btn btn-primary"
-                                   href="{{ route('admin.book.article.create',['book_id'=>$book->id,'prent_id'=>0]) }}">
+                                   href="{{ route('admin.book.article.create',['book_id'=>$book->id,'parent_id'=>0]) }}">
                                     <i class="fa fa-plus"></i> 新建专栏文章
                                 </a>
                             </div>
