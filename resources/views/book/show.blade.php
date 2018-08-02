@@ -20,12 +20,12 @@
                                 <textarea style="display:none;"> {!! $article->content !!} </textarea>
                             </p>
                             <a id="preArticle" class="position-fixed"
-                               style="text-decoration:none;color:#dddddd;font-size:30px;display:none;margin-left:-50px;top:50%;z-index: 9999999;"
+                               style="text-decoration:none;color:#ccc;font-size:30px;display:none;margin-left:-50px;top:50%;z-index: 9999999;"
                                href="#">《</a>
 
                             <div style="float:right;">
                                 <a id="nextArticle" class="position-fixed"
-                                   style="text-decoration:none;color:#dddddd;font-size:30px;display: none;margin-left:10px;top:50%;z-index: 999999;"
+                                   style="text-decoration:none;color:#ccc;font-size:30px;display: none;margin-left:10px;top:50%;z-index: 999999;"
                                    href="#">》</a>
                             </div>
                         </div>
