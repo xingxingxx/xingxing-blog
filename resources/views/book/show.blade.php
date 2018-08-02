@@ -15,7 +15,7 @@
                     </div>
 
                     @if($article)
-                        <div style="margin-left:280px; padding:60px 60px; height:1000px;">
+                        <div style="margin-left:280px; padding:20px 60px 60px 60px; min-height:1000px;">
                             <p id="doc-content">
                                 <textarea style="display:none;"> {!! $article->content !!} </textarea>
                             </p>
