@@ -6,8 +6,10 @@
         <form method="POST" action="{{ route('admin.book.article.store') }}">
             @csrf
             <div class="form-group">
-                <input type="hidden" id="book_id" type="text" class="form-control" name="book_id"
+                <input type="hidden" id="book_id" class="form-control" name="book_id"
                        value="{{ $book_id }}" >
+                <input type="hidden" id="parent_id" class="form-control" name="parent_id"
+                       value="{{ $parent_id }}" >
             </div>
             <div class="form-group">
                 <input id="title" type="text" class="form-control" name="title"

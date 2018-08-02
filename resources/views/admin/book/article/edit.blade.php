@@ -6,6 +6,8 @@
         <form method="POST" action="{{ route('admin.book.article.update',['id'=>$article->id]) }}">
             @csrf
             @method('PUT')
+            <input type="hidden" id="parent_id" class="form-control" name="parent_id"
+                   value="{{ $article->parent_id }}" >
             <div class="form-group">
                 <input id="title" type="text" class="form-control" name="title"
                        value="{{ $article->title }}"

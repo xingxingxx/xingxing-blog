@@ -7,7 +7,8 @@
                     <div class="box-header">
                         <div class="row">
                             <div class="col-sm-2">
-                                <a class="btn btn-primary" href="{{ route('admin.book.article.create',['book_id'=>$book->id]) }}">
+                                <a class="btn btn-primary"
+                                   href="{{ route('admin.book.article.create',['book_id'=>$book->id,'prent_id'=>0]) }}">
                                     <i class="fa fa-plus"></i> 新建专栏文章
                                 </a>
                             </div>
@@ -28,28 +29,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($articles as $article)
-                                            <tr>
-                                                <td>{{ $article->id}}</td>
-                                                <td>{{ $article->title }}</td>
-                                                <td>{{ $article->created_at }}</td>
-                                                <td>{{ $article->updated_at }}</td>
-                                                <td>
-                                                    <a target="_blank" href="{{ route('book.show',['book_id'=>$article->book_id,'id'=>$article->id]) }}" class="btn btn-sm btn-default">查看</a>
-                                                    <a href="{{ route('admin.book.article.edit',['id'=>$article->id]) }}"
-                                                       class="btn btn-sm btn-primary">编辑</a>
-                                                    <form action="{{ route('admin.book.article.delete',['id'=>$article->id]) }}" method="POST"
-                                                          style="display: inline-block;">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <input type="submit"
-                                                               class="btn btn-sm btn-default"
-                                                               value="删除"
-                                                               onclick="return confirm('确定要删除吗？');">
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                        @endforeach
+                                        {!! $displayData !!}
                                         </tbody>
                                     </table>
                                 </div>
