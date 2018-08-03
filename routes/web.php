@@ -53,7 +53,7 @@ Route::group([
     'as'        => 'admin.',
 ], function () {
 
-    Route::group(['middleware' => ['auth','is_admin']], function () {
+    Route::group(['middleware' => ['auth', 'is_admin']], function () {
         //首页
         Route::get('/', 'IndexController@index')->name('index');
 
@@ -100,3 +100,9 @@ Route::group([
     });
 
 });
+
+Route::get('/sitemap', 'SitemapController@index')->name('sitemap.index');
+Route::get('/sitemap/articles', 'SitemapController@articles')->name('sitemap.articles');
+Route::get('/sitemap/specials', 'SitemapController@specials')->name('sitemap.specials');
+Route::get('/sitemap/books', 'SitemapController@books')->name('sitemap.books');
+Route::get('/sitemap/book/articles', 'SitemapController@bookArticles')->name('sitemap.book.articles');

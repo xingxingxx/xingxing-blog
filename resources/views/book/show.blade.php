@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', $book->title.' - '.$article->title)
 @section('content')
     <div class="container" style="margin-top: 10px;">
         <div class="justify-content-center">

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', $special->title)
 @section('content')
     <div class="jumbotron" style="background-color: #ffffff;margin-bottom: 0;">
         <div class="row justify-content-center">
