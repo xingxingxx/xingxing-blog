@@ -40,16 +40,16 @@ class BookController extends Controller
     private function displayData($data, $curentId, $pid = 0, $level = 0)
     {
         $body = '';
-        $paddingLeft = 10 + $level * 20;
+        $paddingLeft = $level * 20;
         $level++;
         foreach ($data as $item) {
             $showUrl = route('book.show', ['book_id' => $item->book_id, 'id' => $item->id]);
-            $active = $item->id == $curentId ? 'font-weight:bold; ' : '';
+            $active = $item->id == $curentId ? 'color:#008cff;' : 'color:#505050;';
             $activeId = $item->id == $curentId ? 'id="activeArticle"' : '';
             if ($item->parent_id == $pid) {
                 $body .= <<<EOF
                <a {$activeId} href="{$showUrl}"
-                                   style="color:#505050; display: block;padding:4px 10px 4px {$paddingLeft}px;
+                                   style="display: block;padding:5px 10px 5px {$paddingLeft}px;
                                    {$active}">{$item->title}</a>
 EOF;
                 $body .= $this->displayData($data, $curentId, $item->id, $level);
