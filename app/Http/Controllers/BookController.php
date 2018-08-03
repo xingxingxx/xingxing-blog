@@ -40,7 +40,7 @@ class BookController extends Controller
     private function displayData($data, $curentId, $pid = 0, $level = 0)
     {
         $body = '';
-        $paddingLeft = 10 + $level * 10;
+        $paddingLeft = 10 + $level * 20;
         $level++;
         foreach ($data as $item) {
             $showUrl = route('book.show', ['book_id' => $item->book_id, 'id' => $item->id]);
