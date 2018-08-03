@@ -49,7 +49,7 @@ class BookController extends Controller
             if ($item->parent_id == $pid) {
                 $body .= <<<EOF
                <a {$activeId} href="{$showUrl}"
-                                   style="color:#505050; display: block;padding:10px 10px 10px {$paddingLeft}px;
+                                   style="color:#505050; display: block;padding:4px 10px 4px {$paddingLeft}px;
                                    {$active}">{$item->title}</a>
 EOF;
                 $body .= $this->displayData($data, $curentId, $item->id, $level);
