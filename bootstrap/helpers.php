@@ -14,8 +14,8 @@ if (!function_exists('get_cover')) {
     function get_cover($content)
     {
         $firstPic = '';
-        if (preg_match('/!\[[^\]]*]\((http):\/\/[^\)]*\.(png|jpg)(.*)\)/i', $content, $img_match)) {
-            if (preg_match('/(https:\/\/)[^>]*?\.(png|jpg)/i', $img_match[0], $img_match_result)) {
+        if (preg_match('/!\[[^\]]*]\((https|http):\/\/[^\)]*\.(png|jpg)(.*)\)/i', $content, $img_match)) {
+            if (preg_match('/(https|http:\/\/)[^>]*?\.(png|jpg)/i', $img_match[0], $img_match_result)) {
                 $firstPic = $img_match_result[0];
             }
         }
@@ -55,7 +55,7 @@ if (!function_exists('get_abstract')) {
         /**
          * 替换图片地址
          */
-        $patterns[] = '/!\[[^\]]*]\((https):\/\/[^\)]*\.(png|jpg|gif)(.*)\)/i';
+        $patterns[] = '/!\[[^\]]*]\((https|http):\/\/[^\)]*\.(png|jpg|gif)(.*)\)/i';
         $replacements[] = '[图片]';
 
 
