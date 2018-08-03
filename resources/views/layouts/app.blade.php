@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keyword" content="博客,Sampson博客,肖兴平,Sampson,SampsonBlog,php,laravel,PhpStorm,php教程,laravel教程,PhpStorm教程">
+    <meta name="description" content="Sampson的个人博客，一个提供优质原创内容的博客，定期分享php,laravel等新技术">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
