@@ -19,6 +19,15 @@
                             <p id="doc-content">
                                 <textarea style="display:none;"> {!! $article->content !!} </textarea>
                             </p>
+                            <p class="text-center" style="margin-top:20px;">
+                                如果这篇文章帮助到了您，可以赞助下主机费~~<br>
+                            </p>
+                            <p class="text-center">
+                                <button class="btn btn-success" id="zanshang">赞赏</button>
+                                <br>
+                                <img id="zanshangImg" style="display: none;text-align: center;" width="300px;"
+                                     src="{{ asset('img/wechat_zanshang.jpg') }}">
+                            </p>
                             <a id="preArticle" class="position-fixed"
                                style="text-decoration:none;color:#ccc;font-size:30px;display:none;margin-left:-50px;top:50%;z-index: 9999999;"
                                href="#">《</a>
@@ -45,6 +54,9 @@
     <script src="{{asset('vendor/markdown/lib/prettify.min.js')}}"></script>
 
     <script type="text/javascript">
+        $('#zanshang').click(function () {
+            $("#zanshangImg").toggle(500);
+        });
         $('#topMao').click(function () {
             $("html,body").animate({scrollTop: $("#app").offset().top}, 500);
         });
