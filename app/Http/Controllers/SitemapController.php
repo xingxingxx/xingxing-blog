@@ -49,7 +49,7 @@ class SitemapController extends Controller
 
     public function bookArticles()
     {
-        $bookArticles=BookArticle::orderBy('updated_at','desc')->get(['id','title','book_id']);
+        $bookArticles=BookArticle::orderBy('updated_at','desc')->get(['id','title','book_id','updated_at']);
         return response()->view('sitemap.book_articles',
             compact('bookArticles'))
             ->header('Content-Type', 'text/xml');
