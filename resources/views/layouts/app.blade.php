@@ -48,7 +48,7 @@
                     <li><a class="nav-link {{ url()->full()==route('special.index')?'active':'' }}"
                            href="{{ route('special.index') }}">专栏</a></li>
                     <li><a class="nav-link {{ url()->full()==route('book.index')?'active':'' }}"
-                           href="{{ route('book.index') }}">教程</a></li>
+                           href="{{ route('book.index') }}">小书</a></li>
                 </ul>
 
                 <form action="/" class="form-inline navbar-form" method="get" style="margin:0;padding:0;">

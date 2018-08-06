@@ -36,7 +36,7 @@
                                style="text-decoration:none;color:#ccc;font-size:30px;display: none;margin-left:10px;top:50%;z-index: 999999;"
                                href="#">》</a>
                         </div>
-                        <h5>评论文章</h5>
+                        <h5>评论</h5>
                         <hr>
                         <table style="margin:10px 0 20px 0;">
                             @foreach($article->comments as $comment)
