@@ -17,7 +17,7 @@
                                 <p>{{ $vo->description }}</p>
                                 <p>{{ $vo->created_at }}</p>
                                 <div>
-                                    <a href="{{ route('book.show',['id'=>$vo->id]) }}" class="btn btn-sm btn-primary">阅读小书</a>
+                                    <a href="{{ route('book.show',['id'=>$vo->id]) }}" class="btn btn-sm btn-primary">阅读教程</a>
                                 </div>
                             </div>
                         </div>
