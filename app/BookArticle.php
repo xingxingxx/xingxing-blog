@@ -39,4 +39,13 @@ class BookArticle extends Model
     protected $fillable = [
         'title', 'book_id', 'parent_id', 'content','sort'
     ];
+
+    /**
+     * 关联查询评论信息
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function comments()
+    {
+        return $this->hasMany(BookArticleComment::class, 'aid')->orderBy('created_at', 'asc');
+    }
 }

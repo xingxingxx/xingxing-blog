@@ -35,6 +35,7 @@ Route::group(['prefix' => 'special', 'as' => 'special.'], function () {
 Route::group(['prefix' => 'book', 'as' => 'book.'], function () {
     Route::get('/', 'BookController@index')->name('index');
     Route::get('show/{book_id}', 'BookController@show')->name('show');
+    Route::post('comment/store', 'BookController@commentStore')->name('comment.store');
 });
 
 /**

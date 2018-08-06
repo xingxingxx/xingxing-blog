@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Book;
 use App\BookArticle;
+use App\BookArticleComment;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -33,7 +34,8 @@ class BookController extends Controller
             $article = BookArticle::whereBookId($book_id)->first();
         }
         $menus = $this->displayData($data, $article->id);
-        return view('book.show', compact('book', 'menus', 'article'));
+        $comment_cache = json_decode($request->cookie('comment'));
+        return view('book.show', compact('book', 'menus', 'article', 'comment_cache'));
     }
 
 
@@ -56,5 +58,32 @@ EOF;
             }
         }
         return $body;
+    }
+
+    /**
+     * 保存评论
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function commentStore(Request $request)
+    {
+        $this->validate($request, [
+            'aid'      => 'required|integer',
+            'username' => 'required|string|max:100',
+            'email'    => 'required|email',
+            'content'  => 'required',
+            'captcha'  => 'captcha',
+        ], [
+            'captcha.captcha' => '验证码错误，请重试！',
+        ]);
+        $comment = new BookArticleComment($request->all());
+        $comment->website = (string)$request->get('website', '');
+        $comment->save();
+
+//        Article::where('id', $request->aid)->increment('comment_count');
+
+        $comment->content = '';
+        \Cookie::queue('comment', $comment, time());
+        return redirect(url()->previous() . '#' . $comment->username);
     }
 }
