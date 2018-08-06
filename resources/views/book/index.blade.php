@@ -5,7 +5,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-10">
+            <div class="col-md-8">
                 @foreach($books as $key=>$vo)
                     <div class="card"  style="margin-top:20px;">
                         <div class="card-body row">
