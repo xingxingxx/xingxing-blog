@@ -129,15 +129,16 @@
                         <div id="menuContent"></div>
                         <div>
                             <br>
-                            <a style="color:#505050;"  href="#commentHead">》&nbsp;&nbsp;跳转到评论</a>
+                            <a id="topComment" style="color:#505050;"  href="javascript:void(0);">-&nbsp;&nbsp;&nbsp;跳到评论</a>
+                            <br>
+                            <a id="topMao" style="color:#505050;"  href="javascript:void(0);">-&nbsp;&nbsp;&nbsp;跳到顶部</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <a href="javascript:void(0);" id="topMao" style="display: block;position: fixed;bottom:50px;right:50px;"><img
-                src="{{ asset('img/top.png') }}"></a>
+
 @endsection
 @section('script')
     <script src="{{asset('vendor/markdown/js/editormd.min.js')}}"></script>
@@ -161,6 +162,9 @@
         $(function () {
             $('#topMao').click(function () {
                 $("html,body").animate({scrollTop: $("#app").offset().top}, 500);
+            });
+            $('#topComment').click(function () {
+                $("html,body").animate({scrollTop: $("#commentHead").offset().top}, 500);
             });
 
             $('#zanshang').click(function () {

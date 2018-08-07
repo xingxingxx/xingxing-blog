@@ -11,6 +11,8 @@
                         </a>
                         <hr>
                         {!! $menus !!}
+                        <br>
+                        <br>
                     </div>
                 </div>
             </div>
