@@ -54,7 +54,9 @@
                             不溺过去，不惧未来<br>
                             <a style="color:#505050;" target="_blank" href="https://github.com/xingxingxx">Github</a>&nbsp;|&nbsp;
                             <a style="color:#505050;" target="_blank" href="http://weibo.com/u/3026783454">微博</a>&nbsp;|&nbsp;
-                            <a style="color:#505050;" target="_blank" href="Mailto:xx9815@qq.com">邮箱</a>
+                            <a style="color:#505050;" target="_blank" href="Mailto:xx9815@qq.com">邮箱</a> |
+                            <a style="color:#505050;" target="_blank" href="{{ asset('img/wechat_contact.jpeg') }}">微信</a> |
+                            <a style="color:#505050;" target="_blank" href="{{ asset('img/qq_contact.jpeg') }}">QQ</a>
 
                         </div>
                     </div>
