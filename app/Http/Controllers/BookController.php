@@ -78,7 +78,7 @@ EOF;
             'username.max'      => '姓名长度不能超过100个字符',
             'email.required'    => '请填写您的邮箱',
             'email.email'       => '邮箱地址格式不正确',
-            'content'           => '请填写评论内容',
+            'content.required'  => '请填写评论内容',
             'captcha.captcha'   => '验证码错误，请重试！',
         ]);
         $comment = new BookArticleComment($request->all());
