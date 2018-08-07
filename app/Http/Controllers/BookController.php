@@ -80,10 +80,9 @@ EOF;
         $comment->website = (string)$request->get('website', '');
         $comment->save();
 
-//        Article::where('id', $request->aid)->increment('comment_count');
-
+        $data = $comment->toArray();
         $comment->content = '';
         \Cookie::queue('comment', $comment, time());
-        return redirect(url()->previous() . '#' . $comment->username);
+        return response()->json($data);
     }
 }

@@ -62,9 +62,9 @@ class BlogController extends Controller
             'username' => 'required|string|max:100',
             'email'    => 'required|email',
             'content'  => 'required',
-            'captcha'  => 'captcha'
+            'captcha'  => 'captcha',
         ], [
-            'captcha.captcha' => '验证码错误，请重试！'
+            'captcha.captcha' => '验证码错误，请重试！',
         ]);
         $comment = new ArticleComment($request->all());
         $comment->website = (string)$request->get('website', '');
@@ -72,8 +72,9 @@ class BlogController extends Controller
 
         Article::where('id', $request->aid)->increment('comment_count');
 
+        $data = $comment->toArray();
         $comment->content = '';
         \Cookie::queue('comment', $comment, time());
-        return redirect(url()->previous() . '#' . $comment->username);
+        return response()->json($data);
     }
 }
