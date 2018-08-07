@@ -8,16 +8,11 @@
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="text-center" style="margin-top:30px;">
-                            {{ $article->title }}
-                        </h5>
-                        <p class="text-center">
-                            发布于&nbsp;{{ $article->created_at->format('Y-m-d') }}
-                            &nbsp;&nbsp;
-                            阅读&nbsp;({{ $article->view_count }})
-                            &nbsp;&nbsp;
-                            评论&nbsp;({{ $article->comment_count }})
-                        </p>
+                        <div style="margin:10px 20px;">
+                            <h2>
+                                {{ $article->title }}
+                            </h2>
+                        </div>
                         <p id="doc-content">
                             <textarea style="display:none;"> {!! $article->content !!} </textarea>
                         </p>
@@ -45,7 +40,9 @@
                 </div>
                 <div class="card" style="margin-top:15px;">
                     <div class="card-body">
-                        <table id="commentList" style="margin:10px 0 40px 0;">
+                        <h3 id="commentHead">评论</h3>
+                        <hr>
+                        <table id="commentList" style="margin:10px 0 20px 0;">
                             @foreach($article->comments as $comment)
 
                                 <tr>
@@ -124,6 +121,19 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-3" style="padding-left:0;position: relative;">
+                <div class="card" id="menu" style="position: fixed;overflow: auto;width:270px;">
+                    <div class="card-body">
+                        <h3>目录</h3>
+                        <hr>
+                        <div id="menuContent"></div>
+                        <div>
+                            <br>
+                            <a style="color:#505050;"  href="#commentHead">》&nbsp;&nbsp;跳转到评论</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <a href="javascript:void(0);" id="topMao" style="display: block;position: fixed;bottom:50px;right:50px;"><img
@@ -134,6 +144,20 @@
     <script src="{{asset('vendor/markdown/lib/marked.min.js')}}"></script>
     <script src="{{asset('vendor/markdown/lib/prettify.min.js')}}"></script>
     <script type="text/javascript">
+        var tit = document.getElementById('menu');
+        var titleTop = tit.offsetTop;
+        //滚动事件
+        document.onscroll = function () {
+            //获取当前滚动的距离
+            var btop = document.body.scrollTop || document.documentElement.scrollTop;
+            //如果滚动距离大于导航条据顶部的距离
+            if (btop >= titleTop) {
+                tit.style.top = "0px";
+            } else {
+                tit.style.top = (titleTop - btop) + 'px';
+            }
+        }
+
         $(function () {
             $('#topMao').click(function () {
                 $("html,body").animate({scrollTop: $("#app").offset().top}, 500);
@@ -165,6 +189,21 @@
                 codeFold: true,
             });
             @endforeach
+
+            $("#doc-content").find("h2,h3,h4,h5,h6").each(function(i,item){
+                var tag = $(item).get(0).localName;
+                $(item).attr("id","wow"+i);
+                $("#menuContent").append('<div><a style="color:#505050;" class="new'+tag+' anchor-link" onclick="return false;" href="#" link="#wow'+i+'">'+(i+1)+" · "+$(this).text()+'</a></div>');
+                $(".newh2").css("margin-left",0);
+                $(".newh3").css("margin-left",20);
+                $(".newh4").css("margin-left",40);
+                $(".newh5").css("margin-left",60);
+                $(".newh6").css("margin-left",80);
+            });
+
+            $(".anchor-link").click(function(){
+                $("html,body").animate({scrollTop: $($(this).attr("link")).offset().top}, 1000);
+            });
 
             $('#commentSubmit').click(function () {
                 $('#username').removeClass('is-invalid');

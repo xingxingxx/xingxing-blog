@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-8" style="padding-right: 0;">
                 <div class="card" style="margin-top:20px;">
                     <div class="card-body">
                         @forelse($articles as $article)
@@ -43,7 +43,7 @@
                 </div>
 
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4" style="padding-left:20px;">
                 <div class="card" style="margin-top:20px;">
                     <div class="card-body">
                         <h5>关注</h5>

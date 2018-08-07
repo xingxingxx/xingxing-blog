@@ -2,120 +2,125 @@
 @section('title', $book->title.' - '.$article->title)
 @section('content')
     <div class="container" style="margin-top: 10px;">
-        <div class="justify-content-center">
-            <div class="card">
-                <div class="card-body" style="padding:0;">
-                    <div id="menu" class="position-fixed"
-                         style="padding:20px;background-color:#fff;bottom:0;top:66px;overflow: scroll; width:280px;">
-                        <a style="color:#505050; display: block;"
-                           href="{{ route('book.index') }}">
-                            <h5>{{ $book->title }}</h5></a>
+        <div class="justify-content-center row">
+            <div class="col-md-3" style="padding:0;">
+                <div id="menu" class="card" style="position:fixed;bottom:0;top:66px;width:286px;padding:15px;overflow: auto;">
+                    <div class="card-boy">
+                        <a style="color:#505050; display: block;" href="{{ route('book.index') }}">
+                            <h4>{{ $book->title }}</h4>
+                        </a>
                         <hr>
                         {!! $menus !!}
                     </div>
+                </div>
+            </div>
+            <div class="col-md-9" style="padding:0;">
+                <div class="card">
+                    <div class="body">
+                        <div style="padding:10px 70px;">
+                            <p id="doc-content">
+                                <textarea style="display:none;"> {!! $article->content !!} </textarea>
+                            </p>
+                            <p class="text-center" style="margin-top:20px;">
+                                如果这篇文章帮助到了您，可以赞助下主机费~~<br>
+                            </p>
+                            <p class="text-center">
+                                <button class="btn btn-success" id="zanshang">赞赏</button>
+                                <br>
+                                <img id="zanshangImg" style="display: none;text-align: center;" width="300px;"
+                                     src="{{ asset('img/wechat_zanshang.jpg') }}">
+                            </p>
+                            <a id="preArticle"
+                               style="position:fixed;text-decoration:none;color:#ccc;font-size:30px;
+            display:none;top:50%;margin-left:-60px;z-index: 9999999;"
+                               href="#">《</a>
 
-                    <div style="margin-left:280px; padding:20px 60px 60px 60px; min-height:1000px;">
-                        <p id="doc-content">
-                            <textarea style="display:none;"> {!! $article->content !!} </textarea>
-                        </p>
-                        <p class="text-center" style="margin-top:20px;">
-                            如果这篇文章帮助到了您，可以赞助下主机费~~<br>
-                        </p>
-                        <p class="text-center">
-                            <button class="btn btn-success" id="zanshang">赞赏</button>
-                            <br>
-                            <img id="zanshangImg" style="display: none;text-align: center;" width="300px;"
-                                 src="{{ asset('img/wechat_zanshang.jpg') }}">
-                        </p>
-                        <a id="preArticle" class="position-fixed"
-                           style="text-decoration:none;color:#ccc;font-size:30px;display:none;margin-left:-50px;top:50%;z-index: 9999999;"
-                           href="#">《</a>
+                            <div style="float:right;">
+                                <a id="nextArticle"
+                                   style="position:fixed;text-decoration:none;color:#ccc;
+            font-size:30px;display: none;margin-left:30px;top:50%;z-index: 999999;"
+                                   href="#">》</a>
+                            </div>
+                            <h3>评论</h3>
+                            <hr>
+                            <table id="commentList" style="margin:10px 0 20px 0;">
+                                @foreach($article->comments as $comment)
 
-                        <div style="float:right;">
-                            <a id="nextArticle" class="position-fixed"
-                               style="text-decoration:none;color:#ccc;font-size:30px;display: none;margin-left:10px;top:50%;z-index: 999999;"
-                               href="#">》</a>
+                                    <tr>
+                                        <td style="padding: 0 10px;">
+                                            <a href="{{ $comment->website }}"
+                                               target="_blank">
+                                                <img style="border-radius:50%;"
+                                                     src="{{ asset(($comment->email=='xx9815@qq.com')?'img/my_avatar.png':'img/default_avatar.png') }}">
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="{{ $comment->website }}"
+                                               target="_blank">{{ $comment->username }}</a>
+                                            <br>
+                                            <span style="color:#ddd;">{{ $comment->created_at->format('Y-m-d H:i:s') }}</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <p style="padding: 0 0 15px 0;" id="comment-content-{{ $comment->id }}">
+                                                <textarea style="display:none;"> {!! $comment->content !!} </textarea>
+                                            </p>
+                                    </tr>
+                                @endforeach
+                            </table>
+                            <form id="commentForm" onsubmit="return false;">
+                                @csrf
+                                <input type="hidden" name="aid" value="{{ $article->id }}">
+                                <div class="form-group">
+                                    <label for="username"
+                                           class="form-label"><span
+                                                class="text-danger">*</span>姓名</label>
+                                    <input id="username" type="text" class="form-control" name="username"
+                                           value="{{ $comment_cache->username??'' }}"
+                                           required autofocus placeholder="您的名称"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email"
+                                           class="form-label"><span
+                                                class="text-danger">*</span>邮箱</label>
+                                    <input id="email" type="email" class="form-control" name="email"
+                                           value="{{ $comment_cache->email??'' }}" placeholder="邮箱不会公开"
+                                           required/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="website"
+                                           class="form-label">个人网站</label>
+                                    <input id="website" type="text" class="form-control" name="website"
+                                           value="{{ $comment_cache->website??'' }}" placeholder="可选，填写后点击头像可以直接进入"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="content"
+                                           class="form-label"><span
+                                                class="text-danger" style="font-size:20px;">*</span>评论内容，支持<a
+                                                href="https://daringfireball.net/projects/markdown/syntax">Markdown</a></label>
+                                    <textarea id="content" rows="6" class="form-control"
+                                              name="content" required>{{ old('content') }}</textarea>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-1 text-md-right">
+                                        <a href="javascript:void(0)"><img id="captchaImg"
+                                                                          src="{{ captcha_src('mini') }}"></a>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input id="captcha" type="text" class="form-control" name="captcha" value=""
+                                               placeholder="验证码"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button id="commentSubmit" class="btn btn-primary">
+                                        提交
+                                    </button>
+                                </div>
+                            </form>
                         </div>
-                        <h5>评论</h5>
-                        <hr>
-                        <table id="commentList" style="margin:10px 0 20px 0;">
-                            @foreach($article->comments as $comment)
-
-                                <tr>
-                                    <td style="padding: 0 10px;">
-                                        <a href="{{ $comment->website }}"
-                                           target="_blank">
-                                            <img style="border-radius:50%;"
-                                                 src="{{ asset(($comment->email=='xx9815@qq.com')?'img/my_avatar.png':'img/default_avatar.png') }}">
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a href="{{ $comment->website }}"
-                                           target="_blank">{{ $comment->username }}</a>
-                                        <br>
-                                        <span style="color:#ddd;">{{ $comment->created_at->format('Y-m-d H:i:s') }}</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>
-                                        <p style="padding: 0 0 15px 0;" id="comment-content-{{ $comment->id }}">
-                                            <textarea style="display:none;"> {!! $comment->content !!} </textarea>
-                                        </p>
-                                </tr>
-                            @endforeach
-                        </table>
-                        <form id="commentForm" onsubmit="return false;">
-                            @csrf
-                            <input type="hidden" name="aid" value="{{ $article->id }}">
-                            <div class="form-group">
-                                <label for="username"
-                                       class="form-label"><span
-                                            class="text-danger">*</span>姓名</label>
-                                <input id="username" type="text" class="form-control" name="username"
-                                       value="{{ $comment_cache->username??'' }}"
-                                       required autofocus placeholder="您的名称"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="email"
-                                       class="form-label"><span
-                                            class="text-danger">*</span>邮箱</label>
-                                <input id="email" type="email" class="form-control" name="email"
-                                       value="{{ $comment_cache->email??'' }}" placeholder="邮箱不会公开"
-                                       required/>
-                            </div>
-                            <div class="form-group">
-                                <label for="website"
-                                       class="form-label">个人网站</label>
-                                <input id="website" type="text" class="form-control" name="website"
-                                       value="{{ $comment_cache->website??'' }}" placeholder="可选，填写后点击头像可以直接进入"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="content"
-                                       class="form-label"><span
-                                            class="text-danger" style="font-size:20px;">*</span>评论内容，支持<a
-                                            href="https://daringfireball.net/projects/markdown/syntax">Markdown</a></label>
-                                <textarea id="content" rows="6" class="form-control"
-                                          name="content" required>{{ old('content') }}</textarea>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-md-1 text-md-right">
-                                    <a href="javascript:void(0)"><img id="captchaImg"
-                                                                      src="{{ captcha_src('mini') }}"></a>
-                                </div>
-                                <div class="col-md-2">
-                                    <input id="captcha" type="text" class="form-control" name="captcha" value=""
-                                           placeholder="验证码"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <button id="commentSubmit" class="btn btn-primary">
-                                    提交
-                                </button>
-                            </div>
-                        </form>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -206,31 +211,31 @@
                     success: function (data) {
                         $('#captchaImg').attr('src', $('#captchaImg').attr('src') + Math.random());
                         $('#captcha').val('');
-                        var myAvatar="{{ asset('img/my_avatar.png') }}";
-                        var defaultAvatar="{{ asset('img/default_avatar.png') }}";
+                        var myAvatar = "{{ asset('img/my_avatar.png') }}";
+                        var defaultAvatar = "{{ asset('img/default_avatar.png') }}";
                         $('#commentList').append('<tr>' +
                             '                                    <td style="padding: 0 10px;">' +
-                            '                                        <a  href="'+data.website+'"' +
+                            '                                        <a  href="' + data.website + '"' +
                             '                                           target="_blank">' +
                             '                                            <img style="border-radius:50%;"' +
-                            '                                                 src="'+(data.email=='xx9815@qq.com'?myAvatar:defaultAvatar)+'">' +
+                            '                                                 src="' + (data.email == 'xx9815@qq.com' ? myAvatar : defaultAvatar) + '">' +
                             '                                        </a>' +
                             '                                    </td>' +
                             '                                    <td>' +
-                            '                                        <a href="'+data.website+'"' +
-                            '                                           target="_blank">'+data.username+'</a>' +
+                            '                                        <a href="' + data.website + '"' +
+                            '                                           target="_blank">' + data.username + '</a>' +
                             '                                        <br>' +
-                            '                                        <span style="color:#ddd;">'+data.created_at+'</span>' +
+                            '                                        <span style="color:#ddd;">' + data.created_at + '</span>' +
                             '                                    </td>' +
                             '                                </tr>' +
                             '                                <tr>' +
                             '                                    <td></td>' +
                             '                                    <td>' +
-                            '                                        <p style="padding: 0 0 15px 0;" id="comment-content-'+data.id+'">' +
-                            '                                            <textarea style="display:none;"> '+data.content+' </textarea>' +
+                            '                                        <p style="padding: 0 0 15px 0;" id="comment-content-' + data.id + '">' +
+                            '                                            <textarea style="display:none;"> ' + data.content + ' </textarea>' +
                             '                                        </p>' +
                             '                                </tr>');
-                        editormd.markdownToHTML("comment-content-"+data.id, {
+                        editormd.markdownToHTML("comment-content-" + data.id, {
                             htmlDecode: "style,script,iframe",
                             emoji: true,
                             taskList: true,
@@ -239,7 +244,7 @@
                             sequenceDiagram: false,
                             codeFold: true,
                         });
-                        $("html,body").animate({scrollTop: $("#comment-content-"+data.id).offset().top-80}, 300);
+                        $("html,body").animate({scrollTop: $("#comment-content-" + data.id).offset().top - 80}, 300);
 
                     },
                     error: function (xhr, status, error) {
