@@ -7,7 +7,7 @@
                 <div class="card" style="margin-top:20px;">
                     <div class="card-body">
                         @forelse($articles as $article)
-                            <h5 style="padding-bottom:10px;"><strong>
+                            <h5 style="padding-top:10px;padding-bottom:10px;"><strong>
                                     <a href="{{ $article->info_url }}">{{ $article->title }}</a>
                                 </strong>
                             </h5>
@@ -31,7 +31,7 @@
                                     </div>
                                 @endif
                             </div>
-                            <hr><br>
+                            <hr>
                         @empty
                             <p><h4 class="text-center">抱歉！没有找到您需要的文章</h4></p>
                         @endforelse

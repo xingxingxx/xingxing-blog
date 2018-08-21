@@ -29,11 +29,9 @@
         }
         a {
             color: rgba(0,0,0,.7);
-            text-decoration: none !important;
         }
         a:hover{color:rgba(0,0,0,.7);}
         .page-link{color: rgba(0,0,0,.7);}
-
     </style>
     {{--百度统计代码--}}
     @if(!app()->isLocal())
@@ -72,9 +70,8 @@
                 </ul>
 
                 <form action="/" class="form-inline navbar-form" method="get" style="margin:0;padding:0;">
-                    <input class="form-control" type="text" name="q" placeholder="Search" value="{{ $q ?? '' }}">
-                    &nbsp;
-                    <button class="btn btn-success-outline" type="submit">搜索</button>
+                    <input class="form-control" type="text" name="q" placeholder="搜索内容" value="{{ $q ?? '' }}">
+                    &nbsp;<button class="btn btn-outline-secondary" type="submit">搜索</button>
                 </form>
 
                 <ul class="navbar-nav ml-auto">
@@ -88,7 +85,6 @@
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
-
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
