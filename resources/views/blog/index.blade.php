@@ -7,7 +7,7 @@
                 <div class="card" style="margin-top:20px;">
                     <div class="card-body">
                         @forelse($articles as $key=>$article)
-                            <h5 style="padding-top:{{ $key>0? '10px':'0'}};padding-bottom:10px;"><strong>
+                            <h5 style="padding-top:{{ $key>0? '10px':'0'}};padding-bottom:5px;"><strong>
                                     <a href="{{ $article->info_url }}">{{ $article->title }}</a>
                                 </strong>
                             </h5>
