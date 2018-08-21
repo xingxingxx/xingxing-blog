@@ -6,12 +6,12 @@
             <div class="col-md-8" style="padding-right: 0;">
                 <div class="card" style="margin-top:20px;">
                     <div class="card-body">
-                        @forelse($articles as $article)
-                            <h5 style="padding-top:10px;padding-bottom:10px;"><strong>
+                        @forelse($articles as $key=>$article)
+                            <h5 style="padding-top:{{ $key>0? '10px':'0'}};padding-bottom:10px;"><strong>
                                     <a href="{{ $article->info_url }}">{{ $article->title }}</a>
                                 </strong>
                             </h5>
-                            <div class="row" style="padding-bottom:10px;">
+                            <div class="row">
                                 <div class=" {{ $article->cover?'col-md-8' :'col-md-12'}}">
                                     <div style="margin-bottom: 5px;">
                                         <a href="{{ $article->info_url }}">{{ $article->abstract }}</a>
