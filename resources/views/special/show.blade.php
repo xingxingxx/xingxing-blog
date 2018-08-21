@@ -29,16 +29,16 @@
                     <div class="card-body">
                         @forelse($articles as $key=>$article)
 
-                            <h5 style="padding-bottom:10px;color:#333;"><strong>
+                            <h5 style="padding-bottom:10px;"><strong>
                                     <a href="{{ $article->info_url }}"
-                                       style="color:#333;">{{ $article->title }}</a>
+                                       >{{ $article->title }}</a>
                                 </strong>
                             </h5>
                             <div class="row">
                                 <div class=" {{ $article->cover?'col-md-8' :'col-md-12'}}">
                                     <div style="margin-bottom: 5px;">
                                         <a href="{{ $article->info_url }}"
-                                           style="color:#333;">{{ $article->abstract }}</a>
+                                           >{{ $article->abstract }}</a>
                                     </div>
                                     <div>
                                         发布于&nbsp;{{ $article->created_at->format('Y-m-d') }}

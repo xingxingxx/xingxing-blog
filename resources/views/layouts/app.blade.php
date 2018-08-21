@@ -15,16 +15,36 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{asset('vendor/markdown/css/editormd.min.css')}}" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f2f5f9;
+            color: rgba(0,0,0,.7) !important;
+        }
+        .card {
+            border: none;
+            box-shadow: 0 2px 6px 0 rgba(0, 0, 0, .1);
+        }
+        .font-color {
+            color: rgba(0,0,0,.7) !important
+        }
+        a {
+            color: rgba(0,0,0,.7);
+            text-decoration: none !important;
+        }
+        a:hover{color:rgba(0,0,0,.7);}
+        .page-link{color: rgba(0,0,0,.7);}
+
+    </style>
     {{--百度统计代码--}}
     @if(!app()->isLocal())
         <script>
-          var _hmt = _hmt || [];
-          (function () {
-            var hm = document.createElement("script");
-            hm.src = "https://hm.baidu.com/hm.js?4fc93c60dc8191750936d459d36ea7c2";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-          })();
+            var _hmt = _hmt || [];
+            (function () {
+                var hm = document.createElement("script");
+                hm.src = "https://hm.baidu.com/hm.js?4fc93c60dc8191750936d459d36ea7c2";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            })();
         </script>
     @endif
 
@@ -64,7 +84,8 @@
                         <li><a class="nav-link" href="{{ route('register') }}">注册</a></li>
                     @else
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
@@ -75,11 +96,12 @@
                                     登出
                                 </a>
                                 @if(Auth::user()->is_admin)
-                                <a class="dropdown-item" href="{{ route('admin.index') }}" target="_blank">
-                                    管理后台
-                                </a>
+                                    <a class="dropdown-item" href="{{ route('admin.index') }}" target="_blank">
+                                        管理后台
+                                    </a>
                                 @endif
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                      style="display: none;">
                                     @csrf
                                 </form>
                             </div>
