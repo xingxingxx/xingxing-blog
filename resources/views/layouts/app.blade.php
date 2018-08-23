@@ -15,6 +15,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{asset('vendor/markdown/css/editormd.min.css')}}" rel="stylesheet">
+    <link href="{{asset('vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
     <style>
         body {
             background-color: #f2f5f9;
@@ -69,9 +70,9 @@
                            href="{{ route('book.index') }}">教程</a></li>
                 </ul>
 
-                <form action="/" class="form-inline navbar-form" method="get" style="margin:0;padding:0;">
-                    <input class="form-control" type="text" name="q" placeholder="搜索内容" value="{{ $q ?? '' }}">
-                    &nbsp;<button class="btn btn-outline-secondary" type="submit">搜索</button>
+                <form action="/" class="form-inline my-2 my-lg-0" method="get">
+                    <input class="form-control mr-sm-2" type="text" name="q" placeholder="搜索" value="{{ $q ?? '' }}">
+                    <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">搜索</button>
                 </form>
 
                 <ul class="navbar-nav ml-auto">

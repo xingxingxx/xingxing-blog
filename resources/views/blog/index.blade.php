@@ -17,11 +17,13 @@
                                         <a href="{{ $article->info_url }}">{{ $article->abstract }}</a>
                                     </div>
                                     <div>
-                                        发布于&nbsp;{{ $article->created_at->format('Y-m-d') }}
+                                        <i class="fa fa-user"></i>&nbsp;Sampson
                                         &nbsp;&nbsp;
-                                        阅读&nbsp;({{ $article->view_count }})
+                                        <i class="fa fa-clock-o"></i>&nbsp;{{ $article->created_at->format('Y-m-d') }}
                                         &nbsp;&nbsp;
-                                        评论&nbsp;({{ $article->comment_count }})
+                                        <i class="fa fa-eye"></i>&nbsp;{{ $article->view_count }}
+                                        &nbsp;&nbsp;
+                                        <i class="fa fa-comments-o"></i>&nbsp;{{ $article->comment_count }}
                                     </div>
                                 </div>
                                 @if($article->cover)
@@ -73,14 +75,9 @@
                     <div class="card-body">
                         <h5>标签云</h5>
                         <hr>
-                        <a href="{{ route('index',['q'=>'php']) }}"
-                           class="btn btn-sm btn-default"><span
-                                    class="label label-default">PHP</span></a>
-                        <a href="{{ route('index',['q'=>'laravel']) }}"
-                           class="btn btn-sm btn-default"><span
-                                    class="label label-default">Laravel</span></a>
-                        <a href="{{ route('index',['q'=>'设计模式']) }}" class="btn btn-sm btn-default"><span
-                                    class="label label-default">设计模式</span></a>
+                        <a href="{{ route('index',['q'=>'php']) }}"><span class="badge badge-secondary">PHP</span></a>
+                        <a href="{{ route('index',['q'=>'laravel']) }}"><span class="badge badge-secondary">Laravel</span></a>
+                        <a href="{{ route('index',['q'=>'设计模式']) }}"><span class="badge badge-secondary">设计模式</span></a>
                     </div>
                 </div>
             </div>

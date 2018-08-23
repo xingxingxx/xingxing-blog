@@ -15,7 +15,10 @@
                             <div class="col-md-9">
                                 <h3>{{ $vo->title }}</h3>
                                 <p>{{ $vo->description }}</p>
-                                <p>{{ $vo->created_at }}</p>
+                                <p>
+                                    <i class="fa fa-user"></i>&nbsp;Sampson
+                                    &nbsp;&nbsp;
+                                    <i class="fa fa-clock-o"></i> {{ $vo->created_at->format('Y-m-d') }}</p>
                                 <div>
                                     <a href="{{ route('book.show',['id'=>$vo->id]) }}" class="btn btn-sm btn-primary">阅读教程</a>
                                 </div>

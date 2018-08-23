@@ -13,6 +13,7 @@
                                 {{ $article->title }}
                             </h2>
                         </div>
+
                         <p id="doc-content">
                             <textarea style="display:none;"> {!! $article->content !!} </textarea>
                         </p>
@@ -129,9 +130,9 @@
                         <div id="menuContent"></div>
                         <div>
                             <br>
-                            <a id="topComment" style="color:#505050;"  href="javascript:void(0);">-&nbsp;&nbsp;&nbsp;跳到评论</a>
+                            <a id="topComment" style="color:#505050;"  href="javascript:void(0);"><i class="fa fa-bookmark-o"></i>&nbsp;·&nbsp;跳到评论</a>
                             <br>
-                            <a id="topMao" style="color:#505050;"  href="javascript:void(0);">-&nbsp;&nbsp;&nbsp;跳到顶部</a>
+                            <a id="topMao" style="color:#505050;"  href="javascript:void(0);"><i class="fa fa-bookmark-o"></i>&nbsp;·&nbsp;跳到顶部</a>
                         </div>
                     </div>
                 </div>
@@ -261,6 +262,7 @@
                             sequenceDiagram: false,
                             codeFold: true,
                         });
+                        alert('评论成功');
                         $("html,body").animate({scrollTop: $("#comment-content-"+data.id).offset().top-80}, 300);
 
                     },

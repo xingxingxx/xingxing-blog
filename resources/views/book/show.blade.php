@@ -34,14 +34,14 @@
                             </p>
                             <a id="preArticle"
                                style="position:fixed;text-decoration:none;color:#ccc;font-size:30px;
-            display:none;top:50%;margin-left:-60px;z-index: 9999999;"
-                               href="#">《</a>
+            display:none;top:50%;margin-left:-50px;z-index: 9999999;"
+                               href="#"><i class="fa fa-chevron-left"></i></a>
 
                             <div style="float:right;">
                                 <a id="nextArticle"
                                    style="position:fixed;text-decoration:none;color:#ccc;
-            font-size:30px;display: none;margin-left:30px;top:50%;z-index: 999999;"
-                                   href="#">》</a>
+            font-size:30px;display: none;margin-left:20px;top:50%;z-index: 999999;"
+                                   href="#"><i class="fa fa-chevron-right"></i></a>
                             </div>
                             <h3>评论</h3>
                             <hr>
@@ -246,6 +246,7 @@
                             sequenceDiagram: false,
                             codeFold: true,
                         });
+                        alert('评论成功');
                         $("html,body").animate({scrollTop: $("#comment-content-" + data.id).offset().top - 80}, 300);
 
                     },
