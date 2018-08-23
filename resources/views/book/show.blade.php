@@ -4,7 +4,7 @@
     <div class="container" style="margin-top: 10px;">
         <div class="justify-content-center row">
             <div class="col-md-3" style="padding:0;">
-                <div id="menu" class="card" style="position:fixed;bottom:0;top:66px;width:286px;padding:15px;overflow: auto;">
+                <div id="menu" class="card" style="position:fixed;bottom:0;top:66px;width:286px;padding:15px;overflow: auto;z-index:999999;">
                     <div class="card-boy">
                         <a style="color:#505050; display: block;" href="{{ route('book.index') }}">
                             <h4>{{ $book->title }}</h4>
