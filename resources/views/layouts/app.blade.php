@@ -112,13 +112,27 @@
     <main>
         @yield('content')
     </main>
-    <footer id="footer" style="text-align: center;padding:20px;">
-        <a target="_blank" href="http://www.miitbeian.gov.cn">粤ICP备17155556号-2</a>
+    <footer id="footer">
+        <div class="card" style="margin-top:20px;text-align:center;">
+            <div class="card-body" style="padding:15px;">
+                Copyright © 2018
+                <a target="_blank" href="https://xiaoxingping.top">Sampson的博客</a>&nbsp;|
+                <a target="_blank" href="http://www.miitbeian.gov.cn">粤ICP备17155556号</a>&nbsp;|
+                Powered by <a target="_blank" href="https://github.com/xingxingxx/my-blog-new">Sampson</a>
+            </div>
+        </div>
     </footer>
 </div>
 <!-- Scripts -->
 <script src="{{ asset('js/jquery.min.js') }}"></script>
 <script src="{{ asset('js/app.js') }}"></script>
+<script>
+    if($(window).height()-$('#app').height()>30){
+        $('#footer').css('position','fixed');
+        $('#footer').css('bottom',0);
+        $('#footer').css('width','100%');
+    };
+</script>
 @yield('script')
 </body>
 </html>
