@@ -113,7 +113,7 @@
         @yield('content')
     </main>
     <footer id="footer" style="text-align: center;padding:20px;">
-        <a target="_blank" href="http://www.miitbeian.gov.cn" style="color:#336699;">粤ICP备17155556号-2</a>
+        <a target="_blank" href="http://www.miitbeian.gov.cn">粤ICP备17155556号-2</a>
     </footer>
 </div>
 <!-- Scripts -->
