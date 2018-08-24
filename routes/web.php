@@ -48,6 +48,10 @@ Route::post('markdown/upload', 'MarkdownController@upload')
 // 登录认证路由
 Auth::routes();
 
+//github社会化登陆
+Route::get('/oauth/github', 'AuthController@redirectToProvider')->name('oauth.github');
+Route::get('/oauth/github/callback', 'AuthController@handleProviderCallback')->name('oauth.github.callback');
+
 Route::group([
     'namespace' => 'Admin',
     'prefix'    => 'admin',
@@ -107,3 +111,4 @@ Route::get('/sitemap/articles', 'SitemapController@articles')->name('sitemap.art
 Route::get('/sitemap/specials', 'SitemapController@specials')->name('sitemap.specials');
 Route::get('/sitemap/books', 'SitemapController@books')->name('sitemap.books');
 Route::get('/sitemap/book/articles', 'SitemapController@bookArticles')->name('sitemap.book.articles');
+

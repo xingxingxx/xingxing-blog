@@ -14,6 +14,7 @@
         "laravel/framework": "5.6.*",
         "laravel/tinker": "^1.0",
         "mews/captcha": "^2.2",
+        "overtrue/laravel-socialite": "^2.0",
         "overtrue/pinyin": "~3.0",
         "sunnyshift/laravel-uploader": "^0.1.2"
     },

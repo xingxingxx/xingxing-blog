@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'zh-CN',
 
     /*
     |--------------------------------------------------------------------------
@@ -161,6 +161,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         SunnyShift\Uploader\UploaderServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        Overtrue\LaravelSocialite\ServiceProvider::class,
     ],
 
     /*
@@ -210,6 +211,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'Socialite' => Overtrue\LaravelSocialite\Socialite::class,
     ],
 
 ];

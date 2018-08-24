@@ -4,7 +4,8 @@
     <div class="container" style="margin-top: 10px;">
         <div class="justify-content-center row">
             <div class="col-md-3" style="padding:0;">
-                <div id="menu" class="card" style="position:fixed;bottom:0;top:66px;width:286px;padding:15px;overflow: auto;z-index:999999;">
+                <div id="menu" class="card"
+                     style="position:fixed;bottom:0px;top:66px;width:287px;padding:15px;overflow: auto;z-index: 99999;">
                     <div class="card-boy">
                         <a style="color:#505050; display: block;" href="{{ route('book.index') }}">
                             <h4>{{ $book->title }}</h4>
@@ -130,7 +131,16 @@
     <a href="javascript:void(0);" id="topMao" style="display: block;position: fixed;bottom:50px;right:30px;"><img
                 src="{{ asset('img/top.png') }}"></a>
 @endsection
-
+@section('footer')
+    <footer id="footer">
+        <div style="padding:25px;text-align:center;">
+            Copyright © 2018
+            <a target="_blank" href="https://xiaoxingping.top">Sampson的博客</a>&nbsp;|
+            <a target="_blank" href="http://www.miitbeian.gov.cn">粤ICP备17155556号</a>&nbsp;|
+            Powered by <a target="_blank" href="https://github.com/xingxingxx/my-blog-new">Sampson</a>
+        </div>
+    </footer>
+@endsection
 @section('script')
     <link rel="stylesheet" href="{{asset('vendor/markdown/css/editormd.min.css')}}"/>
     <script src="{{asset('vendor/markdown/js/editormd.min.js')}}"></script>

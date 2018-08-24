@@ -19,20 +19,29 @@
     <style>
         body {
             background-color: #f2f5f9;
-            color: rgba(0,0,0,.7) !important;
+            color: rgba(0, 0, 0, .7) !important;
         }
+
         .card {
             border: none;
             box-shadow: 0 2px 6px 0 rgba(0, 0, 0, .1);
         }
+
         .font-color {
-            color: rgba(0,0,0,.7) !important
+            color: rgba(0, 0, 0, .7) !important
         }
+
         a {
-            color: rgba(0,0,0,.7);
+            color: rgba(0, 0, 0, .7);
         }
-        a:hover{color:rgba(0,0,0,.7);}
-        .page-link{color: rgba(0,0,0,.7);}
+
+        a:hover {
+            color: rgba(0, 0, 0, .7);
+        }
+
+        .page-link {
+            color: rgba(0, 0, 0, .7);
+        }
     </style>
     {{--百度统计代码--}}
     @if(!app()->isLocal())
@@ -112,26 +121,29 @@
     <main>
         @yield('content')
     </main>
-    <footer id="footer">
-        <div class="card" style="margin-top:20px;text-align:center;">
-            <div class="card-body" style="padding:15px;">
-                Copyright © 2018
-                <a target="_blank" href="https://xiaoxingping.top">Sampson的博客</a>&nbsp;|
-                <a target="_blank" href="http://www.miitbeian.gov.cn">粤ICP备17155556号</a>&nbsp;|
-                Powered by <a target="_blank" href="https://github.com/xingxingxx/my-blog-new">Sampson</a>
+    @section('footer')
+        <footer id="footer">
+            <div class="card" style="margin-top:20px;text-align:center;">
+                <div class="card-body" style="padding:15px;">
+                    Copyright © 2018
+                    <a target="_blank" href="https://xiaoxingping.top">Sampson的博客</a>&nbsp;|
+                    <a target="_blank" href="http://www.miitbeian.gov.cn">粤ICP备17155556号</a>&nbsp;|
+                    Powered by <a target="_blank" href="https://github.com/xingxingxx/my-blog-new">Sampson</a>
+                </div>
             </div>
-        </div>
-    </footer>
+        </footer>
+    @show
 </div>
 <!-- Scripts -->
 <script src="{{ asset('js/jquery.min.js') }}"></script>
 <script src="{{ asset('js/app.js') }}"></script>
 <script>
-    if($(window).height()-$('#app').height()>30){
-        $('#footer').css('position','fixed');
-        $('#footer').css('bottom',0);
-        $('#footer').css('width','100%');
-    };
+    if ($(window).height() - $('#app').height() > 30) {
+        $('#footer').css('position', 'fixed');
+        $('#footer').css('bottom', 0);
+        $('#footer').css('width', '100%');
+    }
+    ;
 </script>
 @yield('script')
 </body>
