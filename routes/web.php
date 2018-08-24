@@ -49,8 +49,11 @@ Route::post('markdown/upload', 'MarkdownController@upload')
 Auth::routes();
 
 //github社会化登陆
-Route::get('/oauth/github', 'AuthController@redirectToProvider')->name('oauth.github');
-Route::get('/oauth/github/callback', 'AuthController@handleProviderCallback')->name('oauth.github.callback');
+Route::get('/oauth/github', 'Auth\LoginController@redirectToProvider')->name('oauth.github');
+Route::get('/oauth/github/callback', 'Auth\LoginController@handleProviderCallback')->name('oauth.github.callback');
+//微信社会化登录
+Route::get('/oauth/weixin', 'Auth\LoginController@redirectToWeixin')->name('oauth.weixin');
+Route::get('/oauth/weixin/callback', 'Auth\LoginController@handleWeixinCallback')->name('oauth.weixin.callback');
 
 Route::group([
     'namespace' => 'Admin',

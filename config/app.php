@@ -162,6 +162,7 @@ return [
         SunnyShift\Uploader\UploaderServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Overtrue\LaravelSocialite\ServiceProvider::class,
+        Irazasyed\LaravelIdenticon\ServiceProvider::class,
     ],
 
     /*
@@ -212,6 +213,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Socialite' => Overtrue\LaravelSocialite\Socialite::class,
-    ],
+        'Identicon'  => Irazasyed\LaravelIdenticon\Facade::class,
+
+],
 
 ];

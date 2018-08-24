@@ -73,9 +73,9 @@
                 <ul class="navbar-nav mr-auto">
                     <li><a class="nav-link {{ url()->full()==route('index')?'active':'' }}" href="{{ route('index') }}">首页</a>
                     </li>
-                    <li><a class="nav-link {{ url()->full()==route('special.index')?'active':'' }}"
+                    <li><a class="nav-link {{ str_contains(url()->current(),'special')?'active':'' }}"
                            href="{{ route('special.index') }}">专栏</a></li>
-                    <li><a class="nav-link {{ url()->full()==route('book.index')?'active':'' }}"
+                    <li><a class="nav-link {{ str_contains(url()->current(),'book')?'active':'' }}"
                            href="{{ route('book.index') }}">教程</a></li>
                 </ul>
 
@@ -93,13 +93,14 @@
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <img style="height:25px;border-radius: 50%;" src="{{ Auth::user()->avatar?:Identicon::getImageDataUri(Auth::user()->name) }}">
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    登出
+                                    退出登录
                                 </a>
                                 @if(Auth::user()->is_admin)
                                     <a class="dropdown-item" href="{{ route('admin.index') }}" target="_blank">

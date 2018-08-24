@@ -41,11 +41,13 @@
                                            >{{ $article->abstract }}</a>
                                     </div>
                                     <div>
-                                        发布于&nbsp;{{ $article->created_at->format('Y-m-d') }}
+                                        <i class="fa fa-user"></i>&nbsp;Sampson
                                         &nbsp;&nbsp;
-                                        阅读&nbsp;({{ $article->view_count }})
+                                        <i class="fa fa-clock-o"></i>&nbsp;{{ $article->created_at->format('Y-m-d') }}
                                         &nbsp;&nbsp;
-                                        评论&nbsp;({{ $article->comment_count }})
+                                        <i class="fa fa-eye"></i>&nbsp;{{ $article->view_count }}
+                                        &nbsp;&nbsp;
+                                        <i class="fa fa-comments-o"></i>&nbsp;{{ $article->comment_count }}
                                     </div>
                                 </div>
                                 @if($article->cover)

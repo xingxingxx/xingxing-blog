@@ -50,8 +50,8 @@
                                     <td style="padding: 0 10px;">
                                         <a name="{{ $comment->username }}" href="{{ $comment->website }}"
                                            target="_blank">
-                                            <img style="border-radius:50%;"
-                                                 src="{{ asset(($comment->email=='xx9815@qq.com')?'img/my_avatar.png':'img/default_avatar.png') }}">
+                                            <img style="height:35px;border-radius:50%;"
+                                                 src="{{ ($comment->email=='xx9815@qq.com')? asset('img/my_avatar.png'):Identicon::getImageDataUri($comment->username) }}">
                                         </a>
                                     </td>
                                     <td>

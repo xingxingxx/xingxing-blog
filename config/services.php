@@ -37,8 +37,11 @@ return [
     'github' => [
         'client_id'     => env('GITHUB_CLIENT_ID'),
         'client_secret' => env('GITHUB_CLIENT_SECRET'),
-        // 注册应用时填写的回调地址
         'redirect'      => env('GITHUB_REDIRECT'),
     ],
-
+    'wechat' => [
+        'client_id'     => env('WEIXIN_APP_ID'),
+        'client_secret' => env('WEIXIN_APP_SECRET'),
+        'redirect'      => env('WEIXIN_REDIRECT'),
+    ],
 ];
