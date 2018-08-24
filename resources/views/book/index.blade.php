@@ -20,7 +20,7 @@
                                     &nbsp;&nbsp;
                                     <i class="fa fa-clock-o"></i> {{ $vo->created_at->format('Y-m-d') }}</p>
                                 <div>
-                                    <a href="{{ route('book.show',['id'=>$vo->id]) }}" class="btn btn-sm btn-primary">阅读教程</a>
+                                    <a href="{{ route('book.show',['id'=>$vo->id]) }}" target="_blank" class="btn btn-sm btn-primary">阅读教程</a>
                                 </div>
                             </div>
                         </div>
