@@ -54,14 +54,14 @@
                             </div>
                         </div>
                     </form>
-                    <div style="text-align: center;">
-                        <a class="btn btn-outline-secondary" href="{{ route('oauth.github') }}">
-                            <i class="fa fa-github-alt"></i>&nbsp;GitHub登录
-                        </a>
-                        <a class="btn btn-outline-secondary" href="{{ route('oauth.github') }}">
-                            <i class="fa fa-wechat"></i>&nbsp;微信登录
-                        </a>
-                    </div>
+                    {{--<div style="text-align: center;">--}}
+                        {{--<a class="btn btn-outline-secondary" href="{{ route('oauth.github') }}">--}}
+                            {{--<i class="fa fa-github-alt"></i>&nbsp;GitHub登录--}}
+                        {{--</a>--}}
+                        {{--<a class="btn btn-outline-secondary" href="{{ route('oauth.github') }}">--}}
+                            {{--<i class="fa fa-wechat"></i>&nbsp;微信登录--}}
+                        {{--</a>--}}
+                    {{--</div>--}}
                 </div>
             </div>
         </div>
