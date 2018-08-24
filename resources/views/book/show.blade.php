@@ -50,7 +50,7 @@
           </div>
       </nav>
 
-      <div style="width:300px;padding:10px 20px;position:fixed;bottom:0;top:55px;background-color: #fff;overflow: auto;box-shadow: 0 2px 6px 0 rgba(0, 0, 0, .1);">
+      <div style="width:300px;padding:10px 20px;position:fixed;bottom:0;top:55px;background-color: #fff;overflow:auto;z-index:999;border-right:1px solid #ddd;">
           {!! $menus !!}
           <br>
           <br>
@@ -161,16 +161,6 @@
   </div>
     <a href="javascript:void(0);" id="topMao" style="display: block;position: fixed;bottom:50px;right:30px;"><img
                 src="{{ asset('img/top.png') }}"></a>
-@endsection
-@section('footer')
-    <footer id="footer2">
-        <div style="padding:25px;text-align:center;">
-            Copyright © 2018
-            <a target="_blank" href="https://xiaoxingping.top">Sampson的博客</a>&nbsp;|
-            <a target="_blank" href="http://www.miitbeian.gov.cn">粤ICP备17155556号</a>&nbsp;|
-            Powered by <a target="_blank" href="https://github.com/xingxingxx/my-blog-new">Sampson</a>
-        </div>
-    </footer>
 @endsection
 @section('script')
     <link rel="stylesheet" href="{{asset('vendor/markdown/css/editormd.min.css')}}"/>
