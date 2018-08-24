@@ -152,12 +152,16 @@
       </div>
   </div>
   <div style="position: fixed;top:50%;width:100%;margin-left:300px;z-index: 9999999;">
-      <a id="preArticle"
-         style="margin-left:3%;text-decoration:none;color:#ccc;font-size:30px; display:none;" href="#">
-          <i class="fa fa-chevron-left"></i></a>
-      <a id="nextArticle"
-         style="margin-left:65%;text-decoration:none;color:#ccc;font-size:30px; display:none;"
-         href="#"><i class="fa fa-chevron-right"></i></a>
+      <div style="float:left;margin-left:3%;">
+          <a id="preArticle"
+             style="text-decoration:none;color:#ccc;font-size:30px; display:none;" href="#">
+              <i class="fa fa-chevron-left"></i></a>
+      </div>
+     <div style="float:right;margin-right:27%;">
+         <a id="nextArticle"
+            style="text-decoration:none;color:#ccc;font-size:30px; display:none;"
+            href="#"><i class="fa fa-chevron-right"></i></a>
+     </div>
   </div>
     <a href="javascript:void(0);" id="topMao" style="display: block;position: fixed;bottom:50px;right:30px;"><img
                 src="{{ asset('img/top.png') }}"></a>
