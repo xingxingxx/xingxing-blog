@@ -10,7 +10,7 @@
                     <div class="card" style="margin-top:20px;">
                         <div class="card-body row">
                             <div class="col-md-4">
-                                <img style="width:100%;" src="{{ asset('uploads/file/'.$vo->cover) }}">
+                                <img style="width:100%;" src="{{ \Storage::url($vo->cover) }}">
                             </div>
                             <div class="col-md-8">
                                 <h3>{{ $vo->title }}</h3>

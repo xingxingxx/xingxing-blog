@@ -28,7 +28,7 @@ function Uploader(selector) {
 
     this.create = function () {
         var _this = this;
-        this.options = JSON.parse(this.getAttr('data-options'));
+        this.options = {'url':this.getAttr('data-url'),'fileName':'file','header':[],'params':[],'responseKey':'path'};
         this.name = this.getAttr('data-name');
         this.max = parseInt(this.getAttr('data-max'));
         this.extensions = this.getAttr('data-accept');

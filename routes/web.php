@@ -41,7 +41,7 @@ Route::group(['prefix' => 'book', 'as' => 'book.'], function () {
 /**
  * markdown文件上传
  */
-Route::post('markdown/upload', 'MarkdownController@upload')
+Route::post('markdown/upload', 'UploadController@markdown')
     ->middleware('auth')
     ->name('markdown.upload');
 

@@ -159,7 +159,6 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        SunnyShift\Uploader\UploaderServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Overtrue\LaravelSocialite\ServiceProvider::class,
         Irazasyed\LaravelIdenticon\ServiceProvider::class,

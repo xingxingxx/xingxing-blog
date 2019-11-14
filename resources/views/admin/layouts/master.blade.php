@@ -14,6 +14,7 @@
     <link href="{{asset('vendor/iCheck/square/blue.css')}}" rel="stylesheet">
     <link href="{{asset('vendor/adminLTE/css/AdminLTE.min.css')}}" rel="stylesheet">
     <link href="{{asset('vendor/adminLTE/css/skins/skin-blue.min.css')}}" rel="stylesheet">
+    <link href="{{asset('vendor/uploader/css/uploader.css')}}" rel="stylesheet">
 
     <!--[if lt IE 9]>
     <script src="{{ asset('vendor/adminLTE/js/Html5shiv.min.js') }}"></script>

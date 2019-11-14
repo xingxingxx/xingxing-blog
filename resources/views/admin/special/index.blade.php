@@ -34,7 +34,7 @@
                                             <tr>
                                                 <td>{{ $special->id}}</td>
                                                 <td>
-                                                    <img style="width:100px;" src="{{ asset('uploads/file/'.$special->cover) }}">
+                                                    <img style="width:100px;" src="{{ \Storage::url($special->cover) }}">
                                                 </td>
                                                 <td>{{ $special->title }}</td>
                                                 <td>{{ $special->description }}</td>

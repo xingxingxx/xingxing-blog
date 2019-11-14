@@ -34,7 +34,7 @@
                                             <tr>
                                                 <td>{{ $book->id}}</td>
                                                 <td>
-                                                    <img style="width:100px;" src="{{ asset('uploads/file/'.$book->cover) }}">
+                                                    <img style="width:100px;" src="{{ \Storage::url($book->cover) }}">
                                                 </td>
                                                 <td>{{ $book->title }}</td>
                                                 <td>{{ $book->description }}</td>

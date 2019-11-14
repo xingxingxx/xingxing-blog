@@ -22,9 +22,17 @@
                             </div>
                             <div class="form-group row">
                                 <label for="cover" class="col-md-2 col-form-label text-md-right">封面</label>
-
-                                <div class="col-md-8">
-                                    @uploader(['name' => 'cover', 'max' => 1, 'accept' => 'jpg,png,gif','value'=>$special->cover])
+                                <div id="uploader_1" class="uploader-list"
+                                     data-url="{{route('upload.image')}}"
+                                     data-name="cover" data-max="1" data-accept="png,jpg,jpeg,gif">
+                                    <div id="WU_FILE_10" class="img-item">
+                                        <div class="delete"></div>
+                                        <img class="img" style="width:75px;height:75px;" src="{{ \Storage::url($special->cover) }}">
+                                        <div class="wrapper" style="display: none;">100%</div>
+                                        <input type="hidden" name="cover" value="{{ $special->cover }}">
+                                    </div>
+                                    <div class="img-item picker"></div>
+                                    <div class="cf"></div>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -48,7 +56,7 @@
         </div>
     </section>
 @endsection
-
 @section('script')
-    @uploader('assets')
+    <script src="{{asset('vendor/uploader/js/webuploader.html5only.min.js')}}"></script>
+    <script src="{{asset('vendor/uploader/js/Uploader.js')}}"></script>
 @endsection

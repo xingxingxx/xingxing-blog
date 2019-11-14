@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('FILESYSTEM_DRIVER', 'local'),
+    'default' => env('FILESYSTEM_DRIVER', 'public'),
 
     /*
     |--------------------------------------------------------------------------
@@ -42,12 +42,6 @@ return [
     */
 
     'disks' => [
-
-        'local' => [
-            'driver' => 'local',
-            'root' => public_path('uploads/file'),
-        ],
-
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
@@ -63,7 +57,15 @@ return [
             'bucket' => env('AWS_BUCKET'),
             'url' => env('AWS_URL'),
         ],
-
+        'oss' => [
+            'driver' => 'oss',
+            'root' => '',
+            'access_key' => env('OSS_ACCESS_KEY'),
+            'secret_key' => env('OSS_SECRET_KEY'),
+            'endpoint'   => env('OSS_ENDPOINT'),
+            'bucket'     => env('OSS_BUCKET'),
+            'isCName'    => env('OSS_IS_CNAME', false),
+        ],
     ],
 
 ];

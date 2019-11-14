@@ -16,3 +16,7 @@ use Illuminate\Http\Request;
 //Route::middleware('auth:api')->get('/user', function (Request $request) {
 //    return $request->user();
 //});
+
+Route::post('upload/image', 'UploadController@image')->name('upload.image');
+Route::get('upload/delete', 'UploadController@delete')->name('upload.delete');
+Route::get('upload/show', 'UploadController@show')->name('upload.show');

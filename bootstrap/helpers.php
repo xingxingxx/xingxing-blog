@@ -14,21 +14,13 @@ if (!function_exists('get_cover')) {
     function get_cover($content)
     {
         $firstPic = '';
-        if (preg_match('/!\[[^\]]*]\((https|http):\/\/[^\)]*\.(png|jpg)(.*)\)/i', $content, $img_match)) {
-            if (preg_match('/(https|http:\/\/)[^>]*?\.(png|jpg)/i', $img_match[0], $img_match_result)) {
+        if (preg_match('/!\[[^\]]*]\((https|http):\/\/[^\)]*\.(png|jpg|jpeg)(.*)\)/i', $content, $img_match)) {
+            if (preg_match('/(https|http:\/\/)[^>]*?\.(png|jpg|jpeg)/i', $img_match[0], $img_match_result)) {
                 $firstPic = $img_match_result[0];
             }
         }
         if ($firstPic) {
-            $firstPicPath = public_path((parse_url($firstPic))['path']);
-            $coverPath = preg_replace('/(\.png|\.jpg)/', '_200x200$1', $firstPicPath);
-            if (!file_exists($coverPath)) {
-                $img = \Image::make($firstPicPath)->widen(200, function ($constraint) {
-                    $constraint->upsize();
-                });
-                $img->save($coverPath);
-            }
-            return preg_replace('/(\.png|\.jpg)/', '_200x200$1', $firstPic);
+            return $firstPic.'?x-oss-process=style/resize';
         }
         return '';
     }
@@ -55,7 +47,7 @@ if (!function_exists('get_abstract')) {
         /**
          * 替换图片地址
          */
-        $patterns[] = '/!\[[^\]]*]\((https|http):\/\/[^\)]*\.(png|jpg|gif)(.*)\)/i';
+        $patterns[] = '/!\[[^\]]*]\((https|http):\/\/[^\)]*\.(png|jpg|jpeg|gif)(.*)\)/i';
         $replacements[] = '[图片]';
 
 
