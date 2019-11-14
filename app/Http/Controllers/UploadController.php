@@ -16,7 +16,7 @@ class UploadController extends Controller
         $request->validate([
             'file' => 'required|image|max:10240',
         ]);
-        $path = $request->file('file')->store('file');
+        $path = $request->file('file')->store('file/' . date('Y-m-d'));
         return response()->json([
             'path' => $path,
             'code' => 200,
@@ -41,7 +41,7 @@ class UploadController extends Controller
                 'url'     => '',
             ]);
         }
-        $path = $request->file('editormd-image-file')->store('markdown');
+        $path = $request->file('editormd-image-file')->store('markdown/'. date('Y-m-d'));
         return response()->json([
             'success' => 1,
             'message' => 'success',
