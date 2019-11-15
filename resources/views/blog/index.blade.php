@@ -29,7 +29,7 @@
                                 @if($article->cover)
                                     <div class="col-md-4">
                                         <a href="{{ $article->info_url }}">
-                                            <img style="width:100%;" src="{{ $article->cover }}"></a>
+                                            <img style="width:100%;" src="{{ \Storage::url($article->cover) }}"></a>
                                     </div>
                                 @endif
                             </div>

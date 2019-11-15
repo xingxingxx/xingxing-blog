@@ -20,7 +20,8 @@ if (!function_exists('get_cover')) {
             }
         }
         if ($firstPic) {
-            return $firstPic.'?x-oss-process=style/resize';
+            $path = (parse_url($firstPic))['path'];
+            return $path . '?x-oss-process=style/resize';
         }
         return '';
     }
