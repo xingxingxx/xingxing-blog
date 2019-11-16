@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <img style="width:100%;" src="{{ asset('uploads/file/'.$special->cover) }}">
+                    <img style="width:100%;" src="{{ \Storage::url($special->cover) }}">
                 </div>
             </div>
         </div>
@@ -31,14 +31,14 @@
 
                             <h5 style="padding-bottom:10px;"><strong>
                                     <a href="{{ $article->info_url }}"
-                                       >{{ $article->title }}</a>
+                                    >{{ $article->title }}</a>
                                 </strong>
                             </h5>
                             <div class="row">
                                 <div class=" {{ $article->cover?'col-md-8' :'col-md-12'}}">
                                     <div style="margin-bottom: 5px;">
                                         <a href="{{ $article->info_url }}"
-                                           >{{ $article->abstract }}</a>
+                                        >{{ $article->abstract }}</a>
                                     </div>
                                     <div>
                                         <i class="fa fa-user"></i>&nbsp;Sampson
