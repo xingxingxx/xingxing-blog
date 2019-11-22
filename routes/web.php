@@ -64,6 +64,7 @@ Route::group([
     Route::group(['middleware' => ['auth', 'is_admin']], function () {
         //首页
         Route::get('/', 'IndexController@index')->name('index');
+        Route::put('/admin/update', 'IndexController@updateAdmin')->name('update');
 
         //博客
         Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {

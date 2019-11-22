@@ -3,7 +3,7 @@
         {{--用户信息--}}
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="{{ asset('img/my_avatar.png') }}" class="img-circle" alt="User Image"></div>
+                <img src="{{ Auth::user()->avatar }}" class="img-circle" alt="User Image"></div>
             <div class="pull-left info">
                 <p>{{ Auth::user()->name }}</p>
                 <a href="#"><i class="fa fa-circle text-success"></i>在线</a>
@@ -24,7 +24,7 @@
         <ul class="sidebar-menu">
             <li class="header">主导航</li>
             <li class="{{ url()->full()==route('admin.index')?'active':'' }}"><a href="{{ route('admin.index') }}"><i class="fa fa-home"></i><span>我的视图</span></a></li>
-            <li class="{{ url()->full()==route('admin.blog.index')?'active':'' }}"><a href="{{ route('admin.blog.index') }}"><i class="fa fa-sticky-note"></i><span>博客管理</span></a></li>
+            <li class="{{ url()->full()==route('admin.blog.index')?'active':'' }}"><a href="{{ route('admin.blog.index') }}"><i class="fa fa-file-text-o"></i><span>博客管理</span></a></li>
             <li class="{{ url()->full()==route('admin.special.index')?'active':'' }}"><a href="{{ route('admin.special.index') }}"><i class="fa fa-newspaper-o"></i><span>专栏管理</span></a></li>
             <li class="{{ url()->full()==route('admin.book.index')?'active':'' }}"><a href="{{ route('admin.book.index') }}"><i class="fa fa-book"></i><span>教程管理</span></a></li>
             <li class=""><a href="#"><i class="fa fa-cog"></i><span>系统设置</span></a></li>

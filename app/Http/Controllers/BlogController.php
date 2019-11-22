@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Article;
 use App\ArticleComment;
+use App\User;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -29,7 +30,9 @@ class BlogController extends Controller
             ->orderBy('created_at', 'desc')
             ->limit(5)
             ->get(['id', 'title', 'title_trans', 'created_at', 'type']);
-        return view('blog.index', compact('articles', 'hots', 'q'));
+
+        $admin = User::where('is_admin', 1)->first();
+        return view('blog.index', compact('articles', 'hots', 'q', 'admin'));
     }
 
     /**

@@ -35,7 +35,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','avatar',
+        'name', 'email', 'password', 'avatar', 'sign', 'github', 'wechat', 'weibo', 'qq',
     ];
 
     /**
@@ -46,4 +46,22 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * 头像
+     * @param $value
+     * @return string
+     */
+    public function getAvatarAttribute($value)
+    {
+        if (empty($value)) {
+            return '';
+        }
+
+        if (filter_var($value, FILTER_VALIDATE_URL)) {
+            return $value;
+        } else {
+            return \Storage::url($value);
+        }
+    }
 }

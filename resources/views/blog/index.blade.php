@@ -46,12 +46,12 @@
                         <h5>关注</h5>
                         <hr>
                         <div style="text-align: center;">
-                            <img  style="width:35%;border-radius:50%;"  src="{{ asset('img/my_avatar_big.jpg') }}">
-                            <div style="margin-bottom:5px;"><strong>Sampson</strong></div>
-                            不溺过去，不惧未来<br>
-                            <a target="_blank" href="https://github.com/xingxingxx">Github</a>&nbsp;|&nbsp;
-                            <a target="_blank" href="http://weibo.com/u/3026783454">微博</a>&nbsp;|&nbsp;
-                            <a target="_blank" href="Mailto:xx9815@qq.com">邮箱</a>
+                            <img style="width:35%;border-radius:50%;" src="{{ $admin->avatar }}">
+                            <div style="margin-bottom:5px;"><strong>{{ $admin->name }}</strong></div>
+                            {{ $admin->sign }}<br>
+                            <a target="_blank" href="{{ $admin->github }}">Github</a>&nbsp;|&nbsp;
+                            <a target="_blank" href="{{ $admin->weibo }}">微博</a>&nbsp;|&nbsp;
+                            <a target="_blank" href="Mailto:{{ $admin->email }}">邮箱</a>
                         </div>
                     </div>
                 </div>
@@ -62,17 +62,18 @@
                         @foreach($hots as $key=>$hot)
                             <div style="margin-bottom:5px;">
                                 <a href="{{ $hot->info_url }}">{{ $key+1 }}.&nbsp;&nbsp;{{ $hot->title }}</a>
-                                    &nbsp;
+                                &nbsp;
                             </div>
                         @endforeach
                     </div>
                 </div>
                 <div class="card" style="margin-top:20px;">
                     <div class="card-body">
-                        <h5>标签云</h5>
+                        <h5>标签</h5>
                         <hr>
                         <a href="{{ route('index',['q'=>'php']) }}"><span class="badge badge-secondary">PHP</span></a>
-                        <a href="{{ route('index',['q'=>'laravel']) }}"><span class="badge badge-secondary">Laravel</span></a>
+                        <a href="{{ route('index',['q'=>'laravel']) }}"><span
+                                    class="badge badge-secondary">Laravel</span></a>
                         <a href="{{ route('index',['q'=>'设计模式']) }}"><span class="badge badge-secondary">设计模式</span></a>
                     </div>
                 </div>
