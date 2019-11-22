@@ -2,10 +2,10 @@
 ## 项目概述
 
 * 产品名称：星星的博客
-* 项目代码：my-blog-new
+* 项目代码：xingxing-blog
 * 演示地址：https://xiaoxingping.top/
 
-[星星的博客](https://github.com/xingxingxx/my-blog-new) Laravel 5.6 版本。
+[星星的博客](https://github.com/xingxingxx/xingxing-blog) Laravel 5.6 版本。
 
 ## 运行环境
 
@@ -41,11 +41,11 @@ homestead edit
 
 ```
 folders:
-    - map: ~/my-path/my-blog-new/ # 你本地的项目目录地址
-      to: /home/vagrant/my-blog-new
+    - map: ~/my-path/xingxing-blog/ # 你本地的项目目录地址
+      to: /home/vagrant/xingxing-blog
 sites:
-    - map: my-blog-new.app
-      to: /home/vagrant/my-blog-new/public
+    - map: xingxing-blog.app
+      to: /home/vagrant/xingxing-blog/public
 
 databases:
     - my-blog-new
