@@ -16,9 +16,7 @@
                                 <h3>{{ $vo->title }}</h3>
                                 <p>{{ $vo->description }}</p>
                                 <p>
-                                    <i class="fa fa-user"></i>&nbsp;Sampson
-                                    &nbsp;&nbsp;
-                                    <i class="fa fa-clock-o"></i>&nbsp;{{ $vo->created_at->format('Y-m-d') }}</p>
+                                    <i class="fa fa-clock-o"></i>&nbsp;{{ $vo->created_at->format('Y-m-d H:i:s') }}</p>
                                 <div>
                                     <a href="{{ route('special.show',['id'=>$vo->id]) }}" class="btn btn-sm btn-primary">进入专栏</a>
                                 </div>

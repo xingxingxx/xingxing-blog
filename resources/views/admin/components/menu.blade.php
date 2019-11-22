@@ -25,11 +25,8 @@
             <li class="header">主导航</li>
             <li class="{{ url()->full()==route('admin.index')?'active':'' }}"><a href="{{ route('admin.index') }}"><i class="fa fa-home"></i><span>我的视图</span></a></li>
             <li class="{{ url()->full()==route('admin.blog.index')?'active':'' }}"><a href="{{ route('admin.blog.index') }}"><i class="fa fa-sticky-note"></i><span>博客管理</span></a></li>
-            <li class="{{ url()->full()==route('admin.special.index')?'active':'' }}"><a href="{{ route('admin.special.index') }}"><i class="fa fa-sticky-note"></i><span>专栏管理</span></a></li>
-            <li class="{{ url()->full()==route('admin.book.index')?'active':'' }}"><a href="{{ route('admin.book.index') }}"><i class="fa fa-sticky-note"></i><span>教程管理</span></a></li>
-            <li class=""><a href="#"><i class="fa fa-sticky-note"></i><span>单页管理</span></a></li>
-            <li class=""><a href="#"><i class="fa fa-pie-chart"></i><span>统计分析</span></a></li>
-            <li class=""><a href="#"><i class="fa fa-user"></i><span>管理员</span></a></li>
+            <li class="{{ url()->full()==route('admin.special.index')?'active':'' }}"><a href="{{ route('admin.special.index') }}"><i class="fa fa-newspaper-o"></i><span>专栏管理</span></a></li>
+            <li class="{{ url()->full()==route('admin.book.index')?'active':'' }}"><a href="{{ route('admin.book.index') }}"><i class="fa fa-book"></i><span>教程管理</span></a></li>
             <li class=""><a href="#"><i class="fa fa-cog"></i><span>系统设置</span></a></li>
         </ul>
     </section>

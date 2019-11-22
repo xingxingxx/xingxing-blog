@@ -41,9 +41,7 @@
                                         >{{ $article->abstract }}</a>
                                     </div>
                                     <div>
-                                        <i class="fa fa-user"></i>&nbsp;Sampson
-                                        &nbsp;&nbsp;
-                                        <i class="fa fa-clock-o"></i>&nbsp;{{ $article->created_at->format('Y-m-d') }}
+                                        <i class="fa fa-clock-o"></i>&nbsp;{{ $article->created_at->format('Y-m-d H:i:s') }}
                                         &nbsp;&nbsp;
                                         <i class="fa fa-eye"></i>&nbsp;{{ $article->view_count }}
                                         &nbsp;&nbsp;

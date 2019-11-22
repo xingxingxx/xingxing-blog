@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Blog后台管理</title>
+    <title>{{config('app.name')}}</title>
     {{--公共样式--}}
     <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
@@ -22,7 +22,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="{{ route('admin.index') }}"><b>Blog后台管理</b></a>
+        <a href="{{ route('admin.index') }}"><b>{{config('app.name')}}</b></a>
     </div>
     <div class="login-box-body">
         @yield('content')
