@@ -51,7 +51,7 @@
                                         <a name="{{ $comment->username }}" href="{{ $comment->website }}"
                                            target="_blank">
                                             <img style="height:35px;border-radius:50%;"
-                                                 src="{{ ($comment->email=='xx9815@qq.com')? asset('img/my_avatar.png'):Identicon::getImageDataUri($comment->username) }}">
+                                                 src="{{ ($comment->email==$admin->email)? $admin->avatar:Identicon::getImageDataUri($comment->username) }}">
                                         </a>
                                     </td>
                                     <td>
@@ -229,14 +229,14 @@
                     success: function (data) {
                         $('#captchaImg').attr('src', $('#captchaImg').attr('src') + Math.random());
                         $('#captcha').val('');
-                        var myAvatar="{{ asset('img/my_avatar.png') }}";
-                        var defaultAvatar="{{ asset('img/default_avatar.png') }}";
+                        var avatar=data.email=="{{ $admin->email }}"?"{{ $admin->avatar }}":"{{ asset('img/default_avatar.png') }}";
+
                         $('#commentList').append('<tr>' +
 '                                    <td style="padding: 0 10px;">' +
 '                                        <a  href="'+data.website+'"' +
 '                                           target="_blank">' +
 '                                            <img style="border-radius:50%;"' +
-'                                                 src="'+(data.email=='xx9815@qq.com'?myAvatar:defaultAvatar)+'">' +
+'                                                 src="'+avatar+'">' +
 '                                        </a>' +
 '                                    </td>' +
 '                                    <td>' +

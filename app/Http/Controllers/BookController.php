@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Book;
 use App\BookArticle;
 use App\BookArticleComment;
+use App\User;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -35,7 +36,8 @@ class BookController extends Controller
         }
         $menus = $this->displayData($data, $article->id);
         $comment_cache = json_decode($request->cookie('comment'));
-        return view('book.show', compact('book', 'menus', 'article', 'comment_cache'));
+        $admin = User::where('is_admin', 1)->first();
+        return view('book.show', compact('book', 'menus', 'article', 'comment_cache','admin'));
     }
 
 

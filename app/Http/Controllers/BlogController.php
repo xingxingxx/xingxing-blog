@@ -50,7 +50,8 @@ class BlogController extends Controller
         $comment_cache = json_decode($request->cookie('comment'));
         $preArticle = $article->pre;
         $nextArticle = $article->next;
-        return view('blog.show', compact('article', 'q', 'comment_cache', 'preArticle', 'nextArticle'));
+        $admin = User::where('is_admin', 1)->first();
+        return view('blog.show', compact('article', 'q', 'comment_cache', 'preArticle', 'nextArticle','admin'));
     }
 
     /**
